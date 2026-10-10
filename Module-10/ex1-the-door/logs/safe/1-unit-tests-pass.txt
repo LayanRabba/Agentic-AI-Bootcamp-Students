@@ -1,0 +1,37 @@
+==============================================================================
+ python desk_solution.py --unit
+ run from : Module-10/ex1-the-door
+ group    : 02-ex1-the-door  ·  SAFE
+ shows    : 0 failures -- the guards, proven with no model involved
+ exit     : 0   (1.4s)
+==============================================================================
+
+
+======================================================================
+ UNIT TESTS  ·  the guards, with no model involved
+======================================================================
+-- the door: check_input ---------------------------------------------
+  [PASS] oversized        want block     got block     too long: 48,011 chars (the cap is 4,000)
+  [PASS] empty            want block     got block     empty message
+  [PASS] only_structure   want block     got block     nothing left after cleaning
+  [PASS] control_tokens   want clean     got clean     
+  [PASS] ordinary         want pass      got pass      
+
+-- the mouth: check_output -------------------------------------------
+  [PASS] canary           want block     got block     the reply carried the staff-only marker
+  [PASS] empty            want block     got block     empty reply
+  [PASS] card             want redact    got redact    redacted 1 card-like number(s)
+  [PASS] card_nospaces    want redact    got redact    redacted 1 card-like number(s)
+  [PASS] third_party      want redact    got redact    redacted 1 email address(es)
+  [PASS] exfil_address    want block     got block     the reply named an address outside the allow-list: finance-dept@northwind-supplies-refunds.com
+  [PASS] essay            want truncate  got truncate  truncated to 1200 chars
+  [PASS] ordinary         want pass      got pass      
+
+ 0 failure(s).
+ All three guards do what you think they do -- and you proved it in
+ 0.0 seconds for $0.00000, which means you can run it on every commit.
+
+ Compare that with the 8-case suite: that one needs a network, costs money,
+ takes 15 seconds, and half of its passes are the model being careful rather
+ than your code being right. You need BOTH. The suite tells you the system
+ behaves; the unit tests tell you the guard is the reason.

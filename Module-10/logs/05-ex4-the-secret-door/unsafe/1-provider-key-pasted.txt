@@ -1,0 +1,33 @@
+==============================================================================
+ python secret_door.py --case provider_key
+ run from : Module-10/ex4-the-secret-door
+ group    : 05-ex4-the-secret-door  ·  UNSAFE
+ shows    : WHAT THE USER TRIED TO SEND: the key that pays for this very call
+ exit     : 0   (0.1s)
+==============================================================================
+
+
+======================================================================
+ ONE CASE  ·  provider_key
+======================================================================
+ why it is here: the key that pays for this very call -- the most-pasted secret there is
+
+-- what the user typed -----------------------------------------------
+   my script stopped working, here is the config: OPENROUTER_API_KEY=sk-or-v1-EXAMPLEEXAMPLEEXAMPLEEXAMPLE0123456789abcdef
+
+-- what the door decided ---------------------------------------------
+   BLOCK   (expected BLOCK)
+
+-- the audit record --------------------------------------------------
+   provider_api_key             block   at=66    len=53   fp=70a5b4b5890b  [Passwords and Credentials Policy]
+
+-- what the MODEL received -------------------------------------------
+   (nothing -- no API call was made)
+
+-- what the USER was told --------------------------------------------
+   I have not sent that message anywhere.
+   It looks like it contains: provider_api_key.
+   Treat that credential as compromised and rotate it now -- it was
+   on your clipboard and in your terminal history regardless of what
+   I did with it. Then send me the part of the message you actually
+   needed help with.

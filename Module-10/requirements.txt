@@ -1,0 +1,20 @@
+# Module 10 -- Guardrails, Safety & Cost/Latency
+#
+# NOTHING NEW TO INSTALL. The same versions you have had since Module 2.
+# Every guardrail today is written in plain Python: no guardrail library, no
+# policy engine, no classifier service. That is deliberate -- you cannot
+# evaluate a tool you have never had to do without.
+#
+# This module ships its own .venv. If preflight.py says something is missing:
+#     cd Module-10
+#     source .venv/bin/activate        # .\.venv\Scripts\Activate.ps1 on Windows
+#     python -m pip install -r requirements.txt
+#
+# To rebuild the environment from scratch:
+#     python3.12 -m venv .venv         # py -3.12 -m venv .venv on Windows
+#
+# Python 3.12 or 3.13.
+openai==2.52.0
+langgraph==1.2.10
+langchain-openai==1.4.1
+python-dotenv==1.2.2

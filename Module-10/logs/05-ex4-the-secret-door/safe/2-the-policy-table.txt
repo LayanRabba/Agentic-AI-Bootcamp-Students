@@ -1,0 +1,46 @@
+==============================================================================
+ python secret_door.py --policy
+ run from : Module-10/ex4-the-secret-door
+ group    : 05-ex4-the-secret-door  ·  SAFE
+ shows    : eight rules as DATA: add a rule, add a row
+ exit     : 0   (0.0s)
+==============================================================================
+
+
+======================================================================
+ THE SECRET POLICY  ·  shared/policy.py, as a reviewer reads it
+======================================================================
+ Eight rules. They are DATA, not code -- which is the point.
+
+  rule                        action   rotate?  policy
+  --------------------------------------------------------------------------------------
+  private_key_block           block    yes      Passwords and Credentials Policy
+      a private key in a prompt is a private key in someone else's logs
+  aws_access_key_id           block    yes      Passwords and Credentials Policy
+      AWS key ids have a fixed shape, so this is a high-confidence match
+  provider_api_key            block    yes      Passwords and Credentials Policy
+      the key that pays for this very call is the one most often pasted
+  bearer_or_jwt               block    yes      Access Control Policy
+      a session token is a logged-in user, and it is readable without a password
+  connection_string_password  block    yes      Passwords and Credentials Policy
+      a database URL carries the password inline, so it leaks as one blob
+  secret_assignment           block    yes      Passwords and Credentials Policy
+      catches a pasted .env, a config fragment or a code snippet
+  payment_card                redact   no       Data Classification
+      the customer volunteered it; they still deserve an answer
+  iban                        redact   no       Data Classification
+      same reasoning as a card number
+
+-- shapes the entropy backstop must SKIP -----------------------------
+   uuid
+   git_sha
+   tracking_no
+   order_id
+   content_hash
+
+ entropy: flag tokens of 20+ chars scoring >= 4.2 bits/char
+
+ TO ADD A RULE you add a row. No function changes, no new branch, no deploy of
+ somebody's cleverness -- a one-line diff in a file whose whole job is to be
+ audited. That is the difference between a policy and a pile of `if`
+ statements, and it is why security review can actually read this.

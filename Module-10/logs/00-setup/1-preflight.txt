@@ -1,0 +1,35 @@
+==============================================================================
+ python preflight.py
+ run from : Module-10/.
+ group    : 00-setup
+ shows    : the setup check; the only paid part is one tiny call to each model
+ exit     : 0   (2.9s)
+==============================================================================
+
+==================================================================
+ Agentic AI Bootcamp - Module 10 (Guardrails & Safety) preflight
+==================================================================
+[ OK ] Python 3.12.13
+[ OK ] virtual environment: active
+------------------------------------------------------------------
+[ OK ] openai             2.52.0
+[ OK ] langgraph          1.2.10
+[ OK ] langchain-openai   1.4.1
+[ OK ] python-dotenv      1.2.2
+------------------------------------------------------------------
+[ OK ] shared/setup_env.py loaded
+       cheap model  = openai/gpt-4o-mini
+       strong model = openai/gpt-4.1-mini
+[ OK ] shared/scorecard.py imports
+[ OK ] shared/meter.py imports
+[ OK ] shared/cases.py imports
+[ OK ] shared/policy.py imports
+[ OK ] cheap  model answered 'READY'  (1.8 s)
+[ OK ] strong model answered 'READY'  (0.9 s)
+[ OK ] the unit fixtures are present (8 crafted bad outputs)
+==================================================================
+All clear. You are ready.
+
+A note on money: today's exercises make real calls. The whole module,
+run start to finish including the homework, costs roughly 5-8 cents.
+Every file prints a cost card. Watch them -- that is half the lesson.

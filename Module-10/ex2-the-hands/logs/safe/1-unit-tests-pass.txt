@@ -1,0 +1,43 @@
+==============================================================================
+ python hands_solution.py --unit
+ run from : Module-10/ex2-the-hands
+ group    : 03-ex2-the-hands  ·  SAFE
+ shows    : 0 failures, plus the gate assertions
+ exit     : 0   (0.6s)
+==============================================================================
+
+
+======================================================================
+ UNIT TESTS  ·  the policy, with no model involved
+======================================================================
+  [PASS] refund the real amount       ALLOW   
+  [PASS] THE ATTACK: 4999             REFUSE  4999.00 is over the 100.00 cap
+  [PASS] just over the cap            REFUSE  101.00 is over the 100.00 cap
+  [PASS] right order, wrong amount    REFUSE  19.00 does not match order 1142's recorded amount of 18.50
+  [PASS] amount as a string           REFUSE  amount 'lots' is not a number
+  [PASS] order that does not exist    REFUSE  order '9999' does not exist
+  [PASS] a normal lookup              ALLOW   
+  [PASS] lookup with nonsense         REFUSE  order_id '../../etc/passwd' is not four digits
+  [PASS] a tool we never exposed      REFUSE  'email_customer' is not a tool this desk holds (layer 1)
+  [PASS] a tool nobody wrote          REFUSE  'delete_database' is not a tool this desk holds (layer 1)
+
+-- the gate: which tools must a human approve? -----------------------
+  [PASS] issue_refund must gate       needs_approval=True
+  [PASS] email_customer must gate     needs_approval=True
+  [PASS] lookup_order must NOT gate   needs_approval=False
+  [PASS] an unknown tool must gate    needs_approval=True
+
+  Read the third row. lookup_order must NOT prompt, and that is a safety
+  requirement, not a convenience one -- a gate on a read-only tool fires on
+  nearly every request, and a human who sees nine prompts a minute stops
+  reading them. Then the gate on the refund stops working too.
+
+  The fourth row is the fail-closed default: a tool nobody has classified
+  needs approval. That covers your next typo.
+
+ 0 failure(s).
+
+ Read the second line again. The attack that an entire prompt could not stop
+ is stopped by one comparison between a number the model chose and a number
+ the database already knew. It costs nothing, it runs in microseconds, and it
+ does not care which model you use next year.

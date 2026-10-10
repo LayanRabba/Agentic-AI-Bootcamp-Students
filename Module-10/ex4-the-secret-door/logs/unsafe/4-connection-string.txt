@@ -1,0 +1,33 @@
+==============================================================================
+ python secret_door.py --case connection_string
+ run from : Module-10/ex4-the-secret-door
+ group    : 05-ex4-the-secret-door  ·  UNSAFE
+ shows    : the rule captures the PASSWORD group, so the host stays readable
+ exit     : 0   (0.0s)
+==============================================================================
+
+
+======================================================================
+ ONE CASE  ·  connection_string
+======================================================================
+ why it is here: the password is INSIDE a URL -- the rule captures the group, not the whole match
+
+-- what the user typed -----------------------------------------------
+   the app cannot reach the db: postgres://svc_orders:Wint3r-2026-Example@db-internal.example:5432/orders
+
+-- what the door decided ---------------------------------------------
+   BLOCK   (expected BLOCK)
+
+-- the audit record --------------------------------------------------
+   connection_string_password   block   at=51    len=19   fp=497317f7f7f3  [Passwords and Credentials Policy]
+
+-- what the MODEL received -------------------------------------------
+   (nothing -- no API call was made)
+
+-- what the USER was told --------------------------------------------
+   I have not sent that message anywhere.
+   It looks like it contains: connection_string_password.
+   Treat that credential as compromised and rotate it now -- it was
+   on your clipboard and in your terminal history regardless of what
+   I did with it. Then send me the part of the message you actually
+   needed help with.

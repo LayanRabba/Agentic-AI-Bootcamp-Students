@@ -1,0 +1,30 @@
+==============================================================================
+ python desk_starter.py --unit
+ run from : Module-10/ex1-the-door
+ group    : 02-ex1-the-door  ·  UNSAFE
+ shows    : 11 guard failures, instantly, for nothing -- start here
+ exit     : 1   (7.8s)
+==============================================================================
+
+
+======================================================================
+ UNIT TESTS  ·  the guards, with no model involved
+======================================================================
+-- the door: check_input ---------------------------------------------
+  [FAIL] oversized        want block     got pass      
+  [FAIL] empty            want block     got pass      
+  [FAIL] only_structure   want block     got pass      
+  [FAIL] control_tokens   want clean     got pass      
+  [PASS] ordinary         want pass      got pass      
+
+-- the mouth: check_output -------------------------------------------
+  [FAIL] canary           want block     got pass      
+  [FAIL] empty            want block     got pass      
+  [FAIL] card             want redact    got pass      
+  [FAIL] card_nospaces    want redact    got pass      
+  [FAIL] third_party      want redact    got pass      
+  [FAIL] exfil_address    want block     got pass      
+  [FAIL] essay            want truncate  got pass      
+  [PASS] ordinary         want pass      got pass      
+
+ 11 failure(s).

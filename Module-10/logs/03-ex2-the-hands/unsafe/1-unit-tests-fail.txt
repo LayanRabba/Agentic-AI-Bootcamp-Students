@@ -1,0 +1,38 @@
+==============================================================================
+ python hands_starter.py --unit
+ run from : Module-10/ex2-the-hands
+ group    : 03-ex2-the-hands  ·  UNSAFE
+ shows    : 8 policy failures, including a tool that does not exist
+ exit     : 1   (0.5s)
+==============================================================================
+
+
+======================================================================
+ UNIT TESTS  ·  the policy, with no model involved
+======================================================================
+  [PASS] refund the real amount       ALLOW   
+  [FAIL] THE ATTACK: 4999             ALLOW   
+  [FAIL] just over the cap            ALLOW   
+  [FAIL] right order, wrong amount    ALLOW   
+  [FAIL] amount as a string           ALLOW   
+  [FAIL] order that does not exist    ALLOW   
+  [PASS] a normal lookup              ALLOW   
+  [FAIL] lookup with nonsense         ALLOW   
+  [FAIL] a tool we never exposed      ALLOW   
+  [FAIL] a tool nobody wrote          ALLOW   
+
+-- the gate: which tools must a human approve? -----------------------
+  [PASS] issue_refund must gate       needs_approval=True
+  [PASS] email_customer must gate     needs_approval=True
+  [PASS] lookup_order must NOT gate   needs_approval=False
+  [PASS] an unknown tool must gate    needs_approval=True
+
+  Read the third row. lookup_order must NOT prompt, and that is a safety
+  requirement, not a convenience one -- a gate on a read-only tool fires on
+  nearly every request, and a human who sees nine prompts a minute stops
+  reading them. Then the gate on the refund stops working too.
+
+  The fourth row is the fail-closed default: a tool nobody has classified
+  needs approval. That covers your next typo.
+
+ 8 failure(s).

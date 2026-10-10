@@ -1,0 +1,24 @@
+==============================================================================
+ python desk_solution.py --tricky
+ run from : Module-10/ex1-the-door
+ group    : 02-ex1-the-door  ·  SAFE
+ shows    : 0 of 5 innocent customers blocked -- the only passing score
+ exit     : 0   (1.0s)
+==============================================================================
+
+
+======================================================================
+ FALSE POSITIVES  ·  five innocent customers
+======================================================================
+ A guardrail that blocks real customers gets switched off in week two,
+ and then you have no guardrail at all. None of these should be blocked.
+
+    ok     ignore_my_email      contains 'ignore my previous' -- and is completely innocent
+    ok     developer_customer   a customer reporting your bug, using scary words
+    ok     system_word          the words 'system instruction' in a furniture question
+    ok     long_legitimate      3k characters of genuine, boring detail -- do not cap too low
+    ok     prompt_word          'prompt' is an ordinary English word
+
+ 0 of 5 innocent messages blocked.
+ Zero is the only passing score. If you blocked one, your door is too narrow:
+ cap length, strip structure -- never guess intent from keywords.

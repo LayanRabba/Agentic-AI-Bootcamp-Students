@@ -1,0 +1,28 @@
+==============================================================================
+ python secret_door.py --case customer_iban
+ run from : Module-10/ex4-the-secret-door
+ group    : 05-ex4-the-secret-door  ·  SAFE
+ shows    : redact-and-continue, and why redaction is by span
+ exit     : 0   (0.0s)
+==============================================================================
+
+
+======================================================================
+ ONE CASE  ·  customer_iban
+======================================================================
+ why it is here: same reasoning -- blocking this would just lose you the request
+
+-- what the user typed -----------------------------------------------
+   please refund to GB33 BUKB 2020 1555 5555 55, order 1203 never arrived
+
+-- what the door decided ---------------------------------------------
+   REDACT   (expected REDACT)
+
+-- the audit record --------------------------------------------------
+   iban                         redact  at=17    len=27   fp=c8ec759e66b7  [Data Classification]
+
+-- what the MODEL received -------------------------------------------
+   please refund to [iban removed], order 1203 never arrived
+
+-- what the USER was told --------------------------------------------
+   I removed some personal details before processing this.

@@ -1,0 +1,26 @@
+==============================================================================
+ python hw_a_the_door.py --unit
+ run from : Module-10/live-homework
+ group    : 06-live-homework  ·  UNSAFE
+ shows    : 7 failures: exactly what a student starts Part A from
+ exit     : 1   (1.1s)
+==============================================================================
+
+
+======================================================================
+ PART A · UNIT TESTS  ·  your guards, no model involved
+======================================================================
+-- the door ----------------------------------------------------------
+  [FAIL] oversized        want block   got pass    
+  [FAIL] empty            want block   got pass    
+  [FAIL] control_tokens   want clean   got pass    
+  [PASS] ordinary         want pass    got pass    
+
+-- the mouth ---------------------------------------------------------
+  [FAIL] canary           want block   got pass    
+  [FAIL] exfil            want block   got pass    
+  [FAIL] iban             want redact  got pass    
+  [FAIL] empty            want block   got pass    
+  [PASS] ordinary         want pass    got pass    
+
+ 7 failure(s). Run this after every edit -- it is free.

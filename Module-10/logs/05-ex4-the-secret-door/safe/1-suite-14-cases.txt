@@ -1,0 +1,58 @@
+==============================================================================
+ python secret_door.py
+ run from : Module-10/ex4-the-secret-door
+ group    : 05-ex4-the-secret-door  ·  SAFE
+ shows    : 7 blocked, 2 redacted, 5 allowed -- and 0 failures
+ exit     : 0   (0.0s)
+==============================================================================
+
+
+======================================================================
+ THE SECRET DOOR  ·  what the user must not be allowed to send us
+======================================================================
+ 14 messages. No API calls, no key, no cost -- the check runs before
+ any of that, because a sent prompt cannot be unsent.
+
+        case                want    got     what it teaches
+  --------------------------------------------------------------------------------------------------------
+  [PASS] provider_key        BLOCK   BLOCK   the key that pays for this very call -- the most-pasted se
+  [PASS] aws_keys            BLOCK   BLOCK   a fixed-shape key id, plus its partner caught by the entro
+  [PASS] private_key         BLOCK   BLOCK   a PEM header is unambiguous -- no entropy maths needed
+  [PASS] connection_string   BLOCK   BLOCK   the password is INSIDE a URL -- the rule captures the grou
+  [PASS] session_token       BLOCK   BLOCK   a JWT is a logged-in user, readable without any password a
+  [PASS] dotenv_paste        BLOCK   BLOCK   MODEL and DEBUG are fine; CLIENT_SECRET is not. A name-bas
+  [PASS] stack_trace         BLOCK   BLOCK   the secret arrives as collateral -- they wanted help with 
+  [PASS] customer_card       REDACT  REDACT  the customer's own data: remove the value, answer the ques
+  [PASS] customer_iban       REDACT  REDACT  same reasoning -- blocking this would just lose you the re
+  [PASS] forgot_password     ALLOW   ALLOW   THE IMPORTANT ONE. Contains 'password'. Is a real customer
+  [PASS] password_advice     ALLOW   ALLOW   'password' twice, plus 'passphrase'. Still just a customer
+  [PASS] tracking_number     ALLOW   ALLOW   long, random-looking, completely benign -- the entropy bac
+  [PASS] git_sha             ALLOW   ALLOW   40 hex characters scores high on entropy. Hence NOT_SECRET
+  [PASS] uuid_and_hash       ALLOW   ALLOW   two more legitimately-random shapes. Every entropy rule ne
+
+ 0 failure(s).
+
+ -- the three rows to stop on -----------------------------------------
+
+ forgot_password   ALLOWED, and it contains the word "password" twice. A prose
+                   keyword rule blocks this customer -- and a guardrail that
+                   blocks real customers gets switched off, after which you
+                   have no guardrail at all.
+
+ dotenv_paste      BLOCKED, and look at WHY: MODEL= and DEBUG= are ignored,
+                   CLIENT_SECRET= is not. The rule matches a machine-written
+                   NAME, which is a shape. That is allowed. Matching a human
+                   sentence is not.
+
+ git_sha           ALLOWED despite being 40 random-looking characters. That is
+                   NOT_SECRET_SHAPES earning its place: the moment you flag
+                   "looks random" you owe the world an exemption list.
+
+ THE RULE: match the shape of the secret, or the shape of a machine-written
+ name. Never the shape of a sentence.
+
+ Next:
+   python secret_door.py --policy    the rule table, as security reads it
+   python secret_door.py --audit     what gets logged, and what must not
+   python secret_door.py --case stack_trace
+   python secret_door.py --live      paste your own and see

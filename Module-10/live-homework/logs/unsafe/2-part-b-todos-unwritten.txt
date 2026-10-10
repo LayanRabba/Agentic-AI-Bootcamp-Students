@@ -1,0 +1,38 @@
+==============================================================================
+ python hw_b_the_hands.py --unit
+ run from : Module-10/live-homework
+ group    : 06-live-homework  ·  UNSAFE
+ shows    : 7 failures, with the allow/escalate/refuse column
+ exit     : 1   (0.7s)
+==============================================================================
+
+
+======================================================================
+ PART B · UNIT TESTS  ·  your policy, no model involved
+======================================================================
+  [PASS] the real amount, with receipt    want allow     got allow     
+  [FAIL] THE ATTACK: 9800 on EX-2202      want refuse    got allow     
+  [FAIL] 1840.00 flight, genuine          want escalate  got allow     
+  [FAIL] software, trivial amount         want escalate  got allow     
+  [FAIL] no receipt                       want refuse    got allow     
+  [FAIL] right claim, wrong amount        want refuse    got allow     
+  [PASS] a normal lookup                  want allow     got allow     
+  [FAIL] lookup with nonsense             want refuse    got allow     
+  [FAIL] a tool nobody wrote              want refuse    got allow     
+
+-- the gate ----------------------------------------------------------
+  [PASS] approve must gate                needs_approval=True
+  [PASS] lookup must NOT gate             needs_approval=False
+  [PASS] unknown tool must gate           needs_approval=True
+
+ 7 failure(s).
+ Rows 2, 3 and 4 are the whole lesson.
+
+   row 2  9800.00 on a 212.40 claim is FICTION  -> refuse, no human involved
+   row 3  1840.00 on an 1840.00 claim is REAL   -> escalate, a human decides
+   row 4  19.00 of software is real and trivial -> escalate anyway
+
+ Rows 2 and 3 are both "over the ceiling", and treating them the same way is
+ the single most common mistake in this whole module. Refuse row 3 and Finance
+ stops using your desk by Wednesday -- and a guardrail nobody will keep is not
+ a guardrail.
