@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Module 12 – Deploying the Chat Agent to AWS</title>
+<style>
+  :root { --bg:#0f172a; --card:#1e293b; --text:#e2e8f0; --muted:#94a3b8; --accent:#38bdf8; --ok:#4ade80; --warn:#fbbf24; --bad:#f87171; --code:#0b1220; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:16px/1.65 -apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  header { padding:48px 24px 32px; text-align:center; background:linear-gradient(135deg,#1e3a8a,#0f172a); }
+  header h1 { margin:0 0 8px; font-size:2rem; }
+  header p { margin:0; color:var(--muted); }
+  main { max-width:960px; margin:0 auto; padding:24px; }
+  nav { background:var(--card); border-radius:12px; padding:16px 24px; margin-bottom:32px; }
+  nav a { color:var(--accent); text-decoration:none; display:block; padding:2px 0; }
+  h2 { margin-top:56px; padding-bottom:8px; border-bottom:2px solid var(--accent); }
+  h3 { margin-top:32px; color:var(--accent); }
+  .card { background:var(--card); border-radius:12px; padding:16px 24px; margin:16px 0; }
+  .note, .warn, .ok { border-left:4px solid; padding:12px 16px; border-radius:6px; margin:16px 0; background:var(--card); }
+  .note { border-color:var(--accent); } .warn { border-color:var(--warn); } .ok { border-color:var(--ok); }
+  pre { background:var(--code); padding:16px; border-radius:8px; overflow-x:auto; font-size:.85rem; line-height:1.5; }
+  code { font-family:ui-monospace,Menlo,Consolas,monospace; }
+  p code, li code, td code { background:var(--code); padding:2px 6px; border-radius:4px; font-size:.88em; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid #334155; vertical-align:top; }
+  th { color:var(--accent); }
+  .diagram { font-family:ui-monospace,Menlo,monospace; white-space:pre; background:var(--code); padding:16px; border-radius:8px; overflow-x:auto; font-size:.85rem; line-height:1.4; }
+  .step { counter-increment:step; }
+  .step > h3::before { content:"Step " counter(step) " · "; color:var(--muted); }
+  main { counter-reset:step; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:720px){ .cols{grid-template-columns:1fr;} }
+  footer { text-align:center; color:var(--muted); padding:32px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Deploying the Memory Chat Agent to AWS</h1>
+  <p>Module 12 · Docker → EC2 → CloudFront · WebSocket streaming explained</p>
+</header>
+
+<main>
+
+<nav>
+  <strong>Contents</strong>
+  <a href="#overview">1. What we are building</a>
+  <a href="#why-ws">2. Why WebSockets and streaming?</a>
+  <a href="#docker">3. Preparing the app with Docker</a>
+  <a href="#aws">4. AWS Console steps</a>
+  <a href="#test">5. Testing the deployment</a>
+  <a href="#pitfalls">6. Pitfalls we hit (and how to avoid them)</a>
+  <a href="#cleanup">7. Cleanup</a>
+  <a href="#cli">8. Same thing from the CLI</a>
+</nav>
+
+<!-- ───────────────────────── 1 ───────────────────────── -->
+<h2 id="overview">1. What we are building</h2>
+<p>A chat agent with <strong>short-term memory</strong> (the current conversation, compacted when it grows), <strong>long-term memory</strong> (facts stored in a vector database and recalled in later sessions) and a visible <em>“Compacting conversation…”</em> notice. It runs as one Docker container on a small EC2 server, and CloudFront puts HTTPS in front of it.</p>
+
+<div class="diagram">Browser ──https / wss──▶ CloudFront ──http (port 80)──▶ EC2 (Ubuntu + Docker)
+                         (free HTTPS cert,            │
+                          global edge)                ▼
+                                        container: uvicorn + FastAPI  :8000
+                                          ├─ /          chat UI (static HTML)
+                                          ├─ /ws        WebSocket chat endpoint
+                                          ├─ /health    health check
+                                          ├─ short-term memory (RAM, per session)
+                                          └─ long-term memory (Chroma, on disk)
+                                                      │
+                                                      ▼
+                                          OpenRouter API (the LLM)</div>
+
+<table>
+  <tr><th>AWS piece</th><th>Why we need it</th></tr>
+  <tr><td><strong>EC2</strong> (t3.micro)</td><td>Runs the container. A WebSocket needs a long-running server, so Lambda is a poor fit. The app uses about 280 MiB, so 1 GB of RAM is enough.</td></tr>
+  <tr><td><strong>Security group</strong></td><td>The firewall. We only allow CloudFront to reach port 80.</td></tr>
+  <tr><td><strong>Elastic IP</strong></td><td>A fixed address, so CloudFront’s origin does not change if the instance restarts.</td></tr>
+  <tr><td><strong>CloudFront</strong></td><td>Gives us <code>https://</code> / <code>wss://</code> for free, with no certificate or domain to manage.</td></tr>
+  <tr><td><strong>S3</strong> (temporary)</td><td>Delivers the pre-built Docker image to the server without needing a registry, a git repo or SSH.</td></tr>
+</table>
+
+<!-- ───────────────────────── 2 ───────────────────────── -->
+<h2 id="why-ws">2. Why WebSockets and streaming?</h2>
+
+<h3>The problem with plain HTTP</h3>
+<p>An LLM takes several seconds to write a full answer. With a normal HTTP request the browser would stare at a spinner until the <em>entire</em> reply is ready, then show it all at once. It feels slow even when it isn’t.</p>
+
+<h3>Streaming: show the answer as it is produced</h3>
+<p>LLMs generate text <strong>token by token</strong> (a token is roughly ¾ of a word). Streaming means we forward each token to the user the moment it exists:</p>
+<div class="cols">
+  <div class="card"><strong>Without streaming</strong><br />
+    <code>llm.invoke(prompt)</code> waits for everything.<br />
+    Measured: <strong>nothing on screen for ~3.8 s</strong>, then the whole answer appears.</div>
+  <div class="card"><strong>With streaming</strong><br />
+    <code>llm.astream(prompt)</code> yields chunks.<br />
+    Measured: <strong>first words after ~1.8 s</strong>, text keeps flowing until done.</div>
+</div>
+<p>Total time is similar, but <em>perceived</em> latency (time to first token) drops a lot. For long answers the difference is dramatic.</p>
+
+<h3>Why WebSockets are the right transport here</h3>
+<table>
+  <tr><th>Need</th><th>Plain HTTP request/response</th><th>WebSocket</th></tr>
+  <tr><td>Server pushes many small pieces</td><td>One response per request</td><td>Server can send any number of messages on one connection</td></tr>
+  <tr><td>Extra events (<code>compacting</code>, <code>budget</code>, <code>done</code>, <code>error</code>)</td><td>Awkward: needs custom framing</td><td>Each message is a JSON event with a <code>type</code> field</td></tr>
+  <tr><td>Per-session state</td><td>New connection every request</td><td>One connection = one session, so we keep short-term memory per connection</td></tr>
+  <tr><td>Overhead</td><td>Headers and handshake for every message</td><td>Handshake once, then tiny frames</td></tr>
+</table>
+<div class="note"><strong>Alternatives:</strong> Server-Sent Events (SSE) also stream and are simpler, but they are one-way. WebSockets are two-way, which is why the same connection carries both the user’s messages and the agent’s events. They are also the pattern used in the previous modules.</div>
+
+<h3>The code</h3>
+<p>Server side (<code>app.py</code>): the important part is the <code>async for</code> loop that forwards each chunk immediately.</p>
+<pre><code>@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    session_memory = ShortTermMemory()          # one per connection
+
+    while True:
+        data = await websocket.receive_text()   # user message arrives
+        ...
+        if status.get("compacted"):             # event: tell the UI
+            await websocket.send_text(json.dumps(
+                {"type": "compacting", "status": "Compacting conversation..."}))
+
+        async for chunk in llm.astream(prompt): # real streaming
+            await websocket.send_text(json.dumps(
+                {"type": "token", "text": chunk.content}))
+
+        await websocket.send_text(json.dumps({"type": "budget", "data": budget}))
+        await websocket.send_text(json.dumps({"type": "done"}))</code></pre>
+
+<p>Browser side (<code>static/index.html</code>): append every token as it arrives.</p>
+<pre><code>const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+const ws = new WebSocket(`${proto}//${location.host}/ws`);
+
+ws.onmessage = (e) =&gt; {
+  const data = JSON.parse(e.data);
+  if (data.type === 'token')      bubble.textContent += data.text;   // streaming
+  if (data.type === 'compacting') showCompactingNotice();
+  if (data.type === 'budget')     updateDashboard(data.data);
+  if (data.type === 'done')       enableInput();
+};</code></pre>
+
+<div class="warn"><strong>Why HTTPS (and <code>wss://</code>) matters:</strong> a page served over <code>https://</code> is not allowed to open an insecure <code>ws://</code> connection. That is the main reason we put CloudFront in front of EC2: it provides HTTPS, so the browser uses <code>wss://</code> automatically.</div>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<h2 id="docker">3. Preparing the app with Docker</h2>
+<p>Docker packages the app and everything it needs (Python version, libraries) into an <strong>image</strong>, so it runs the same on your laptop and on EC2. All the code is in <code>Module-12/starter-code/</code>.</p>
+
+<h3>3.1 Files</h3>
+<pre><code>starter-code/
+├── app.py              FastAPI app: /ws, /health, /memory/stats, serves the UI
+├── memory_manager.py   short-term compaction + long-term Chroma memory
+├── static/index.html   chat UI
+├── requirements.txt
+├── Dockerfile
+└── .env.example</code></pre>
+
+<h3>3.2 requirements.txt</h3>
+<pre><code>fastapi==0.115.0
+uvicorn[standard]==0.24.0
+pydantic&gt;=2.7,&lt;3
+python-dotenv==1.0.0
+langchain-openai==0.1.25
+chromadb==0.4.24
+aiofiles==23.2.1
+numpy&lt;2</code></pre>
+<div class="warn"><code>numpy&lt;2</code> is essential. <code>chromadb 0.4.24</code> crashes on import with NumPy 2 (<code>np.float_ was removed</code>), and an unpinned install pulls NumPy 2.</div>
+
+<h3>3.3 Dockerfile</h3>
+<pre><code>FROM python:3.12-slim
+WORKDIR /srv
+
+# chroma-hnswlib is compiled during install, so we need a C++ compiler
+RUN apt-get update &amp;&amp; apt-get install -y --no-install-recommends build-essential \
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Pre-download the embedding model so the first chat message is fast
+RUN python -c "from chromadb.utils.embedding_functions import DefaultEmbeddingFunction; DefaultEmbeddingFunction()(['warmup'])"
+
+COPY app.py memory_manager.py ./
+COPY static/ static/
+
+EXPOSE 8000
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
+<ul>
+  <li><code>--host 0.0.0.0</code> is required. With the default <code>127.0.0.1</code> the app is unreachable from outside the container.</li>
+  <li>Copying <code>requirements.txt</code> first lets Docker cache the slow install layer when only code changes.</li>
+  <li>The warm-up line bakes the embedding model into the image. Without it, the server would download it during the first chat message (about 7 seconds of silence).</li>
+</ul>
+
+<h3>3.4 Build and test locally before you touch AWS</h3>
+<p><strong>Build the image on your own machine, never on the server.</strong> Building on EC2 wastes launch time, needs a bigger (more expensive) instance just for the compiler and pip, and fails in ways you can barely see. A pre-built image makes the server’s job trivial: download, load, run.</p>
+<pre><code>cd Module-12/starter-code
+cp .env.example .env            # put your OPENROUTER_API_KEY in it
+
+# --platform must match the server CPU. Our EC2 is x86_64 (t3), and a Mac with
+# Apple Silicon is arm64, so we ask for linux/amd64 explicitly.
+docker buildx build --platform linux/amd64 -t chat-agent:latest --load .
+
+docker run --rm --platform linux/amd64 -p 8000:8000 --env-file .env chat-agent:latest
+# open http://localhost:8000</code></pre>
+<div class="note"><strong>No Docker on a Mac?</strong> <code>brew install colima docker docker-buildx</code>, then <code>colima start --vm-type vz --vz-rosetta</code>. Rosetta makes the amd64 build run at near-native speed (about 2 minutes for this app). On an x86 machine or a CI runner just drop <code>--platform</code>. Alternatively pick a Graviton (arm64) instance type such as <code>t4g</code> and build natively on an Apple Silicon Mac.</div>
+<div class="ok">Rule of thumb: <strong>if it does not work on your laptop, it will not work on AWS</strong>, and on AWS you can barely see the logs. Every bug we hit during the first deployment attempts (NumPy, missing compiler, wrong LLM client settings) would have been caught by this one step. You can also check the footprint: <code>docker stats</code> showed about 280 MiB of RAM, which is why a 1 GB <code>t3.micro</code> is enough.</div>
+
+<h3>3.5 Export the image for delivery</h3>
+<pre><code>docker save -o chat-agent-image.tar chat-agent:latest     # about 440 MB</code></pre>
+<div class="note">The image file has no secrets in it. The API key is passed at run time (<code>-e OPENROUTER_API_KEY=...</code>), never baked in. <code>.dockerignore</code> keeps <code>.env</code> and <code>memory_store</code> out of the image.</div>
+<div class="note"><strong>Production alternative:</strong> push the image to <strong>Amazon ECR</strong> (<code>docker push</code>) and have the instance <code>docker pull</code> it using an IAM role. We use S3 here so there is no IAM to set up.</div>
+
+<!-- ───────────────────────── 4 ───────────────────────── -->
+<h2 id="aws">4. AWS Console steps</h2>
+<p>Pick one region and stay in it. We use <strong>Europe (Ireland) <code>eu-west-1</code></strong>. Check the region selector in the top-right of the Console before every step. Resources in the wrong region are the most common “it’s missing!” mistake.</p>
+
+<div class="step">
+<h3>Create an S3 bucket and upload the code</h3>
+<ol>
+  <li>Console → <strong>S3</strong> → <strong>Create bucket</strong>.</li>
+  <li>Name: something globally unique, e.g. <code>m12-chat-agent-&lt;account-id&gt;</code>. Region: <code>eu-west-1</code>. Leave <strong>Block all public access</strong> ON.</li>
+  <li>Open the bucket → <strong>Upload</strong> → select <code>chat-agent-image.tar</code> (about 440 MB, so it takes a minute).</li>
+  <li>Click the uploaded object → <strong>Object actions → Share with a presigned URL</strong> → set 2 hours → <strong>Create</strong> → <strong>copy the URL</strong>. You will paste it into the user-data script.</li>
+</ol>
+<div class="note">The presigned URL lets the server download that one private file without any IAM role. It expires on its own.</div>
+</div>
+
+<div class="step">
+<h3>Create the security group (firewall)</h3>
+<ol>
+  <li>Console → <strong>EC2 → Security Groups → Create security group</strong>.</li>
+  <li>Name <code>module-12-chat-agent</code>, VPC: the <strong>default VPC</strong>.</li>
+  <li><strong>Inbound rule</strong>: Type <em>Custom TCP</em>, port <code>80</code>, Source: <strong>Prefix list → <code>com.amazonaws.global.cloudfront.origin-facing</code></strong>.</li>
+  <li>Leave outbound as is (the server needs internet to install Docker and call OpenRouter). Create.</li>
+</ol>
+<div class="warn"><strong>Why not <code>0.0.0.0/0</code>?</strong> Some organizations run governance automation that silently deletes open-to-the-world rules (we saw exactly this: the rule vanished seconds after creating it, and nothing could connect). Restricting to CloudFront’s IP list is also the better design: nobody can bypass CloudFront and hit your server directly. Consequence: <code>http://&lt;server-ip&gt;</code> will <em>not</em> answer. Always use the CloudFront URL.</div>
+<div class="note">No port 22 (SSH) on purpose. Students do not need a key pair for this lab; diagnostics come from the console log (see Pitfalls).</div>
+</div>
+
+<div class="step">
+<h3>Launch the EC2 instance</h3>
+<ol>
+  <li>EC2 → <strong>Launch instance</strong>. Name: <code>module-12-chat-agent</code>.</li>
+  <li><strong>AMI</strong>: Ubuntu Server 22.04 LTS.</li>
+  <li><strong>Instance type</strong>: <code>t3.micro</code> (1 GB RAM). The image is pre-built, so the server only has to run it (about 280 MiB). It is also free-tier eligible in many accounts.</li>
+  <li><strong>Key pair</strong>: Proceed without a key pair.</li>
+  <li><strong>Network</strong>: default VPC, any subnet, <strong>Auto-assign public IP: Enable</strong>. Select the existing security group <code>module-12-chat-agent</code>.</li>
+  <li><strong>Storage</strong>: 12 GiB gp3 (room for the image and its extracted layers).</li>
+  <li><strong>Advanced details → User data</strong>: paste the script below, replacing the two placeholders.</li>
+</ol>
+
+<pre><code>#!/bin/bash
+exec &gt; &gt;(tee -a /var/log/m12-deploy.log | tee /dev/console) 2&gt;&amp;1
+set -x
+apt-get update
+apt-get install -y docker.io curl
+systemctl enable --now docker
+curl -fsSL "PASTE_PRESIGNED_URL_HERE" | docker load || { echo M12-LOAD-FAILED; exit 1; }
+docker run -d --name chat-agent --restart always -p 80:8000 \
+  -e OPENROUTER_API_KEY=PASTE_YOUR_KEY_HERE \
+  -e ANONYMIZED_TELEMETRY=False chat-agent:latest
+echo M12-DEPLOY-DONE</code></pre>
+<ul>
+  <li><strong>User data runs once, at first boot, as root.</strong> It is the “install script” of the server. Notice there is no build step: it just downloads the image, loads it and runs it.</li>
+  <li><code>tee /dev/console</code> sends the output to the instance’s console log so you can read it later (Pitfalls section).</li>
+  <li><code>-p 80:8000</code> maps the server’s port 80 to the container’s 8000.</li>
+  <li><code>--restart always</code> brings the container back after a reboot.</li>
+</ul>
+<div class="warn">The API key is visible to anyone who can view the instance’s user data. Fine for a throwaway class demo; <strong>rotate the key afterwards</strong>. In production use Secrets Manager or SSM Parameter Store with an IAM role.</div>
+<ol start="8"><li>Click <strong>Launch instance</strong>. The server is healthy about 90 seconds after launch (Docker install plus image download), versus roughly 4 minutes when we built the image on the server.</li></ol>
+</div>
+
+<div class="step">
+<h3>Allocate and attach an Elastic IP</h3>
+<ol>
+  <li>EC2 → <strong>Elastic IPs → Allocate Elastic IP address → Allocate</strong>.</li>
+  <li>Select it → <strong>Actions → Associate Elastic IP address</strong> → choose your instance → <strong>Associate</strong>.</li>
+  <li>Open the instance details and copy its <strong>Public IPv4 DNS</strong>, which looks like <code>ec2-54-72-85-236.eu-west-1.compute.amazonaws.com</code>. You need it next.</li>
+</ol>
+<div class="warn">CloudFront <strong>rejects raw IP addresses</strong> as an origin; it wants a DNS name. Use the <em>Public IPv4 DNS</em>, not the IP. If that field is empty, the VPC has “DNS hostnames” disabled (enable it under VPC → Actions → Edit VPC settings).</div>
+</div>
+
+<div class="step">
+<h3>Create the CloudFront distribution</h3>
+<ol>
+  <li>Console → <strong>CloudFront → Create distribution</strong>.</li>
+  <li><strong>Origin domain</strong>: paste the EC2 Public IPv4 DNS (type it manually if it is not suggested).</li>
+  <li><strong>Protocol</strong>: <strong>HTTP only</strong>, port <code>80</code>. (CloudFront ↔ EC2 is plain HTTP; the viewer side is HTTPS.)</li>
+  <li><strong>Origin response timeout / keep-alive</strong>: raise to <code>60</code> seconds (under origin settings).</li>
+  <li><strong>Viewer protocol policy</strong>: <em>Redirect HTTP to HTTPS</em>.</li>
+  <li><strong>Allowed HTTP methods</strong>: <em>GET, HEAD, OPTIONS, PUT, POST, PATCH, DELETE</em>.</li>
+  <li><strong>Cache policy</strong>: <code>CachingDisabled</code>. <strong>Origin request policy</strong>: <code>AllViewer</code>.</li>
+  <li>WAF: do not enable (not needed for the lab). <strong>Create distribution</strong>.</li>
+  <li>Wait until the status changes from <em>Deploying</em> to a date (5 to 10 minutes). Your URL is <code>https://dxxxxxxxxxxxxx.cloudfront.net</code>.</li>
+</ol>
+<div class="note"><strong>Why these settings?</strong> CloudFront supports WebSockets out of the box, but it must <em>forward</em> the <code>Upgrade</code> / <code>Sec-WebSocket-*</code> headers (that is what <code>AllViewer</code> does) and it must not cache anything (<code>CachingDisabled</code>), otherwise the chat would be served stale or the upgrade would fail. Idle WebSocket connections are eventually closed by CloudFront; the UI then shows “Disconnected” and you simply refresh the page (a good place for students to add auto-reconnect as an exercise).</div>
+</div>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<h2 id="test">5. Testing the deployment</h2>
+<ol>
+  <li><strong>Health</strong>: open <code>https://&lt;your-cloudfront-domain&gt;/health</code>. Expect <code>{"status":"ok","service":"chat-agent"}</code>.</li>
+  <li><strong>UI</strong>: open the root URL. The status should show connected.</li>
+  <li><strong>Streaming</strong>: ask <em>“Write a 100-word story about a robot.”</em> The text should appear progressively, not all at once.</li>
+  <li><strong>Compaction</strong>: send 5 or more short messages (e.g. <em>“My dog is called Rex”</em>, <em>“I live in Haifa”</em>…). Around message 5 you should see <strong>“Compacting conversation…”</strong>.</li>
+  <li><strong>Long-term memory</strong>: tell it <em>“I prefer tea over coffee.”</em>, then <strong>refresh the page</strong> (a new session, so short-term memory is empty) and ask <em>“What drink do I like?”</em>. It should answer from long-term memory.</li>
+  <li><strong>Stats</strong>: <code>https://&lt;your-cloudfront-domain&gt;/memory/stats</code> shows turn, summary and memory counts.</li>
+</ol>
+<div class="note">The first answer is a little slower than later ones (the LLM connection warms up), but the embedding model is already inside the image, so there is no long download.</div>
+
+<h3>How the memory works (for the discussion)</h3>
+<table>
+  <tr><th></th><th>Short-term</th><th>Long-term</th></tr>
+  <tr><td>Holds</td><td>The current conversation turns</td><td>Facts, preferences, decisions the user stated</td></tr>
+  <tr><td>Lives in</td><td>Process RAM, one buffer per WebSocket</td><td>Chroma vector DB on disk, shared by all sessions</td></tr>
+  <tr><td>Budget control</td><td>After 5 turns, older turns are summarized by the LLM and only the last 3 are kept (<em>compaction</em>)</td><td>Only “memorable” messages are written (statements, not questions or pleasantries); only the top 3 relevant ones are recalled per question</td></tr>
+  <tr><td>Survives a new session?</td><td>No</td><td>Yes</td></tr>
+</table>
+
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<h2 id="pitfalls">6. Pitfalls we hit (and how to avoid them)</h2>
+<table>
+  <tr><th>Symptom</th><th>Cause</th><th>Fix</th></tr>
+  <tr><td>Browser: “DNS probe finished”</td><td>CloudFront domain typed from docs with a placeholder, or the distribution was deleted/never created</td><td>Copy the real domain from the CloudFront console</td></tr>
+  <tr><td>Nothing on port 80, no error</td><td>Security group has no inbound rule (an automatic governance policy removed <code>0.0.0.0/0</code>)</td><td>Allow the CloudFront prefix list instead. Re-open the SG to check the rule is still there.</td></tr>
+  <tr><td>CloudFront <strong>504 Gateway Timeout</strong></td><td>CloudFront cannot reach the origin: container down, SG blocks CloudFront, or the user-data failed</td><td>Check the SG, then the console log</td></tr>
+  <tr><td>CloudFront rejects the origin</td><td>You entered an IP address</td><td>Use the Public IPv4 DNS name</td></tr>
+  <tr><td>Server never became healthy; log shows <code>M12-LOAD-FAILED</code></td><td>The presigned URL expired or was pasted wrong (it must be one unbroken line, including every <code>&amp;</code> parameter)</td><td>Generate a new presigned URL and relaunch</td></tr>
+  <tr><td>Container exits with <code>exec format error</code></td><td>Image built for the wrong CPU (arm64 image on an x86 server)</td><td>Build with <code>--platform linux/amd64</code>, or use an arm64 (<code>t4g</code>) instance</td></tr>
+  <tr><td>Local <code>docker build</code>: pip conflicting dependencies</td><td>Mixed pins of <code>langchain</code> / <code>langchain-openai</code> / <code>tiktoken</code></td><td>Use the pinned <code>requirements.txt</code> above</td></tr>
+  <tr><td>Local <code>docker build</code>: error compiling <code>chroma-hnswlib</code></td><td>Only <code>gcc</code> installed, g++ missing</td><td><code>build-essential</code> in the Dockerfile</td></tr>
+  <tr><td>Container exits at start: <code>np.float_ was removed</code></td><td>NumPy 2 with chromadb 0.4.24</td><td><code>numpy&lt;2</code></td></tr>
+  <tr><td>Chat replies with “Did not find openai_api_key”</td><td>The LLM client was created without the OpenRouter key and base URL</td><td>Pass <code>api_key</code> and <code>base_url</code> (see <code>app.py</code>)</td></tr>
+  <tr><td>Instance stops by itself at night</td><td>Organization scheduler (a <code>Schedule</code> tag added automatically)</td><td>Only in company accounts. Ask the account owner; use a personal or sandbox account for the lab.</td></tr>
+  <tr><td>Long-term memory stays at 0</td><td>The app saved the assistant’s reply instead of the user’s message</td><td>Fixed in this version: store the user message</td></tr>
+</table>
+
+<h3>How to see what the server is doing (no SSH)</h3>
+<p>EC2 → select the instance → <strong>Actions → Monitor and troubleshoot → Get system log</strong>. Because the user-data pipes output to the console, you will see the apt, docker build and <code>M12-DEPLOY-DONE</code> lines there. If you see <code>M12-BUILD-FAILED</code>, scroll up for the pip or docker error.</p>
+
+<!-- ───────────────────────── 7 ───────────────────────── -->
+<h2 id="cleanup">7. Cleanup (do this after the class)</h2>
+<p>Everything below costs money while it exists (EC2 hours, the Elastic IP, CloudFront requests). Delete in this order:</p>
+<ol>
+  <li><strong>EC2 → Instances</strong>: select the instance → <em>Terminate instance</em>.</li>
+  <li><strong>EC2 → Elastic IPs</strong>: select the IP → <em>Release</em> (after the instance is gone).</li>
+  <li><strong>CloudFront</strong>: select the distribution → <em>Disable</em>, wait until it is deployed, then <em>Delete</em>.</li>
+  <li><strong>EC2 → Security Groups</strong>: delete <code>module-12-chat-agent</code>.</li>
+  <li><strong>S3</strong>: empty the bucket, then delete it.</li>
+  <li>Rotate or delete the OpenRouter key you put in the user data.</li>
+</ol>
+
+<!-- ───────────────────────── 8 ───────────────────────── -->
+<h2 id="cli">8. Same thing from the CLI (what the instructor ran)</h2>
+<pre><code>export AWS_REGION=eu-west-1          # and --profile &lt;name&gt; if you use profiles
+ACC=$(aws sts get-caller-identity --query Account --output text)
+B=m12-chat-agent-$ACC-euw1
+
+# 1. code to S3 + presigned URL
+aws s3 mb s3://$B
+aws s3 cp chat-agent-image.tar s3://$B/chat-agent-image.tar
+URL=$(aws s3 presign s3://$B/chat-agent-image.tar --expires-in 7200)
+
+# 2. security group: CloudFront only
+VPC=$(aws ec2 describe-vpcs --filters Name=isDefault,Values=true --query 'Vpcs[0].VpcId' --output text)
+SG=$(aws ec2 create-security-group --group-name module-12-chat-agent \
+      --description "Module 12" --vpc-id $VPC --query GroupId --output text)
+PL=$(aws ec2 describe-managed-prefix-lists \
+      --filters Name=prefix-list-name,Values=com.amazonaws.global.cloudfront.origin-facing \
+      --query 'PrefixLists[0].PrefixListId' --output text)
+aws ec2 authorize-security-group-ingress --group-id $SG \
+  --ip-permissions "IpProtocol=tcp,FromPort=80,ToPort=80,PrefixListIds=[{PrefixListId=$PL}]"
+
+# 3. instance (user-data file = the script from step 3, with URL and key filled in)
+AMI=$(aws ssm get-parameter \
+  --name /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id \
+  --query Parameter.Value --output text)
+IID=$(aws ec2 run-instances --image-id $AMI --instance-type t3.micro \
+  --security-group-ids $SG --user-data file://user-data.sh \
+  --metadata-options HttpTokens=required \
+  --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=12}' \
+  --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=module-12-chat-agent}]' \
+  --query 'Instances[0].InstanceId' --output text)
+aws ec2 wait instance-running --instance-ids $IID
+
+# 4. Elastic IP + DNS name for the CloudFront origin
+EIP=$(aws ec2 allocate-address --domain vpc --query AllocationId --output text)
+aws ec2 associate-address --instance-id $IID --allocation-id $EIP
+aws ec2 describe-instances --instance-ids $IID \
+  --query 'Reservations[0].Instances[0].PublicDnsName' --output text
+
+# 5. CloudFront: origin = that DNS name, http-only :80, viewer redirect-to-https,
+#    cache policy CachingDisabled, origin request policy AllViewer, all HTTP methods
+aws cloudfront create-distribution --distribution-config file://cf.json
+
+# 6. test
+curl https://&lt;domain&gt;.cloudfront.net/health</code></pre>
+<div class="note">Tip for the live demo: do the Console version in front of the students (it is visual), and give them this CLI block as the “fast path” for their own run.</div>
+
+</main>
+<footer>Module 12 · Agentic AI Bootcamp</footer>
+</body>
+</html>
