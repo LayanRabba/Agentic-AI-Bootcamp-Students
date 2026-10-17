@@ -26,6 +26,7 @@ docker run --rm -p 8000:8000 --env-file .env chat-agent:latest
 - `/ws` WebSocket chat (streams tokens)
 - `/health` liveness
 - `/memory/stats` memory counters
+- `POST /memory/reset` wipes long-term memory (needs `ADMIN_TOKEN` set and header `X-Admin-Token`)
 
 ## Configuration (`.env`)
 

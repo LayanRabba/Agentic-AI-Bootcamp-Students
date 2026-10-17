@@ -8,12 +8,13 @@ from __future__ import annotations
 import json
 import logging
 import os
+import secrets
 import sys
 from pathlib import Path
 from typing import AsyncGenerator
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, Header, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel
@@ -34,6 +35,7 @@ from memory_manager import (
     recall_memories,
     store_memory,
     get_memory_stats,
+    reset_memories,
     estimate_tokens,
 )
 
@@ -85,6 +87,17 @@ async def memory_stats():
             "needs_compaction": conversation_memory.needs_compaction,
         }
     )
+
+
+@app.post("/memory/reset")
+async def memory_reset(x_admin_token: str = Header(default="")):
+    """Wipe long-term memory. Disabled unless ADMIN_TOKEN is set and matches."""
+    expected = os.getenv("ADMIN_TOKEN", "")
+    if not expected or not secrets.compare_digest(x_admin_token, expected):
+        return JSONResponse({"error": "forbidden"}, status_code=403)
+    removed = reset_memories()
+    logger.info("Long-term memory reset (%d removed)", removed)
+    return JSONResponse({"status": "reset", "removed": removed})
 
 
 @app.get("/")

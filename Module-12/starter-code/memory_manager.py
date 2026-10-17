@@ -64,6 +64,17 @@ def init_storage(wipe: bool = False):
     )
 
 
+def reset_memories() -> int:
+    """Delete every long-term memory. Returns how many were removed."""
+    global collection
+    removed = collection.count()
+    chroma_client.delete_collection("chat_memories")
+    collection = chroma_client.get_or_create_collection(
+        "chat_memories", metadata={"hnsw:space": "cosine"}
+    )
+    return removed
+
+
 def init_llm(model: str = None, api_key: str = None, base_url: str = None):
     """Initialize the LLM client."""
     global llm
