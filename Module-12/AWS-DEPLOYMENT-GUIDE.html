@@ -194,6 +194,9 @@ CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
 
 <h3>3.4 Build and test locally before you touch AWS</h3>
 <p><strong>Build the image on your own machine, never on the server.</strong> Building on EC2 wastes launch time, needs a bigger (more expensive) instance just for the compiler and pip, and fails in ways you can barely see. A pre-built image makes the server’s job trivial: download, load, run.</p>
+<p>The build and run commands are the same everywhere. Only the setup and the way you copy <code>.env</code> differ. Pick your system:</p>
+
+<h4>macOS / Linux / WSL (Ubuntu terminal)</h4>
 <pre><code>cd Module-12/starter-code
 cp .env.example .env            # put your OPENROUTER_API_KEY in it
 
@@ -203,7 +206,25 @@ docker buildx build --platform linux/amd64 -t chat-agent:latest --load .
 
 docker run --rm --platform linux/amd64 -p 8000:8000 --env-file .env chat-agent:latest
 # open http://localhost:8000</code></pre>
-<div class="note"><strong>No Docker on a Mac?</strong> <code>brew install colima docker docker-buildx</code>, then <code>colima start --vm-type vz --vz-rosetta</code>. Rosetta makes the amd64 build run at near-native speed (about 2 minutes for this app). On an x86 machine or a CI runner just drop <code>--platform</code>. Alternatively pick a Graviton (arm64) instance type such as <code>t4g</code> and build natively on an Apple Silicon Mac.</div>
+
+<h4>Windows (PowerShell)</h4>
+<pre><code>cd Module-12\starter-code
+copy .env.example .env          # then open .env and put your OPENROUTER_API_KEY in it
+
+docker buildx build --platform linux/amd64 -t chat-agent:latest --load .
+
+docker run --rm --platform linux/amd64 -p 8000:8000 --env-file .env chat-agent:latest
+# open http://localhost:8000</code></pre>
+
+<div class="note"><strong>Installing Docker</strong>
+<ul>
+  <li><strong>Windows:</strong> install <em>Docker Desktop</em> and keep <strong>“Use the WSL 2 based engine”</strong> ticked in Settings → General. If WSL is not installed yet, run <code>wsl --install</code> in an admin PowerShell and reboot. Docker Desktop already includes <code>buildx</code>.</li>
+  <li><strong>WSL (Ubuntu):</strong> either use Docker Desktop and enable <em>Settings → Resources → WSL integration → your Ubuntu distro</em> (then <code>docker</code> works inside WSL), or install the engine inside WSL: <code>curl -fsSL https://get.docker.com | sh</code>, then <code>sudo usermod -aG docker $USER</code> and reopen the terminal. Keep the project in the Linux home (<code>~/Agentic-AI-Bootcamp-Students</code>), <strong>not</strong> under <code>/mnt/c/...</code>, because builds are much slower on the Windows drive.</li>
+  <li><strong>Linux:</strong> <code>curl -fsSL https://get.docker.com | sh</code>, then <code>sudo usermod -aG docker $USER</code>.</li>
+  <li><strong>macOS:</strong> <code>brew install colima docker docker-buildx</code>, then <code>colima start --vm-type vz --vz-rosetta</code>. Rosetta makes the amd64 build run at near-native speed (about 2 minutes for this app).</li>
+</ul>
+On an x86 machine (most Windows and Linux PCs) <code>--platform linux/amd64</code> is already native, so keep it anyway, it does no harm. On Windows or Linux on ARM it is required. Alternatively pick a Graviton (arm64) instance type such as <code>t4g</code> and build natively on an ARM machine.</div>
+<div class="warn"><strong>Windows gotchas:</strong> run the commands from the <code>starter-code</code> folder; use PowerShell or WSL, not an old <code>cmd.exe</code> for line continuations; if <code>docker</code> says it cannot connect to the daemon, start Docker Desktop first and wait for the whale icon to say “running”.</div>
 <div class="ok">Rule of thumb: <strong>if it does not work on your laptop, it will not work on AWS</strong>, and on AWS you can barely see the logs. Every bug we hit during the first deployment attempts (NumPy, missing compiler, wrong LLM client settings) would have been caught by this one step. You can also check the footprint: <code>docker stats</code> showed about 280 MiB of RAM, which is why a 1 GB <code>t3.micro</code> is enough.</div>
 
 <h3>3.5 Export the image for delivery</h3>

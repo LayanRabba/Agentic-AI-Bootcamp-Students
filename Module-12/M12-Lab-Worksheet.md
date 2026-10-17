@@ -49,6 +49,8 @@ curl http://localhost:8000/health
 docker save -o chat-agent-image.tar chat-agent:latest
 ```
 
+> **Windows:** use PowerShell (same commands; `curl` may need `curl.exe`) or an Ubuntu **WSL** terminal. Docker Desktop with the WSL 2 engine is required. See section 3.4 of `AWS-DEPLOYMENT-GUIDE.html`.
+
 - [ ] Health returns OK, chat works from the container
 
 ## Part 3 — Deploy to AWS (60 min)
