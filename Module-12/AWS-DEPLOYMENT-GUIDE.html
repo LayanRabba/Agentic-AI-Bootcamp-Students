@@ -149,7 +149,7 @@ ws.onmessage = (e) =&gt; {
 
 <h3>3.1 Files</h3>
 <pre><code>starter-code/
-├── app.py              FastAPI app: /ws, /health, /memory/stats, serves the UI
+├── app.py              FastAPI app: /ws, /health, /memory/stats, /memory/reset, serves the UI
 ├── memory_manager.py   short-term compaction + long-term Chroma memory
 ├── static/index.html   chat UI
 ├── requirements.txt
@@ -259,6 +259,7 @@ systemctl enable --now docker
 curl -fsSL "PASTE_PRESIGNED_URL_HERE" | docker load || { echo M12-LOAD-FAILED; exit 1; }
 docker run -d --name chat-agent --restart always -p 80:8000 \
   -e OPENROUTER_API_KEY=PASTE_YOUR_KEY_HERE \
+  -e ADMIN_TOKEN=PICK_A_LONG_RANDOM_STRING \
   -e ANONYMIZED_TELEMETRY=False chat-agent:latest
 echo M12-DEPLOY-DONE</code></pre>
 <ul>
@@ -308,6 +309,13 @@ echo M12-DEPLOY-DONE</code></pre>
   <li><strong>Stats</strong>: <code>https://&lt;your-cloudfront-domain&gt;/memory/stats</code> shows turn, summary and memory counts.</li>
 </ol>
 <div class="note">The first answer is a little slower than later ones (the LLM connection warms up), but the embedding model is already inside the image, so there is no long download.</div>
+
+<h3>Resetting long-term memory</h3>
+<p>Memory lives inside the container, so a reboot does <strong>not</strong> clear it. To wipe it between demos, call the reset endpoint. It only works if you set <code>ADMIN_TOKEN</code> in the <code>docker run</code> above and send the same value in a header; otherwise it answers <code>403</code>.</p>
+<pre><code>curl -X POST https://&lt;your-cloudfront-domain&gt;/memory/reset \
+  -H "X-Admin-Token: PICK_A_LONG_RANDOM_STRING"
+# {"status":"reset","removed":3}</code></pre>
+<p>Check <code>/memory/stats</code> afterwards: <code>long_term_memories</code> should be <code>0</code>. Keep the token secret, since anyone who has it can erase the memory.</p>
 
 <h3>How the memory works (for the discussion)</h3>
 <table>
