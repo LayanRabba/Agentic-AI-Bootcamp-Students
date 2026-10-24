@@ -1,0 +1,1825 @@
+SCENARIO: radar
+
+SERVER: npx -y @devabdultech/hn-mcp-server
+
+RUN UTC: 2026-10-24T18:41:28.949066+00:00
+
+DISCOVERED: 9 tools
+
+
+TOOL CALL 1: getStories({"limit": 15, "type": "top"})
+
+TOOL RESULT:
+1. Roku developer repositories moved from GitHub to GitLab
+   ID: 50222622
+   URL: https://blog.roku.com/developer/gitlab-move
+   Points: 145 | Author: cxr | Comments: 89
+
+2. The St. Helena 5 pence coin shows Jonathan, a roughly 190 year old tortoise
+   ID: 50222927
+   URL: https://de.numista.com/9866
+   Points: 50 | Author: schleck8 | Comments: 8
+
+3. FreeDNS
+   ID: 50222133
+   URL: https://freedns.afraid.org/
+   Points: 163 | Author: esher | Comments: 39
+
+4. Neural chip decodes interactions between brain regions
+   ID: 50222525
+   URL: https://actu.epfl.ch/news/neural-chip-decodes-interactions-between-brain-r-2/
+   Points: 50 | Author: giuliomagnifico | Comments: 7
+
+5. Around a dozen banking apps began specifically permitting GrapheneOS
+   ID: 50217495
+   URL: https://grapheneos.social/@GrapheneOS/117492375462459244
+   Points: 570 | Author: privacyishuman | Comments: 214
+
+6. Node2Shell evolves to HTTP2Shell, blast radius affects many HTTP libs and apps
+   ID: 50219177
+   URL: https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497
+   Points: 209 | Author: theanonymousone | Comments: 97
+
+7. OBS Studio 33
+   ID: 50218430
+   URL: https://github.com/obsproject/obs-studio/releases/tag/33.0.0
+   Points: 389 | Author: pentagrama | Comments: 136
+
+8. TornadoVM 7 Enables GPU-Native Workloads from Java Applications
+   ID: 50192975
+   URL: https://www.infoq.com/news/2026/10/tornadovm-7-gpu/
+   Points: 67 | Author: pjmlp | Comments: 12
+
+9. Kimi K3.1 Pro and K3.1 Pro Highspeed
+   ID: 50212065
+   URL: https://www.kimi.ai/blog/kimi-k3-1-pro
+   Points: 1043 | Author: Jowsey | Comments: 636
+
+10. Symbolic Learning in Python and Julia
+   ID: 50171936
+   URL: https://github.com/astroautomata/PySR
+   Points: 12 | Author: alex_hirner | Comments: 1
+
+11. Physicists trap a single antimatter particle for a month
+   ID: 50186450
+   URL: https://www.scientificamerican.com/article/physicists-trap-a-single-antimatter-particle-for-a-month/
+   Points: 228 | Author: mooreds | Comments: 70
+
+12. I Don't Understand Quantum Physics (2018)
+   ID: 50219666
+   URL: https://www.southampton.ac.uk/~doug/quantum_physics/index.html
+   Points: 225 | Author: rramadass | Comments: 154
+
+13. GPU-unlock: FP/BF16 instruction issue rate on Nvidia 3000's cards
+   ID: 50219700
+   URL: https://github.com/Zagitta/gpu-unlock
+   Points: 105 | Author: fragebogen | Comments: 44
+
+14. Today, we hacked what we'd set out to hack: the iPhone
+   ID: 50211474
+   URL: https://blog.calif.io/p/iphone
+   Points: 1044 | Author: pavel_lishin | Comments: 651
+
+15. Oai-math-revised: a community hub for revising OpenAI's math write-ups
+   ID: 50222283
+   URL: https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/
+   Points: 11 | Author: tokepi | Comments: 4
+
+
+TOOL CALL 2: getStories({"limit": 10, "type": "best"})
+
+TOOL RESULT:
+1. Local Wikipedia: Wikipedia, but only for things a half hour walk from you
+   ID: 50202285
+   URL: https://edjefferson.com/localwiki/
+   Points: 1498 | Author: sohkamyung | Comments: 240
+
+2. Today, we hacked what we'd set out to hack: the iPhone
+   ID: 50211474
+   URL: https://blog.calif.io/p/iphone
+   Points: 1044 | Author: pavel_lishin | Comments: 651
+
+3. Kimi K3.1 Pro and K3.1 Pro Highspeed
+   ID: 50212065
+   URL: https://www.kimi.ai/blog/kimi-k3-1-pro
+   Points: 1043 | Author: Jowsey | Comments: 636
+
+4. Apple Music 404 Not Found
+   ID: 50207910
+   URL: https://music.apple.com/this-url-doesnt-exist
+   Points: 883 | Author: frizlab | Comments: 263
+
+5. Docker is weird
+   ID: 50202681
+   URL: https://codeandcake.dev/posts/2026-10-22-docker-is-weird
+   Points: 855 | Author: psxuaw | Comments: 367
+
+6. Ask HN: If the models are so good, why doesn't OpenAI just start 100 companies?
+   ID: 50200997
+   URL: (text post)
+   Points: 639 | Author: ex-aws-dude | Comments: 716
+
+7. Around a dozen banking apps began specifically permitting GrapheneOS
+   ID: 50217495
+   URL: https://grapheneos.social/@GrapheneOS/117492375462459244
+   Points: 570 | Author: privacyishuman | Comments: 214
+
+8. Jared Kushner Hacked Phone Reveals Secret Negotiations, Millions in Transactions
+   ID: 50201259
+   URL: https://www.vanityfair.com/story/jared-kushner-hacked-phone-secret-negotiations
+   Points: 549 | Author: ck2 | Comments: 228
+
+9. Investor-owned utilities charge 23% more for electricity than public providers
+   ID: 50208837
+   URL: https://www.kadoa.com/energy-prices/insights/investor-owned-utilities
+   Points: 547 | Author: hubraumhugo | Comments: 393
+
+10. Your Phone Is About to Stop Being Yours: 70 Days Until Lockdown
+   ID: 50208558
+   URL: https://keepandroidopen.org/?
+   Points: 519 | Author: NackerHughes | Comments: 364
+
+
+TOOL CALL 3: getStoryWithComments({"id": 50222622})
+
+TOOL RESULT:
+Story ID: 50222622
+Title: Roku developer repositories moved from GitHub to GitLab
+URL: https://blog.roku.com/developer/gitlab-move
+Points: 143 | Author: cxr
+
+Comments:
+Comment by skullone (ID: 50222742):
+The readme.md still says welcome to their GitHub repository :D
+Posted: 2026-10-24T16:21:15.000Z
+
+  Comment by jdorfman (ID: 50223454):
+  Fixed <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;rokudev&#x2F;dev-doc&#x2F;-&#x2F;merge_requests&#x2F;6" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;rokudev&#x2F;dev-doc&#x2F;-&#x2F;merge_requests&#x2F;6</a>
+  Posted: 2026-10-24T17:44:04.000Z
+
+Comment by steffenfrost (ID: 50222830):
+A devops friend of mine said GitHub turned into a hot mess.
+Posted: 2026-10-24T16:31:06.000Z
+
+  Comment by valyala (ID: 50222924):
+  Because of unreviewed AI code at GitHub services?
+  Posted: 2026-10-24T16:41:15.000Z
+
+    Comment by cdmckay (ID: 50222950):
+    Or maybe because the use of GitHub has skyrocketed?
+    Posted: 2026-10-24T16:44:17.000Z
+
+    Comment by InsidiousWombat (ID: 50223832):
+    Because MS is at helm
+    Posted: 2026-10-24T18:30:11.000Z
+
+Comment by outfitx (ID: 50222883):
+Why? Any specific reasons?
+Posted: 2026-10-24T16:35:39.000Z
+
+  Comment by jacquesm (ID: 50222964):
+  Do you have some time?
+  Posted: 2026-10-24T16:45:32.000Z
+
+    Comment by rlonstein (ID: 50223049):
+    &gt;&gt; Why? Any specific reasons?<p>&gt; Do you have some time?<p>Okay, I laughed.
+    Posted: 2026-10-24T16:55:30.000Z
+
+Comment by tangotaylor (ID: 50222890):
+I wish they would spill some tea and articulate why they moved.
+Posted: 2026-10-24T16:36:26.000Z
+
+  Comment by jeron (ID: 50222908):
+  why? like having a dozen outages in the last couple months isn&#x27;t a good enough reason why?
+  Posted: 2026-10-24T16:39:03.000Z
+
+    Comment by prologic (ID: 50222953):
+    Or Microsoft&#x2F;OpenAI (and others) just blatantly scraping all your codebases and violating thousands of OSS licneses?
+    Posted: 2026-10-24T16:44:36.000Z
+
+      Comment by echelon (ID: 50223071):
+      We&#x27;re going to need something more expansive than OSI software licenses for the future.<p>Something like, &quot;if you look at us, we must be able to look at you&quot;
+      Posted: 2026-10-24T16:58:26.000Z
+
+        Comment by abc42 (ID: 50223459):
+        How about &quot;if you&#x27;re not the customer, you&#x27;re the product&quot;.
+        Posted: 2026-10-24T17:44:25.000Z
+
+          Comment by seanhunter (ID: 50223876):
+          At the risk of stating the obvious, that isn’t a software license.
+          Posted: 2026-10-24T18:37:36.000Z
+
+      Comment by pjmlp (ID: 50223073):
+      If the repos are public, hosting location doesn&#x27;t make a difference.
+      Posted: 2026-10-24T16:58:27.000Z
+
+    Comment by tinyhouse (ID: 50223031):
+    No horse in this race but GitLab has been down a few times recently too.
+    Posted: 2026-10-24T16:53:50.000Z
+
+    Comment by misnome (ID: 50223080):
+    GitLab is just as bad, just not as big so doesn&#x27;t get the coverage. <a href="https:&#x2F;&#x2F;status.gitlab.com&#x2F;pages&#x2F;history&#x2F;5b36dc6502d06804c08349f7" rel="nofollow">https:&#x2F;&#x2F;status.gitlab.com&#x2F;pages&#x2F;history&#x2F;5b36dc6502d06804c083...</a><p>And of course many people self-host which changes a lot of the equation (which you can also do with GitHub, but not for free - and FWIW our self-hosted premium gitlab has about an hour a day downtime, which we&#x27;ve been told by the team responsible is an unavoidable side-effect of backing up gitlab).
+    Posted: 2026-10-24T16:59:52.000Z
+
+      Comment by mcrowder65 (ID: 50223236):
+      Weird. I’ve been on a self hosted enterprise gitlab and I think we’ve have only one or two performance degradations&#x2F;outages in the past 6 years
+      Posted: 2026-10-24T17:19:40.000Z
+
+        Comment by otterley (ID: 50223771):
+        We’re talking about the SaaS version, not self-hosted.
+        Posted: 2026-10-24T18:21:08.000Z
+
+      Comment by Volundr (ID: 50223274):
+      I was responsible for administering a self hosted GitLab instance for a medium sized company and our backups never required downtime. The built in backup command doesn&#x27;t require downtime but also isn&#x27;t a consistent point in time snapshot (specifically because the instance keeps running while the backup is being taken). If they&#x27;ve decided they need one for some reason, stopping GitLab is certainly the easiest way, but not the only way of accomplishing that goal, but that&#x27;ll be true of any self-hosted forge, including GitHub.
+      Posted: 2026-10-24T17:24:50.000Z
+
+        Comment by icefo (ID: 50223424):
+        You could stop it, do a snapshot of the storage and backup that for &lt;1 min of downtime probably.<p>But at the same time, if you&#x27;re not a global company, doing it at 3am is probably fine.
+        Posted: 2026-10-24T17:41:20.000Z
+
+          Comment by NewJazz (ID: 50223631):
+          It can be an issue if you are using gitlab as your container&#x2F;package registry and production workloads need to pull from it, though.
+          Posted: 2026-10-24T18:02:48.000Z
+
+            Comment by esseph (ID: 50223843):
+            [delayed]
+            Posted: 2026-10-24T18:31:17.000Z
+
+          Comment by LoganDark (ID: 50223653):
+          Doing a snapshot of the storage while it&#x27;s running wouldn&#x27;t be bad either, it&#x27;d be like having cut the power at the point of the snapshot, right?
+          Posted: 2026-10-24T18:05:44.000Z
+
+  Comment by gchamonlive (ID: 50223150):
+  Would also like a write-up. People assume it&#x27;s just because of GitHub outages, but GitHub is slightly worse in every aspect, so for big projects and organisations it compounds to being quite messy to manage and operate.<p>GitLab is thought-out to support larger groups with more complex pipelines, and while it&#x27;s got it&#x27;s own set of quirks, it doesn&#x27;t begin to compare, GitHub in contrast seems like a toy forge for toy projects.
+  Posted: 2026-10-24T17:06:41.000Z
+
+  Comment by thirtyseven (ID: 50223289):
+  Roku uses Gitlab internally so could just be a standardization thing.
+  Posted: 2026-10-24T17:26:03.000Z
+
+    Comment by midnightclubbed (ID: 50223597):
+    Moving changes back and forth between gitlab and github is a pain.  Could indeed be as simple as standardization and reducing development pains.
+    Posted: 2026-10-24T17:59:09.000Z
+
+      Comment by otterley (ID: 50223776):
+      What makes it more complicated than doing a Git push against two remotes? Assuming that one of those is used for collaboration and the other is just a mirror.
+      Posted: 2026-10-24T18:22:03.000Z
+
+        Comment by darkstar999 (ID: 50223863):
+        The CICD pipeline is not directly compatible, for one.
+        Posted: 2026-10-24T18:35:03.000Z
+
+          Comment by otterley (ID: 50223872):
+          You don’t need to run the CI&#x2F;CD pipeline in both. Choose one as your collaboration space, and the other as a mirror.
+          Posted: 2026-10-24T18:36:37.000Z
+
+Comment by neya (ID: 50222893):
+Good. I want everyone to do this. I want to see the downfall of Microsoft. Time and again they&#x27;ve proved that anything they touch can&#x27;t be trusted nor reliable. I am tired of this. They even bully their users - on Mac OS, GitHub desktop doesn&#x27;t respect the word &quot;no&quot;. It installs all kinds of helpers and acts like borderline spyware. Someone created an issue about it on Github and the MS employees told them to fuck off in corporate[1]<p>I am even considering hosting my own GIT server myself. Some of our deployments got affected multiple times in the last 6 months alone we were really caught off-guard. Thankfully our clients were understanding of the GitHub outages. But, this should not be the baseline. Reliability should not be the cost of doing business.<p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;creativefoundrysg&#x2F;desktop#an-open-letter-to-github-desktop-team" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;creativefoundrysg&#x2F;desktop#an-open-letter-...</a>
+Posted: 2026-10-24T16:37:08.000Z
+
+  Comment by to11mtm (ID: 50222951):
+  Github desktop is such a hot mess that I instead choose to continue to suffer with SourceTree. Sourcetree annoys me for reasons I still cannot articulate after a decade, but it at least tends to actually work without being too intrusive as far as updating, doesn&#x27;t randomly derp out on credentials, and is super handy when trying to visualize janky branch patterns of dev teams.
+  Posted: 2026-10-24T16:44:19.000Z
+
+    Comment by latsu (ID: 50222959):
+    Just use Sublime Merge, it&#x27;s probably the best GUI for Git there is.
+    Posted: 2026-10-24T16:45:03.000Z
+
+    Comment by alt227 (ID: 50223451):
+    Here try one of the others:<p><a href="https:&#x2F;&#x2F;git-scm.com&#x2F;tools&#x2F;guis" rel="nofollow">https:&#x2F;&#x2F;git-scm.com&#x2F;tools&#x2F;guis</a>
+    Posted: 2026-10-24T17:43:47.000Z
+
+    Comment by turtleburger (ID: 50223677):
+    GitKraken has been good in my experience with it for many years
+    Posted: 2026-10-24T18:09:41.000Z
+
+  Comment by valiant55 (ID: 50222962):
+  I&#x27;m hosting Forgejo for my homelab and couldn&#x27;t be happier. I have everything running in containers with dind for CI&#x2F;CD. Most of my workflows just worked with minimal changes. YMMV and this is far from an enterprises&#x27; needs but it&#x27;s working great so far for my needs.
+  Posted: 2026-10-24T16:45:17.000Z
+
+    Comment by vips7L (ID: 50223697):
+    My friend group also moved to self hosted forgejo. Couldn’t be happier and then I don’t have LLMs training on my code.
+    Posted: 2026-10-24T18:12:43.000Z
+
+  Comment by 999900000999 (ID: 50222987):
+  As an idea, do you think an enterprise only Git host would work.<p>Say annual contracts start at 100k minimum and everyone gets a dedicated support engineer.<p>You get your own rack. None of this degraded shared capability nonsense.<p>Does that seem like a solid business ?
+  Posted: 2026-10-24T16:48:57.000Z
+
+    Comment by the__alchemist (ID: 50223003):
+    Is that Bitbucket?
+    Posted: 2026-10-24T16:51:04.000Z
+
+      Comment by 999900000999 (ID: 50223093):
+      Both GitLab and Bitbucket still offer free repos for hobbyists.<p>What I&#x27;m thinking of is a company that exclusively caters to the enterprise.<p>You get a support engineer and they help on everything, migration, CI&#x2F;CD, hosting, etc.<p>Nothing goes down without a solid 3 page write up.
+      Posted: 2026-10-24T17:00:57.000Z
+
+  Comment by pixl97 (ID: 50223048):
+  &gt;Good. I want everyone to do this<p>Every other free service would die nearly instantly, so maybe only want useful things to move to other services.<p>&gt;I am even considering hosting my own GIT server myself.<p>It&#x27;s mostly a good idea.... but, with the current security apocalypse we seem to be under making sure your own shit doesn&#x27;t get pwned is a full time job. The level of security hostility on the internet recently has reached numbers I&#x27;ve never seen before. RCE&#x27;s dropping about every day, more targeted scans than I&#x27;ve ever seen in my life, swarms of AI bots breaking into services.
+  Posted: 2026-10-24T16:55:08.000Z
+
+    Comment by sedan_baklazhan (ID: 50223066):
+    Running an up to date self hosted Gitea server takes like 5 minutes a week.
+    Posted: 2026-10-24T16:58:05.000Z
+
+      Comment by pixl97 (ID: 50223419):
+      I mean, last year, but if you&#x27;re updating once a week now, that means you&#x27;ve had 6 days to get exploited.
+      Posted: 2026-10-24T17:40:58.000Z
+
+  Comment by pjmlp (ID: 50223106):
+  Thanks for a good laugh, FOSS in 2026 is nothing without the money of big corporations, including Microsoft.<p>Everyone spent years talking against GPL, business friendly licenses like MIT and Apache were the way of the future, not viral and co.<p>Now we are here, most projects have their key contributors working at corporations like Microsoft, or gladly getting their acquisition money to pay the VCs, embrace your business friendly licenses.
+  Posted: 2026-10-24T17:02:28.000Z
+
+Comment by pinkgolem (ID: 50222922):
+We did the same, quit happy
+Posted: 2026-10-24T16:41:12.000Z
+
+Comment by CyanLite2 (ID: 50222954):
+GitLab will eventually just get overran with 24&#x2F;7 agents spewing from their AI Slop Cannons
+Posted: 2026-10-24T16:44:40.000Z
+
+  Comment by locknitpicker (ID: 50223503):
+  &gt; GitLab will eventually just get overran with 24&#x2F;7 agents spewing from their AI Slop Cannons<p>That&#x27;s fine. GitLab offers self-hosted solutions where companies run the service in their own infrastructure and limit who has access to it. The same cannot be said by GitHub, though.
+  Posted: 2026-10-24T17:47:44.000Z
+
+    Comment by slantedview (ID: 50223539):
+    Wouldn&#x27;t that be Github enterprise? It&#x27;s been around since 2012 IIRC.
+    Posted: 2026-10-24T17:51:56.000Z
+
+      Comment by 20after4 (ID: 50223629):
+      Yes, though enterprise is expensive and GitLab still had a free option last time I checked.
+      Posted: 2026-10-24T18:02:17.000Z
+
+    Comment by bigstrat2003 (ID: 50223633):
+    &gt; The same cannot be said by GitHub, though.<p>That isn&#x27;t true. Self hosted Github exists, and has for years now. From what I hear (from a friend who had to administer his company&#x27;s instance) it&#x27;s not a good product by any means, but it does exist.
+    Posted: 2026-10-24T18:02:59.000Z
+
+      Comment by esseph (ID: 50223854):
+      [delayed]
+      Posted: 2026-10-24T18:33:23.000Z
+
+  Comment by kannanvijayan (ID: 50223736):
+  I moved my projects over to GitLab about a year ago.<p>GitLab&#x27;s model is different - at least it was when I moved over to it.  They charged for public repositories and gave you a free private ones as a sampler for trying out the platform.  That approach is far less prone to getting overrun by millions of slopositories.<p>GitLab never tried to be the social media of software development.  Theirs is a much simpler, classical model - one of the reasons I switched to them: you pay them money, they provide you services for that money.
+  Posted: 2026-10-24T18:17:38.000Z
+
+  Comment by otterley (ID: 50223792):
+  It already is. (source: we use it as our primary forge)
+  Posted: 2026-10-24T18:24:25.000Z
+
+Comment by prologic (ID: 50222966):
+Did this back in ~2021 for my own repos :D <a href="https:&#x2F;&#x2F;prologic.blog&#x2F;posts&#x2F;2021-07-11-why-i-no-longer-trust-github.html" rel="nofollow">https:&#x2F;&#x2F;prologic.blog&#x2F;posts&#x2F;2021-07-11-why-i-no-longer-trust...</a>
+Posted: 2026-10-24T16:45:39.000Z
+
+Comment by robinhood (ID: 50223034):
+So they replaced a tool from an evil corporation by another one disguised as an open source project.
+Posted: 2026-10-24T16:54:04.000Z
+
+  Comment by sidcool (ID: 50223046):
+  This logic baffles me.  This would mean no one gets any work done and we go in a perennial cycle of victimhood
+  Posted: 2026-10-24T16:54:52.000Z
+
+  Comment by verandaguy (ID: 50223307):
+  <p><pre><code>    &gt; disguised as an open source project
+</code></pre>
+A software project either is or isn&#x27;t open source. Gitlab CE is source-available (here: <a href="https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab" rel="nofollow">https:&#x2F;&#x2F;gitlab.com&#x2F;gitlab-org&#x2F;gitlab</a>) with an MIT license, which is a permissive open-source license.<p>Gitlab CE is open-source. There exist versions of Gitlab with features that require payment. This does not mean that Gitlab (the product) is not open-source; it means that Gitlab (the company) has a core product which is open-source, and then sustains its development through the sale of licenses to product tiers beyond that.
+  Posted: 2026-10-24T17:27:42.000Z
+
+Comment by BatchJob (ID: 50223055):
+I always found it wierd that people flocked to github.  The app sucks, if I have to use it for work it infuriates me at nearly every turn with its sad excuse for UI.  People like free sh*.<p>As for gitlab...yuck.  But whatever.  Most of the dev tool space is really just &quot;sh* we have to put up with now&quot;, none of it is any good, all of it is dated from the early aughts, and taken as a whole is even worse because none of it works together.<p>While software development itself got better in the last ten years these tools stayed the same or got worse (enshittification).  And this is part of why folks are self hosting.<p>The other part is that AI is destroying the Internet and its time to pack your bags anyway.  The smart people already have.
+Posted: 2026-10-24T16:56:08.000Z
+
+  Comment by carlosjobim (ID: 50223258):
+  Well you&#x27;re a developer. Why don&#x27;t you make something better instead of complaining?
+  Posted: 2026-10-24T17:22:30.000Z
+
+  Comment by CodesInChaos (ID: 50223300):
+  &gt; I always found it weird that people flocked to github.<p>Same reason we ended up with git. Their predecessors were significantly worse, and then they had enough momentum to keep going.
+  Posted: 2026-10-24T17:27:13.000Z
+
+  Comment by locknitpicker (ID: 50223528):
+  &gt; I always found (...)<p>You broadcasted your negative feedback but it seems you had no positive remarks to give. If you feel everything is so bad, would you mind sharing what tolerable alternatives are there to GitHub and GitLab?
+  Posted: 2026-10-24T17:50:17.000Z
+
+    Comment by 20after4 (ID: 50223700):
+    &gt; mind sharing what tolerable alternatives are there to GitHub and GitLab?<p>Not the op, and while your criticism of their negativity may be somewhat justified, the ask is kind of silly. There are a bunch of well known alternatives:<p>Self-hosted free software:<p>Gerrit &lt;<a href="https:&#x2F;&#x2F;www.gerritcodereview.com" rel="nofollow">https:&#x2F;&#x2F;www.gerritcodereview.com</a>&gt;
+Phorge &lt;<a href="https:&#x2F;&#x2F;we.phorge.it" rel="nofollow">https:&#x2F;&#x2F;we.phorge.it</a>&gt;<p>SaaSsy:<p>Codeberg &lt;<a href="https:&#x2F;&#x2F;codeberg.org" rel="nofollow">https:&#x2F;&#x2F;codeberg.org</a>&gt;
+SourceHut &lt;<a href="https:&#x2F;&#x2F;sr.ht&#x2F;" rel="nofollow">https:&#x2F;&#x2F;sr.ht&#x2F;</a>&gt;<p>There are a lot more, of course, these are just the ones I have experience with.
+    Posted: 2026-10-24T18:13:14.000Z
+
+Comment by rr808 (ID: 50223119):
+Worth mentioning that Roku is being acquired by Fox so in the virtue battle with Microsoft neither are clean
+Posted: 2026-10-24T17:03:44.000Z
+
+  Comment by verdverm (ID: 50223259):
+  it seems like all the media companies are being bought up by a select few people<p>does not portend good things for the future
+  Posted: 2026-10-24T17:22:43.000Z
+
+    Comment by robertfw (ID: 50223405):
+    for the future? this has already been happening for years and is a major reason we&#x27;re in the predicament we&#x27;re in
+    Posted: 2026-10-24T17:40:02.000Z
+
+      Comment by cwbriscoe (ID: 50223417):
+      What predicament are we in?
+      Posted: 2026-10-24T17:40:54.000Z
+
+        Comment by verdverm (ID: 50223472):
+        the greatest wealth concentration and inequity in american history, blatant corruption and nepotism<p>an out of control, bipartisan oligarchy<p>The majority of HN has been on the winning side of this equation, benefiting greatly from the rise of the computer, internet, and now Ai. This is not most people, we forget about them, we tell them it&#x27;s their own fault when it is not. The game is not fair, it&#x27;s rigged for most humans.<p>Michael Sandel explains it better than I can yet
+        Posted: 2026-10-24T17:45:30.000Z
+
+          Comment by extraextra (ID: 50223707):
+          Funny how within 4 comments we&#x27;ve went from mundane tech news to communist political philosophers
+          Posted: 2026-10-24T18:14:19.000Z
+
+            Comment by ezst (ID: 50223845):
+            What about OP&#x27;s comment rings communistic, or even political to you? Or is it the link between information control and wealth consolidation that you find controversial?
+            Posted: 2026-10-24T18:32:09.000Z
+
+        Comment by ozgrakkurt (ID: 50223483):
+        what is a predicament?
+        Posted: 2026-10-24T17:46:08.000Z
+
+        Comment by edoceo (ID: 50223640):
+        Consolidated and Sanitized media controlled by a few brands, that coordinate propaganda messaging.
+        Posted: 2026-10-24T18:03:52.000Z
+
+    Comment by alt227 (ID: 50223409):
+    Especially judging by whats happening in the gaming industry right now. Mass layoffs everywhere from once leading lights in the industry, now acquired by big business and having to succumb to broad budget cuts.
+    Posted: 2026-10-24T17:40:30.000Z
+
+      Comment by verdverm (ID: 50223557):
+      I hope for more indie, in games and software - more lifestyle &amp; small businesses - where creativity and uniqueness can flourish
+      Posted: 2026-10-24T17:54:27.000Z
+
+        Comment by 20after4 (ID: 50223579):
+        Abandon all hope, yee who enter.
+        Posted: 2026-10-24T17:57:25.000Z
+
+  Comment by veryfancy (ID: 50223323):
+  “virtue battle”! like it
+  Posted: 2026-10-24T17:29:28.000Z
+
+  Comment by cramer4next (ID: 50223397):
+  For one that deal hasn&#x27;t closed and secondly not sure what the connection is between Roku leaving Github and FOX. Please expand on relevance.
+  Posted: 2026-10-24T17:39:10.000Z
+
+  Comment by otterley (ID: 50223755):
+  What virtue battle?
+  Posted: 2026-10-24T18:19:18.000Z
+
+Comment by robswc (ID: 50223221):
+GitHub is such a mess.  They seem to be doing everything and nothing.  GitLab is 100x better, in terms of DX.  While I still have a soft spot for GH, its frustrating to use it when GL exists.
+Posted: 2026-10-24T17:17:52.000Z
+
+  Comment by CodesInChaos (ID: 50223251):
+  Downtime aside, what do prefer about GitLab?
+  Posted: 2026-10-24T17:21:50.000Z
+
+    Comment by locknitpicker (ID: 50223610):
+    GitLab has a top of the class CICD system that is leaps and bounds over GitHub Actions. That alone makes it worth using GitLab.
+    Posted: 2026-10-24T18:01:00.000Z
+
+      Comment by otterley (ID: 50223800):
+      What’s so much better about it? I use both and I don’t see significant differences, but I’m happy to be enlightened.
+      Posted: 2026-10-24T18:26:02.000Z
+
+        Comment by esseph (ID: 50223885):
+        [delayed]
+        Posted: 2026-10-24T18:38:48.000Z
+
+Comment by abc42 (ID: 50223447):
+Why is this important news?
+Posted: 2026-10-24T17:43:23.000Z
+
+  Comment by zulban (ID: 50223538):
+  A major software project is changing from one major software tool to another major software tool. How is it not important? Or at least notable for HN?
+  Posted: 2026-10-24T17:51:51.000Z
+
+Comment by brightball (ID: 50223516):
+I saw a big write up on using Dagger for CI no matter your git host and I was curious if there were any real benefits?
+Posted: 2026-10-24T17:49:00.000Z
+
+  Comment by verdverm (ID: 50223585):
+  Yes, I use Dagger, it&#x27;s much more than building containers<p>- Container based workflows are the same in CI and locally (you can run containers too), they become one-liners<p>- Remote caching out of the box without extra steps<p>- Multiple language SDKs, unlocks the DAG in BuildKit and containers, real reuse<p>- Obfuscates secrets from your logs and agents. I&#x27;ve built an agent environment on Dagger, which also includes forking and time travel)<p>tl;dr - Dagger gives you SDK access to BuildKit and container based DAGs for building or anything else.<p>v1-beta just released yesterday: <a href="https:&#x2F;&#x2F;dagger.io&#x2F;blog&#x2F;dagger-10-beta&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dagger.io&#x2F;blog&#x2F;dagger-10-beta&#x2F;</a><p>---<p>edit: they are replacing BuildKit (for good reasons) and that is already out <a href="https:&#x2F;&#x2F;dagger.io&#x2F;changelog&#x2F;theseus&#x2F;" rel="nofollow">https:&#x2F;&#x2F;dagger.io&#x2F;changelog&#x2F;theseus&#x2F;</a>
+  Posted: 2026-10-24T17:58:07.000Z
+
+    Comment by zrail (ID: 50223812):
+    Have you written or posted publicly about your agent environment? It sounds really interesting.
+    Posted: 2026-10-24T18:27:50.000Z
+
+  Comment by 0xbadcafebee (ID: 50223870):
+  [delayed]
+  Posted: 2026-10-24T18:36:05.000Z
+
+Comment by PedroBatista (ID: 50223765):
+Gitlab, for all it&#x27;s flaws fits so much better in &quot;regular&quot; company&#x2F;organization projects. It&#x27;s more in line on what people involved in software dev and all the tasks around it have as a mental model and less of a &quot;open source dev social network&quot; like Github tried to be almost from the start and lately got Microsofted. An lets not even bring the CI &#x2F; Github Actions topic..
+Posted: 2026-10-24T18:20:20.000Z
+
+  Comment by ivanjermakov (ID: 50223849):
+  &gt; fits so much better in &quot;regular&quot; company&#x2F;organization projects<p>How so? I used both at work and they&#x27;re functionally the same.
+  Posted: 2026-10-24T18:32:43.000Z
+
+    Comment by IshKebab (ID: 50223865):
+    Yeah I agree. There are only very minor differences.
+    Posted: 2026-10-24T18:35:11.000Z
+
+
+TOOL CALL 4: getStoryWithComments({"id": 50219177})
+
+TOOL RESULT:
+Story ID: 50219177
+Title: Node2Shell evolves to HTTP2Shell, blast radius affects many HTTP libs and apps
+URL: https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497
+Points: 209 | Author: theanonymousone
+
+Comments:
+Comment by est (ID: 50219946):
+wtf Python is also effected. <a href="https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;brotli&#x2F;" rel="nofollow">https:&#x2F;&#x2F;pypi.org&#x2F;project&#x2F;brotli&#x2F;</a> not sure about shell
+Posted: 2026-10-24T10:38:24.000Z
+
+  Comment by Incipient (ID: 50220333):
+  Side point from going to pypi:<p>&gt; Security notice: Upgrade certifi, pip, and uv in response to CA certificate incident<p>Blimey PIP is affected? That&#x27;s bad. I feel like that should have been bigger news?
+  Posted: 2026-10-24T11:40:58.000Z
+
+    Comment by murderfs (ID: 50220403):
+    Pretty sure that&#x27;s the eMudhra &quot;private key is 4&quot; issue.
+    Posted: 2026-10-24T11:51:05.000Z
+
+    Comment by skeledrew (ID: 50220666):
+    Because pip uses it&#x27;s own certificate bundle, so even if you fix the system itself pip still needs its own upgrade to handle the eMudhra episode.
+    Posted: 2026-10-24T12:34:26.000Z
+
+      Comment by tetha (ID: 50221260):
+      And strictly speaking you cannot trust the pip upgrade of pip with the vulnerable cert in the trust store due to certifi, which you also cannot upgrade safely with pip for the same reason. All of these are at one out of two compromises from being MITM&#x27;d during the upgrade.<p>So strictly we have to burn everything python to the ground and reinstall entirely.
+      Posted: 2026-10-24T13:56:28.000Z
+
+        Comment by saltcured (ID: 50222929):
+        Heh. This is part of why I always preferred getting my python runtime and all these core libs from my linux distro packager. But python die-hards look at me like I&#x27;m insane when I suggest this.<p>Even in today&#x27;s LLM-addled world, I still think it&#x27;s a better tradeoff for smaller system&#x2F;site operators. Get the distro-level testing and regular auto-patching, rather than telling yourself it is a good idea to &quot;freeze&quot; your python world at the pace of your slowest app&#x2F;system integrator.<p>It&#x27;s the same reason I think docker is an anti-pattern for these small groups. You really cannot safely use these strategies to bake an image and divorce yourself from the maintained distro layer unless you are going to adopt CI&#x2F;CD that does the same thing. Keep tracking all these patches to the entire runtime with all the dependencies, rebuild, re-test, and redeploy.<p>It&#x27;s total cargo culting to adopt the freeze&#x2F;image techniques and just abandon apps in place as if that is robust!<p>But, it&#x27;s also more than just automatically updating everything. There is an editorial aspect to distro management to help secure the supply chain to your app. Most smaller orgs cannot feasibly do this as well as the regular linux distro maintainers. Some large orgs can probably do it better, but that doesn&#x27;t matter if you aren&#x27;t doing it large org style with dedicated security folks tracking all this against well-developed policies and procedures...
+        Posted: 2026-10-24T16:42:14.000Z
+
+        Comment by aftbit (ID: 50223023):
+        Or - you can just upgrade pip with a SHA hash pin, or set the magic env vars to use the system bundle.<p>You do need to be careful about creating new venvs with the old version of pip bundled in ensurepip in older Python releases. `uv` kindly patches that to newest pip, but not every Python binary does.<p><pre><code>  python -m pip install &quot;pip @ https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;3f&#x2F;06&#x2F;3e4420302363fbb71be3c7f35ce042f54bfca330e3e66b3a2e3c4cca579f&#x2F;pip-26.2.2-py3-none-any.whl#sha256=fd7f4dfa8190e014013b9f08f3e973f4e4c26ffd179a204895533a7254813a70&quot;
+</code></pre>
+Or alternatively, on Debian with fixed system cert chain:<p><pre><code>  PIP_USE_DEPRECATED=legacy-certs PIP_CERT=&#x2F;etc&#x2F;ssl&#x2F;certs&#x2F;ca-certificates.crt python -m pip install --upgrade &quot;pip&gt;=26.2.2&quot;
+
+</code></pre>
+<a href="https:&#x2F;&#x2F;discuss.python.org&#x2F;t&#x2F;avoiding-compromised-certificates-in-pip&#x2F;109602" rel="nofollow">https:&#x2F;&#x2F;discuss.python.org&#x2F;t&#x2F;avoiding-compromised-certificat...</a>
+        Posted: 2026-10-24T16:52:42.000Z
+
+      Comment by steve1977 (ID: 50222371):
+      Python certificate handling is a hot mess, even by Python standards.
+      Posted: 2026-10-24T15:43:33.000Z
+
+Comment by tetha (ID: 50220060):
+Well at least we know about it while or before the giant patch effort for everything else goes on. Just put it onto the pile.<p>Who turned on hard mode this week?
+Posted: 2026-10-24T10:55:07.000Z
+
+  Comment by loloquwowndueo (ID: 50220302):
+  Nah man. We were on casual mode all along. This is the new normal.
+  Posted: 2026-10-24T11:37:10.000Z
+
+Comment by netsharc (ID: 50220165):
+Well, whoever picked the name HTTP2Shell certainly didn&#x27;t use any intelligence, artificial or genuine.<p>It&#x27;s so meaningless, broad and undescriptive of the actual issue. No it probably doesn&#x27;t affect an HTTP server with nothing else behind it, so why is HTTP being blasted?<p>You might as well call it Exploit Pro Max...
+Posted: 2026-10-24T11:13:04.000Z
+
+  Comment by CharlieDigital (ID: 50220197):
+  Feels like the goal was sensationalism.
+  Posted: 2026-10-24T11:17:52.000Z
+
+  Comment by reddozen (ID: 50220405):
+  The author clearly used super intelligence.
+  Posted: 2026-10-24T11:51:08.000Z
+
+  Comment by techpression (ID: 50220463):
+  I immediately thought HTTP&#x2F;2 was having a bad day somehow. Might I suggest Software2Shell to be less confusing.
+  Posted: 2026-10-24T12:00:39.000Z
+
+    Comment by CharlieDigital (ID: 50220541):
+    Specifically Brotli2Shell
+    Posted: 2026-10-24T12:14:41.000Z
+
+      Comment by photios (ID: 50220777):
+      google2shell would have been nice :D
+      Posted: 2026-10-24T12:50:09.000Z
+
+        Comment by anilakar (ID: 50221018):
+        Alt-tabbing from browser to terminal and back has always felt exhausting. Nice.
+        Posted: 2026-10-24T13:23:38.000Z
+
+        Comment by devsda (ID: 50221493):
+        With ad served malware, this wouldn&#x27;t be the first time though :)
+        Posted: 2026-10-24T14:20:51.000Z
+
+  Comment by groundzeros2015 (ID: 50221485):
+  All these names are silly. It&#x27;s just marketing.
+  Posted: 2026-10-24T14:20:12.000Z
+
+    Comment by sigmarule (ID: 50221847):
+    There are levels of silliness, and this has achieved a new one.
+    Posted: 2026-10-24T14:52:35.000Z
+
+  Comment by cowlevel (ID: 50221622):
+  Actually it does, if the server is willing to decompress POST bodies.
+  Posted: 2026-10-24T14:32:42.000Z
+
+    Comment by croes (ID: 50221743):
+    Brotli bodies, so Brotli2Shell
+    Posted: 2026-10-24T14:43:35.000Z
+
+  Comment by Rapzid (ID: 50221690):
+  I think we&#x27;ve all seen where an LLM names a session, issue, or PR based on its early understanding and fails update it later.<p>AI isn&#x27;t being asked to review the title, and it doesn&#x27;t have experience or think, so of course it&#x27;s not going to flag it.<p>No human reviews anything anymore so of course they aren&#x27;t going to catch it.<p>Edit: AI for as good as it is at &quot;writing&quot; is terrible at writing and particularly at <i>naming</i> things. I had an AI name a client OpenAICompatibleEmbeddingClient. &quot;Brooooo.. I think &quot;compatible&quot; is implied, who names stuff like that?!&quot;
+  Posted: 2026-10-24T14:39:34.000Z
+
+    Comment by rmaxdev (ID: 50223587):
+    LLM-based AI is a synthesis of human observed behavior
+    Posted: 2026-10-24T17:58:13.000Z
+
+  Comment by rererereferred (ID: 50221764):
+  Just call it CVE-2026-111497. More accurate and much easier to remember and to talk about with your boss.
+  Posted: 2026-10-24T14:45:43.000Z
+
+    Comment by N19PEDL2 (ID: 50222107):
+    Or EUVD-2026-108169.
+    Posted: 2026-10-24T15:16:55.000Z
+
+  Comment by TZubiri (ID: 50222941):
+  It looks like marketing HTTP2Shell seems to appeal to everyone that uses HTTP, while Brotli2Shell might not wake up people that know what it is.<p>Now, whether it&#x27;s warranted or not, that&#x27;s another matter, but they know how to appeal for maximum awareness&#x2F;interaction.
+  Posted: 2026-10-24T16:43:28.000Z
+
+Comment by davedx (ID: 50220271):
+Honestly it&#x27;s time to get rid of C as a language used where security is a factor. Enough already. Why the hell is a lib like brotli that processes public general internet traffic, and maintained by google, not in rust?
+Posted: 2026-10-24T11:32:05.000Z
+
+  Comment by doublerabbit (ID: 50220286):
+  Because these applications were created long before Rust existed.<p>There is a cost to conversion.
+  Posted: 2026-10-24T11:34:51.000Z
+
+    Comment by Gigachad (ID: 50220297):
+    Brotil was actually created post rust, but before rust took off.
+    Posted: 2026-10-24T11:36:20.000Z
+
+    Comment by davedx (ID: 50220335):
+    It&#x27;s not even an application it&#x27;s a compression library
+    Posted: 2026-10-24T11:41:05.000Z
+
+    Comment by _flux (ID: 50223075):
+    Rust-Brotli (by Dropbox) is actually a drop-in replacement for the Brotli C lib: <a href="https:&#x2F;&#x2F;github.com&#x2F;dropbox&#x2F;rust-brotli#:~:text=rust-brotli%20is%20a%20drop-in%20replacement%20for%20the%20official" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;dropbox&#x2F;rust-brotli#:~:text=rust-brotli%2...</a><p>Dropbox switched to it a decade ago, so it&#x27;s probably quite product-ready.
+    Posted: 2026-10-24T16:58:37.000Z
+
+  Comment by thephyber (ID: 50221567):
+  Security is a factor everywhere. And C is everywhere. There&#x27;s not going to be a &quot;rewrite everything in Rust&quot; project until after there is some legit penalty for selling &#x2F; offering software in C that could be more secure in another language.<p>I think Mozilla got it right when they abandoned the effort to rewrite the entire browser in Rust and instead focused on analysis of which modules needed priority rewrites. If a module has historically had zero memory-related bugs, then there are other higher priority things to spend time on.<p>That said, Google Project Zero should have had Brotli on their radar. Hopefully they still have people and resources.
+  Posted: 2026-10-24T14:27:21.000Z
+
+  Comment by _flux (ID: 50223052):
+  I can understand why people used a C library for these apps, as when HTTP2 was specified, the C lib was the only game in down.<p>However, why not switch to the Rust lib when it was available? I suppose people at Dropbox are now pretty happy they did in <i>2016</i>: <a href="https:&#x2F;&#x2F;dropbox.tech&#x2F;infrastructure&#x2F;lossless-compression-with-brotli" rel="nofollow">https:&#x2F;&#x2F;dropbox.tech&#x2F;infrastructure&#x2F;lossless-compression-wit...</a><p>It&#x27;s slower, though. Too high a price to pay for safety it seems.
+  Posted: 2026-10-24T16:55:43.000Z
+
+Comment by nairboon (ID: 50220319):
+Brotli2Shell seems to be a more appropriate name for this.
+Posted: 2026-10-24T11:39:10.000Z
+
+  Comment by mkl (ID: 50220987):
+  Not when you&#x27;re prioritising sensationalism over accuracy. Everyone&#x27;s heard of HTTP, but hardly anyone&#x27;s heard of brotli.
+  Posted: 2026-10-24T13:19:26.000Z
+
+    Comment by brazukadev (ID: 50221322):
+    call it GoogleBrotli2Shell then.
+    Posted: 2026-10-24T14:02:17.000Z
+
+Comment by cowsandmilk (ID: 50220334):
+Article claims OpenAI found this in February, but I don’t think that’s correct. I think Google made a change to the Brotli source code in February that fixes the issue, but hadn’t realized it was a security issue and therefore hadn’t cut a release.
+Posted: 2026-10-24T11:41:00.000Z
+
+  Comment by Rapzid (ID: 50220696):
+  Yeah that doesn&#x27;t make a lot of sense that they reported it but also nobody knew it was a security issue..<p>Maybe an LLM just happened to do one of those &quot;while I&#x27;m here&quot; fixes in Feb and because nobody reviews anything anymore..<p>&quot;Fixed reading too many bytes.&quot;<p>LGTM!<p>Edit: I was close! &quot;Detect and report invalid stream earlier.&quot; Could have been a person.
+  Posted: 2026-10-24T12:38:20.000Z
+
+Comment by flyingjoe (ID: 50220378):
+A few month ago, everyone was advising to use cool-downs in your package upgrades. Now we&#x27;re constantly overriding those because security incidents will be exploited immediately.
+Guess that&#x27;s just how it&#x27;s gonna be from now on.
+Posted: 2026-10-24T11:47:01.000Z
+
+  Comment by medler (ID: 50220498):
+  It used to be a flex to say you deploy daily but it’s going to become a necessity just to keep up with the vulns
+  Posted: 2026-10-24T12:07:58.000Z
+
+    Comment by ManuelKiessling (ID: 50223005):
+    CI&#x2F;CD — Continuous Incidents, Continuous Defense.
+    Posted: 2026-10-24T16:51:22.000Z
+
+  Comment by mort96 (ID: 50223703):
+  Yeah, obviously? Deploy fixes to security issues which apply to you as soon as possible, deploy random feature additions and non-critical bug fixes after some cooldown.<p>As always, the easiest way to manage this is to have as few dependencies as possible. If you have a lockfile with thousands of entries, you won&#x27;t be able to go through them and decide which upgrades are legitimate urgent security updates and which can wait. If you have 10? You&#x27;ll manage.
+  Posted: 2026-10-24T18:13:32.000Z
+
+Comment by upofadown (ID: 50220406):
+An example of the cost of added complexity I suppose. Brotli is much more complicated than the gzip&#x2F;deflate it replaces. ... and of course we still have to expose gzip to attack as well.<p>Every time you add something you lose something...
+Posted: 2026-10-24T11:51:12.000Z
+
+Comment by TacticalCoder (ID: 50220590):
+I really don&#x27;t understand how so many different things are affected by the same brotli bug&#x2F;exploit.<p>I even read the patch for the C code (patch which, btw, seems a bit hacky to me with <i>isSafe?</i> methods added and whatnots but YMMV: now I understand things had to be patched in a hurry but this patch really looks like &quot;lipstick on a buffer overflowing C pig&quot; to me).<p>What&#x27;s the link between Python &#x2F; Node &#x2F; C++ &#x2F; libbrotli &#x2F; Envoy &#x2F; Bun: are those some <i>all</i> using the same C brotli encoder&#x2F;decoder?<p>Can someone who knows more explain why all those are vulnerable?<p>&gt; As for unaffected software, Apache’s standard mod_brotli does not decode Brotli<p>Because this one only encodes and doesn&#x27;t decode and the bug is in the decoder? (for I take it mod_brotli, with such a name, still does something brotli related and isn&#x27;t, say, a TOTP token generator nor a SAT solver?).<p>I mean overall, sheesh: could we get better explanation &#x2F; better writeups when such big fuckups happen?
+Posted: 2026-10-24T12:21:53.000Z
+
+  Comment by Rapzid (ID: 50220790):
+  Yes. All these language runtimes compile against common libraries. Compression libs are one of the most common common libraries that platforms like node, ruby, dotnet, python, and etc need to compile.<p>Google provides the Brotli implementation. Package maintainers slurp that up and create ie libbrotli-dev. When you compile node it uses that for brotli support.
+  Posted: 2026-10-24T12:51:42.000Z
+
+  Comment by thephyber (ID: 50221407):
+  Brotli was a library released by the Google team that developed it. There weren&#x27;t lots of independent implementations; they were all from the same source code.
+  Posted: 2026-10-24T14:10:34.000Z
+
+    Comment by rfgplk (ID: 50221699):
+    Or you can roll your own and not rely on the literal disaster that Google developed. Brotli is trivial to implement.
+    Posted: 2026-10-24T14:40:22.000Z
+
+Comment by Rapzid (ID: 50220626):
+&gt; reported it as unauthenticated remote code execution that works in both directions<p>&gt; but it wasn&#x27;t recognized as a security issue at the time and no release shipped with the fix until now<p>I&#x27;m always getting my dangerous RCE bugs mixed up with my harmless RCE bugs.<p>I&#x27;m curious how this was reported and fixed back in Feb but nobody recognized the importance. A case of AI automation and nobody at the wheel?
+Posted: 2026-10-24T12:28:38.000Z
+
+  Comment by wavemode (ID: 50223723):
+  I&#x27;m not seeing any source for the claim that OpenAI discovered this in February. The source that the article links (a tweet by OpenAI) doesn&#x27;t claim that.
+  Posted: 2026-10-24T18:16:31.000Z
+
+Comment by bawolff (ID: 50220629):
+To me, the surprising part is how many of these implement brotli compression of request (not just response) bodies, given how obscure a feature that is.<p>In any case all this sensationalism is starting to get annoying. Patch your stuff and move on.<p>Edit: actually, between all the sensationalism, its hard to tell from the article how many of these actually support brotli compressed request bodies in common configs vs some other use of brotli (which is bad but nowhere near as critical)
+Posted: 2026-10-24T12:28:46.000Z
+
+  Comment by ArcHound (ID: 50220671):
+  I think the issue is that the servers &quot;silently&quot; support brotli. Then nobody uses it, but the attacker can still abuse the feature.<p>So as a hotfix I block this on my reverse proxy.
+  Posted: 2026-10-24T12:34:51.000Z
+
+    Comment by bawolff (ID: 50220718):
+    But is that actually true?<p>It seems like node supports it with body parser enabled.<p>But im having trouble finding any docs suggesting anything else supports it on inbound requests.<p>Obviously there are other scenarios where it is exploitable, but it is a much less severe vuln if the attacker must first force the program to make an outbound request to a server of its chosing rather than just connect to a vulnerable server.
+    Posted: 2026-10-24T12:42:06.000Z
+
+      Comment by Rapzid (ID: 50221807):
+      Asp.Net adds Brotli support if you &quot;UseRequestDecompression&quot; or &quot;UseResponseCompression&quot;.<p>DotNet, however, has it&#x27;s own C# Brotli implementation.
+      Posted: 2026-10-24T14:49:55.000Z
+
+      Comment by ArcHound (ID: 50223104):
+      The idea is to identify brotli encoding in the content-encoding header and block that on nginx. This shouldn&#x27;t reach vulnerable brotli parser in node.<p>I hope my assets are not connecting to malicious servers, otherwise yes, I have a problem.
+      Posted: 2026-10-24T17:02:16.000Z
+
+      Comment by dboreham (ID: 50223669):
+      According to Claude when I asked it to audit one of our Python applications, there are scenarios where Brolti can be used only when some Python library detects that the C library is installed on the system. So your Brolti-ness can depend on which machine your code runs on. Ymmv, it didn&#x27;t look to be a practical possibility in our code so I didn&#x27;t probe further.
+      Posted: 2026-10-24T18:08:23.000Z
+
+        Comment by mort96 (ID: 50223689):
+        These chat bots <i>always</i> hedge like that. They will <i>never</i> give you a straight answer, it&#x27;s always &quot;depending on version and build configuration and system configuration&quot;.<p>Investigate yourself. Read the documentation. Grep for brotli in the source. Don&#x27;t blindly trust a chat bot when it says it &quot;might happen in certain configurations&quot;.
+        Posted: 2026-10-24T18:11:24.000Z
+
+          Comment by dboreham (ID: 50223847):
+          Chat bot lol. It did all of those things including scanning the binary. I ran it after doing my own (albeit more limited, but maximal-human) investigation.
+          Posted: 2026-10-24T18:32:19.000Z
+
+    Comment by bflesch (ID: 50222234):
+    Cloudflare has this amazing feature where it accepts compressed payloads and forwards them to unsuspecting backends. Can be weaponized in many ways.
+    Posted: 2026-10-24T15:30:06.000Z
+
+    Comment by AlienRobot (ID: 50222271):
+    I wonder if we&#x27;ll see more of this thanks to AI. Extremely complex features that nobody uses and that were easy to add, which incidentally tremendously expand the attack surface. One would hope that maintainer would be wise to avoid that, but for how long?
+    Posted: 2026-10-24T15:33:40.000Z
+
+      Comment by ArcHound (ID: 50223126):
+      I think so, especially vibe coded software. I think hackers have the advantage now and defenders need to limit attack surface more rigorously.<p>Unfortunately that means understanding and limiting dependencies of developers... Yea, good luck.<p>My popcorn is ready. My servers are not.
+      Posted: 2026-10-24T17:04:38.000Z
+
+        Comment by whoanoway (ID: 50223195):
+        I&#x27;m not saying that my experience translates 1:1. As a child of domestic violence, all I can say is that it never gets better. Sadly, my feeling is that the violence will only escalate from here. If you look at the bright side, you can earn your stripes as a legitimate infosec engineer and prove your worth to the industry and the world.
+        Posted: 2026-10-24T17:13:17.000Z
+
+          Comment by ArcHound (ID: 50223241):
+          I&#x27;m sorry that happened to you. I tend to agree that the race to the bottom will continue.<p>And don&#x27;t worry about my stripes, I&#x27;m mostly talking about my hobby self-hosted apps. If anything, should someone hack them I&#x27;ll have a funny article to post on my blog. Professionally, I do things differently.
+          Posted: 2026-10-24T17:20:33.000Z
+
+Comment by jgalt212 (ID: 50220664):
+How may web servers only serve brotli?<p>How many clients only accept brotli?
+Posted: 2026-10-24T12:34:20.000Z
+
+  Comment by michaelbuckbee (ID: 50220710):
+  Well it&#x27;s negotiated, right?<p>So say you run a SaaS that allows for something like letting people set their Avatar from an image URL which gets downloaded.<p>As an attacker I setup a new server that serves only brotli and then submit that URL to the SaaS.
+  Posted: 2026-10-24T12:40:59.000Z
+
+    Comment by jgalt212 (ID: 50221000):
+    &gt; So say you run a SaaS that allows for something like letting people set their Avatar from an image URL which gets downloaded.<p>That&#x27;s a clever example, but why would you do that?  The avatar should be a static resource.  As such, I&#x27;d only provide an upload file dialog.
+    Posted: 2026-10-24T13:21:11.000Z
+
+      Comment by thephyber (ID: 50221354):
+      Gravitar was super popular for a year or two.<p>Quit being overly pedantic about how contrived the example is and struggle with the underlying fact that the compression type is negotiated between the client and server. If the compression happens on the HTTP request (as some of the comments here suggest), then the server <i>must</i> use that compression method or it fails to read the body of the request.
+      Posted: 2026-10-24T14:05:41.000Z
+
+      Comment by ceejayoz (ID: 50221715):
+      Lots of apps will, for example, bring in your Google avatar (i.e. they fetch its URL for ingestion) as a default avatar if you use them for SSO. Slack included, IIRC.
+      Posted: 2026-10-24T14:41:32.000Z
+
+      Comment by CJefferson (ID: 50223492):
+      I can almost certainly make my browser submit its file upload POST with the compression of my choice and your server will accept it.
+      Posted: 2026-10-24T17:47:00.000Z
+
+    Comment by cowlevel (ID: 50221692):
+    Just send a POST with Content-Encoding:br to any URL and hope it gets decided before the URL route is checked.
+    Posted: 2026-10-24T14:39:42.000Z
+
+Comment by skeledrew (ID: 50220686):
+I&#x27;ve just been pointing a Claude Code at these things as they pop up. A great time to not have to worry about chasing all these things manually.
+Posted: 2026-10-24T12:36:57.000Z
+
+Comment by pimterry (ID: 50220841):
+Much prefer the Broccoli2Shell name &amp; site (for the same vuln): <a href="https:&#x2F;&#x2F;broccoli2shell.com&#x2F;" rel="nofollow">https:&#x2F;&#x2F;broccoli2shell.com&#x2F;</a>. For starters, I&#x27;m pretty sure you can hit this without HTTP if you do any manual Brotli decoding, HTTP just happens to be the most common case that comes up.
+Posted: 2026-10-24T12:59:06.000Z
+
+  Comment by illusive4080 (ID: 50222851):
+  Why do critical vulnerabilities get a cutesy name and website nowadays? Who’s paying for these sites?
+  Posted: 2026-10-24T16:32:46.000Z
+
+    Comment by TZubiri (ID: 50222949):
+    Are you asking why do we name things? In a programming forum?
+    Posted: 2026-10-24T16:44:15.000Z
+
+    Comment by cubefox (ID: 50223253):
+    I&#x27;m certainly not complaining about some selfless guy making a helpful website without expecting anything in return!
+    Posted: 2026-10-24T17:22:08.000Z
+
+    Comment by sbarre (ID: 50223709):
+    Small static websites are effectively free (Cloudflare, GCP  free tier, etc)..
+    Posted: 2026-10-24T18:14:59.000Z
+
+Comment by perching_aix (ID: 50221076):
+git for windows is vulnerable even in its latest release (2.56.0.windows.3), careful pulling repos over https from random ass servers (prolly uncommon but hey). they already merged the fix on the repo, it&#x27;s just in a snapshot build only; should prolly arrive on Monday (2.56.0.windows.4).<p>also affects codex (gui), which ships its own git, could be more of a problem there, when the LLMs get quirky at night. still unlikely to be a problem though.<p>speaking of, update codex (and wipe its cache at ~&#x2F;.cache&#x2F;codex-runtimes), ships its own node. update python.<p>stuff like wireshark and imhex remain vulnerable, even on their latest repo commits, which may or may not be spicy.<p>also Microsoft 365 Copilot still has its own unpatched brotlidec.dll from Oct 7, if anyone uses that. no fix available for that one afaik, not sure about how it can be made to access the vulnerable decoder.
+Posted: 2026-10-24T13:31:31.000Z
+
+  Comment by andersonpico (ID: 50222190):
+  why is this downvoted? are any of those not accurate?
+  Posted: 2026-10-24T15:25:32.000Z
+
+    Comment by hiitsmyaccount (ID: 50222649):
+    Because a local software vuln is much less scary, less exploitable, and more common than an exploit like PHP2Shell, which requires basically no effort to exploit a large chunk of publicly exposed webservers. Basically, local vulns have been a thing forever and GP is off topic.
+    Posted: 2026-10-24T16:09:47.000Z
+
+      Comment by perching_aix (ID: 50223219):
+      the article above is about a defect in google&#x27;s brotli compression library (CVE-2026-111497). compression libraries don&#x27;t really do web serving, or communicate with networked resources at all, they&#x27;re hermetic. so exposure depends on the context this library is deployed in as a dependency.<p>put it in the network path, it can become an RCE.<p>put it in a privileged context, it can become privilege escalation.<p>put it in a hardened environment, it can be completely inert.<p>in no sane perspective is me listing off the applications shipping with vulnerable versions of this codec off-topic. just because the article is hellbent on portraying this as some sort of second php2shell, the actual underlying issue here is still CVE-2026-111497.
+      Posted: 2026-10-24T17:17:45.000Z
+
+Comment by austin-cheney (ID: 50221491):
+Why are we still so reliant on HTTP?  HTTP came out in 1990 (36 years ago) and the most common version of HTTP still in use, 1.1 (RFC2616), came out in 1999 (27 years ago)?<p>Yes, I know HTTP 2 and 3 and SSE are attempts to make it faster and more parallel, but its still slow.  Its slow because its unidirectional with a full round trip and by default its a new socket per each message. Yes, I know the real reason HTTP became and remains popular is because its sessionless... in theory.  Still, there are better options available.  You can do so much more with a full duplex channel.
+Posted: 2026-10-24T14:20:46.000Z
+
+  Comment by singpolyma3 (ID: 50221552):
+  We don&#x27;t need new versions of http or SMTP because they&#x27;re already simple and great and they&#x27;re dumb protocols so there&#x27;s not much you could ever add<p>If you want something else you can take your pick based on need from dozens of other options
+  Posted: 2026-10-24T14:26:17.000Z
+
+    Comment by cowlevel (ID: 50221655):
+    HTTP 1 is full of parser differential vulnerabilities, which 2 fixes. That is probably its biggest flaw.<p>SMTP is too chatty - it uses too many round trips for efficient transfer across the internet. It can take several seconds just to get to the point of sending the email data. It also duplicates information between the SMTP envelope and the email body which creates vulnerabilities when they don&#x27;t match.<p>For APIs that don&#x27;t have to work in a browser I suggest JSON lines over TCP, or over TLS.
+    Posted: 2026-10-24T14:36:37.000Z
+
+      Comment by rfgplk (ID: 50221725):
+      Most header parsing bugs that affect HTTP1.1 can also affect 2+3. Not in the same style but there are quite a few overlapping ones.
+      Posted: 2026-10-24T14:42:08.000Z
+
+  Comment by rfgplk (ID: 50221668):
+  Agreed. The issue with all these archaic standards is that they were rolled decades ago back when certain practices were either outright not being employed OR that hardware wasn&#x27;t fast enough. Ironically, HTTP itself is a literal nightmare to parse (performance wise) on top of having like... ten? distinct vulnerability classes. The world desperately needs new standards.
+  Posted: 2026-10-24T14:37:54.000Z
+
+    Comment by cowlevel (ID: 50221712):
+    Just open a TCP socket and send JSON messages. Or if you want a bit more efficiency, fixed-format binary messages, but remember to include a version number.
+    Posted: 2026-10-24T14:41:25.000Z
+
+      Comment by rfgplk (ID: 50221740):
+      For custom server implementations, agreed. But the web still depends on HTTP and we sadly need the major infra providers to agree on a new standard otherwise HTTP isn&#x27;t going anywhere
+      Posted: 2026-10-24T14:43:27.000Z
+
+  Comment by cowlevel (ID: 50221704):
+  &quot;by default its a new socket for each message&quot; is misinformation - keepalive is the default since HTTP 1.1 (1999).
+  Posted: 2026-10-24T14:40:42.000Z
+
+    Comment by austin-cheney (ID: 50223432):
+    Keep alive is not default behavior, so my prior comment was still more correct.
+    Posted: 2026-10-24T17:41:57.000Z
+
+      Comment by tredre3 (ID: 50223857):
+      All webservers (apache, nginx, litespeed, caddy) have keep-alive enabled by default. All browsers also support it. Whether it&#x27;s actually used&#x2F;negotiated on most connections, I don&#x27;t know, and if you want to be pedantic you&#x27;re right that it can&#x27;t be default by definition since you need the header to use it. But I suspect it actually is used for most connections nowadays.<p>Multiplexing <i>is</i> the default in HTTP&#x2F;2 and 3. So you&#x27;re still wrong.
+      Posted: 2026-10-24T18:33:41.000Z
+
+Comment by rfgplk (ID: 50221646):
+As I&#x27;ve mentioned numerous times at this point, relying on third party code is a massive liability (supply chain attacks&#x2F;sloppy code). My hand rolled brotli implementation is not only faster than libbrotli but also immune to this vulnerability (yes, I checked). Roll your own code people.
+Posted: 2026-10-24T14:35:26.000Z
+
+  Comment by ethin (ID: 50222348):
+  Would you also apply this to cryptography or, well, really any security library? Because I hope the answer will be no...
+  Posted: 2026-10-24T15:41:29.000Z
+
+Comment by semiquaver (ID: 50222187):
+Let’s say I have a node.js app behind an Amazon elastic load balancer which terminates TLS. My understanding is that in nearly all configurations, my app would be unaffected because the ELB would handle decompression. Is that generally correct?
+Posted: 2026-10-24T15:25:17.000Z
+
+  Comment by aleaph (ID: 50222541):
+  Yep, I don&#x27;t think too many people are exposing their python&#x2F;node servers directly, it should be always behind a proxy or a fancy cloud LB.<p>Apache and nginx don&#x27;t handle brotli out of the box.
+  Posted: 2026-10-24T15:58:27.000Z
+
+  Comment by chrismorgan (ID: 50222669):
+  I don’t know about that specific software, but I would be surprised if it decoded message bodies, which is entirely unrelated to TLS termination and <i>shouldd</i> be entirely unrelated to routing. So I would expect you would still be vulnerable.
+  Posted: 2026-10-24T16:11:11.000Z
+
+Comment by anttihaapala (ID: 50222420):
+I had to check all of our Python deployments and installation BOMs and was quite relieved - turns out that none actually installed brotli libraries. HTTP libraries like httpx, requests and frameworks consider them optional and autodetect their presence.
+Posted: 2026-10-24T15:48:32.000Z
+
+Comment by 1vuio0pswjnm7 (ID: 50223884):
+&quot;In 2016, the Brotli algorithm shipped in Chrome, delivering overall better compression ratios for eligible resources.&quot;<p>&quot;By the end of 2017, all modern browsers supported Brotli, and server support for it started to become more widespread.&quot;<p>For www users, all that data collection, surveillance and ad services traffic to enrich so-called &quot;tech&quot; companies acting as intermediaries, can make the www exceedingly slow<p>The way to &quot;make the web faster&quot; (or less inefficient) is to get rid of that needless traffic, and the ads it supports<p>SPDY,^1 HTTP&#x2F;2 Server Push,^2 HTTP&#x2F;3 QPACK,^3 brotli, ....  make www users guinea pigs in Google&#x27;s failed &quot;improvements&quot;<p>The www already works just fine for what its intended purpose (_not_ data collection, surveillance and ad services)<p>1. &quot;As of 2021, no major browsers supported SPDY&quot; <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;SPDY" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;SPDY</a><p>2. <a href="https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;HTTP&#x2F;2_Server_Push" rel="nofollow">https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;HTTP&#x2F;2_Server_Push</a><p>3. <a href="https:&#x2F;&#x2F;foxio.io&#x2F;blog&#x2F;header-accordions-qpack-amplification-attacks-against-http-3-servers" rel="nofollow">https:&#x2F;&#x2F;foxio.io&#x2F;blog&#x2F;header-accordions-qpack-amplification-...</a>
+Posted: 2026-10-24T18:38:28.000Z
+
+
+TOOL CALL 5: getStoryWithComments({"id": 50217495})
+
+TOOL RESULT:
+Story ID: 50217495
+Title: Around a dozen banking apps began specifically permitting GrapheneOS
+URL: https://grapheneos.social/@GrapheneOS/117492375462459244
+Points: 570 | Author: privacyishuman
+
+Comments:
+Comment by ronsor (ID: 50219248):
+&gt; many have memory corruption bugs and incorrect anti-tampering code requiring our per-app exploit protection compatibility mode toggle<p>Ironic for apps that are often so paranoid about &quot;security&quot; and &quot;hardware attestation&quot;
+Posted: 2026-10-24T08:22:43.000Z
+
+  Comment by przmk (ID: 50219371):
+  Because it’s mostly about checking compliance boxes than really caring about security.
+  Posted: 2026-10-24T08:52:26.000Z
+
+    Comment by paweladamczuk (ID: 50219415):
+    Corporation are not able to &quot;care&quot;. It&#x27;s the boxes&#x27;s fault. That is, legislation and&#x2F;or enforcement.
+    Posted: 2026-10-24T09:02:14.000Z
+
+      Comment by ironmagma (ID: 50219662):
+      This meme again? Corporations are not capable of anything, but corporations are made of people, and people can care.
+      Posted: 2026-10-24T09:52:56.000Z
+
+        Comment by qwertyforce (ID: 50219723):
+        We need a graph of empathy vs number of people in organization
+        Posted: 2026-10-24T10:02:22.000Z
+
+        Comment by paweladamczuk (ID: 50219794):
+        Call me cynical, but I would rather rely on written regulations and systems of checks than human altruism.
+        Posted: 2026-10-24T10:13:49.000Z
+
+          Comment by II2II (ID: 50219869):
+          True. Those who only care about meeting regulatory requirements are not going to care if the regulatory requirements cease to exist. Those who care about security <i>may</i> be dismissive of regulatory requirements, but they will do so primarily when they are insufficient or when they conflict with their opinion. In the former case, they probably have the ability to go beyond the regulatory requirements. In the latter case: while I won&#x27;t claim that regulations are perfect, I would trust them over the an anonymous person who may be going on anything from their personal opinion to legitimate research.
+          Posted: 2026-10-24T10:25:54.000Z
+
+          Comment by embedding-shape (ID: 50219934):
+          Currently, besides if you use cryptocurrencies, I don&#x27;t think you can rely solely on &quot;written regulations and systems of checks&quot;, somewhere along those processes there are a bunch of humans with their altruism (or lack of), taste and daily life moving those processes along. And judging by the state of the cryptocurrency ecosystem, this is probably a good thing more than a bad thing.
+          Posted: 2026-10-24T10:37:17.000Z
+
+      Comment by RobotToaster (ID: 50219924):
+      By that logic governments are not able to &quot;care&quot; either.<p>But both are examples of cybernetic entities, if they don&#x27;t care then their control loops aren&#x27;t correctly aligned.
+      Posted: 2026-10-24T10:36:09.000Z
+
+      Comment by preisschild (ID: 50220166):
+      Its not like govt agencies care about security either. Its just &quot;compliance&quot; bs. Most european eID stuff works like that.
+      Posted: 2026-10-24T11:13:09.000Z
+
+      Comment by well_ackshually (ID: 50220313):
+      Lmao, it&#x27;s never legislation and&#x2F;or enforcement. It&#x27;s the checkboxes that their insurances told them they had to check or they wouldn&#x27;t be covered. Half of the problem goes back to insurances being thieves who would do anything to not pay up, the other half goes to upper management not giving a shit about people.
+      Posted: 2026-10-24T11:38:26.000Z
+
+        Comment by gelly321 (ID: 50220587):
+        Yep. I used to work for an FQHC, and the only thing that improved our network security was the insurance premiums we&#x27;d incur without proving compliance. Ofc course, HIPAA is a thing, but that was simply the baseline.
+        Posted: 2026-10-24T12:21:39.000Z
+
+  Comment by paulnpace (ID: 50220698):
+  In my experience, banks are among the worst at following email standards. Why would we expect more sophisticated security protections from them?
+  Posted: 2026-10-24T12:38:51.000Z
+
+Comment by OsrsNeedsf2P (ID: 50219584):
+Is this new? It&#x27;s unclear why the word &quot;began&quot; is in the title
+Posted: 2026-10-24T09:38:24.000Z
+
+  Comment by pizzaiolo (ID: 50219775):
+  After that guy was arrested for wiping his GrapheneOS phone with a duress password, some reports appeared of previously usable apps becoming unusable specifically on GrapheneOS. This now reads like a possible reversal of that trend.
+  Posted: 2026-10-24T10:11:58.000Z
+
+  Comment by blendergeek (ID: 50219881):
+  That sentence is lifted from the post.
+  Posted: 2026-10-24T10:27:38.000Z
+
+  Comment by riedel (ID: 50220038):
+  Where is this list of 12+ banks that explicitly allow graphene. My understanding is if the banks do not explicitly state support also in terms of ToS, they might pull the rug any moment. With neo banks you are then basically left without a bank.
+  Posted: 2026-10-24T10:50:50.000Z
+
+    Comment by riedel (ID: 50220131):
+    I found some evidence of half a dozen that there might be support &#x27;by desogn&#x27; (all of them might pull the rug at any time again as far as I understand TOS, which however seems true for any android in theory): Swissquote, Yuh, UBS, Starling Bank, Triodos Bankieren NL, AmeriCU Credit Union.  More?
+    Posted: 2026-10-24T11:06:25.000Z
+
+Comment by Roark66 (ID: 50219801):
+Why not lineageos23?
+Posted: 2026-10-24T10:15:03.000Z
+
+Comment by LightBug1 (ID: 50219926):
+Excellent. That was one of my main issues with Graphene.<p>I&#x27;m just starting a deep-dive on it.<p>As a newbie, can existing users point out any other gotchas?<p>* EDIT: Oh ffs, only on Pixel phones ...
+Posted: 2026-10-24T10:36:16.000Z
+
+  Comment by Arch-TK (ID: 50220340):
+  It&#x27;s not Pixel only for no reason, there aren&#x27;t any other phones which meet the rather sensible requirements at this moment. And even the latest Pixel phones have regressed.
+  Posted: 2026-10-24T11:41:29.000Z
+
+    Comment by LightBug1 (ID: 50221824):
+    Thanks for the heads up. Will wait for the Moto reboot! Hopefully this becomes more of a thing.
+    Posted: 2026-10-24T14:50:57.000Z
+
+  Comment by anonym29 (ID: 50220606):
+  Coming to a Motorola flagship next year!
+  Posted: 2026-10-24T12:25:44.000Z
+
+    Comment by LightBug1 (ID: 50221723):
+    Thanks for the heads up!!!<p>I&#x27;m a previous Moto user and despite Pixel supposedly being more advanced, I really disliked them. I always preferred the Moto phones.<p>Gives me hope!
+    Posted: 2026-10-24T14:41:57.000Z
+
+  Comment by subscribed (ID: 50222156):
+  Complain to other hardware vendors that they sell insecure crap or do not release updates :&#x2F;<p>And yeah, it&#x27;ll be Motorola from the next year on, but a proper, first party cooperation. I think that Motorola wants to become the answer to the question: &quot;what&#x27;s the best, safest android smartphone?&quot;
+  Posted: 2026-10-24T15:23:16.000Z
+
+Comment by edent (ID: 50219929):
+In my experience with UK banks &amp; financial institutions, GrapheneOS support can be roughly divided into four types.<p>None. Explicitly banned. And, though I feel bad for saying it, I can&#x27;t blame them. If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them. I can see why they don&#x27;t want that headache.<p>Some. App works, but some functionality is unavailable. I&#x27;ve got a credit card app which works, but refuses to set up virtual cards or use &quot;remember me&quot;. That&#x27;s good enough for my use. Similarly, I had a merchant account which let me see my balance, but I couldn&#x27;t use my phone as a credit card reader.<p>Works, but only in main profile. I&#x27;d rather keep financial things in a locked profile. But lots of banks disallow that.<p>Full. Everything works (although you may need to toggle some exploit protection off).<p>Some banks are reasonably good at letting you pass on technical queries to their developers - mostly the smaller ones. The nice thing about the UK banking sector is that it is trivial to move banks. So I switched accounts to providers which worked with my phone and let the old ones know why I was moving.
+Posted: 2026-10-24T10:36:26.000Z
+
+  Comment by embedding-shape (ID: 50219983):
+  &gt; The nice thing about the UK banking sector is that it is trivial to move banks.<p>Are there countries where this is a hassle? Now I&#x27;ve only had personal banking accounts in ~3 countries (so far?), so maybe I&#x27;m in a bubble, but in none of the countries has &quot;switching banks&quot; been more than basically create a new account, start using new IBAN for incoming transfers, move direct debits to use new IBAN and start using new card(s). Those last two were even automatic in the last move I did for a lot of stuff. Is it typically more difficult than that in other countries?
+  Posted: 2026-10-24T10:43:58.000Z
+
+    Comment by TFNA (ID: 50220022):
+    There are countries where, as a result of mergers, banking is now down to 3-4 banks, and they all have the same Android requirements, so switching won&#x27;t get one anywhere.
+    Posted: 2026-10-24T10:48:26.000Z
+
+      Comment by embedding-shape (ID: 50220179):
+      Right, but that&#x27;s something else. Can&#x27;t you switch between those 3-4 banks though? That&#x27;s what I though was possible more or less all over the world.
+      Posted: 2026-10-24T11:15:55.000Z
+
+        Comment by dmantis (ID: 50220353):
+        If you are not a citizen, but an immigrant, it could be very true in some parts of the world.<p>I have a living permit and legal status in the country I live in, but only few banks open accounts to people like me, most just deny anyone but citizens of the country.<p>The ones that open all work in GrapheneOS though, so not big deal for me in my particular case.
+        Posted: 2026-10-24T11:43:22.000Z
+
+      Comment by bluebarbet (ID: 50220447):
+      If those countries are in the EU, you have the right to use a bank based in another EU country. The traditional incumbents will likely demand an in-country residential address (in direct contradiction of EU law). Which leaves the internet-only neobanks. I believe the only FOSS-compatible option is Wise, which has a modern web offering and does not even require that you install a native app. I understand N26 does, but it may work with Graphene. By contrast Revolut is a privacy-invading walled garden and should be avoided at all costs.
+      Posted: 2026-10-24T11:58:14.000Z
+
+        Comment by matwood (ID: 50220561):
+        You’re right what the law says, but then you run into the Italian tax authority that will only accept an Italian IBAN to pay taxes.
+        Posted: 2026-10-24T12:17:56.000Z
+
+        Comment by cowlevel (ID: 50221789):
+        N26 works with Grapheme but won&#x27;t let you create a new account on Graphene and will make you go through identity verification hell.
+        Posted: 2026-10-24T14:47:46.000Z
+
+    Comment by lmz (ID: 50220208):
+    Having the debits move to the new IBAN automatically had to be mandated and built. It doesn&#x27;t just happen. In markets with large incumbent banks they have no incentive whatsoever to make switching easy.
+    Posted: 2026-10-24T11:19:47.000Z
+
+    Comment by vanviegen (ID: 50220416):
+    Having to change IBAN is a hassle, and shouldn&#x27;t have been necessary. In fact, I think some countries (Germany?) actually got that right, and allow you to take your IBAN with you when switching banks. Like keeping your phone number when switching telco.
+    Posted: 2026-10-24T11:52:48.000Z
+
+      Comment by Freak_NL (ID: 50221389):
+      Yeah, the Dutch banks really fucked us over by putting the bank code in the IBAN, so IBANs can&#x27;t be moved to another bank.
+      Posted: 2026-10-24T14:09:02.000Z
+
+      Comment by Larrikin (ID: 50222478):
+      Why is that so much of a hassle? In the US switching banks is just updating some numbers and reconnecting. The entire process can just be done online. In the US the only annoying part can be older companies that still do the account verification via a deposit and withdrawal, so it takes one whole day instead.<p>Also I don&#x27;t think I would actually want it done automatically. Some banks have better saving rates, some banks offer higher interest on checking, some banks are much better for taking cash out internationally, some banks have more ATMs&#x2F;branches around where I live, etc. I have a few different banks I move money around in.
+      Posted: 2026-10-24T15:53:06.000Z
+
+    Comment by edent (ID: 50220676):
+    In the UK we use <a href="https:&#x2F;&#x2F;www.currentaccountswitch.co.uk&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.currentaccountswitch.co.uk&#x2F;</a><p>It <i>automatically</i> moves all of your Direct Debits, recurring payments, balance etc. It even redirects incoming payments to your old account to your new one.<p>It other countries it is a lot less trivial.
+    Posted: 2026-10-24T12:35:31.000Z
+
+    Comment by basilikum (ID: 50223456):
+    It can hurt your credit score.
+    Posted: 2026-10-24T17:44:08.000Z
+
+  Comment by justonenote (ID: 50220215):
+  &gt; None. Explicitly banned. ... I can&#x27;t blame them. If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them. I can see why they don&#x27;t want that headache.<p>I mean this is the whole reason GrapheneOS does not ship a rooted version that they attest to. I doubt they are explicitly banning GrapheneOS, what they are doing is only trusting Google attestation.<p>The reason some banks explicitly allow GrapheneOS is because its easy for them to also trust GrapheneOS attestation, because it is not a rooted OS, and sensible security teams in banks can see that its more secure than any other Android phone including Pixels.<p>I wish people would understand this better, its what gives GrapheneOS a fighting chance of becoming a legitimate open source mobile OS that is accepted as secure for consumer use and that is not controlled by Apple or Google.
+  Posted: 2026-10-24T11:21:16.000Z
+
+    Comment by Zak (ID: 50220423):
+    That&#x27;s not the whole reason, or even the main reason GrapheneOS doesn&#x27;t support or encourage root access.<p>The central design theme of GrapheneOS is to have stronger sandboxes and more limits on what apps can access than stock Android does. Granting an app root access does exactly the opposite; someone behaving rationally and consistently usually won&#x27;t want to do both on the same device.
+    Posted: 2026-10-24T11:53:51.000Z
+
+  Comment by Zak (ID: 50220227):
+  Without evidence that using an OS that isn&#x27;t approved by Google or Apple actually correlates with a higher rate of account compromise or fraud, I do blame them for trying to force it on users.<p>I&#x27;ve done a couple casual web searches for such evidence and come up short. If somebody has good data on this, I don&#x27;t think they&#x27;re publishing it.
+  Posted: 2026-10-24T11:23:21.000Z
+
+    Comment by stymaar (ID: 50220653):
+    I&#x27;m pretty sure it&#x27;s actually anti correlated: not because degoogled Androids are safer by themselves, but because the average user is way savier than the average Joe (which have an out of date Android full of unpatched security vulnerabilities, in the first place).
+    Posted: 2026-10-24T12:32:15.000Z
+
+      Comment by dolorian (ID: 50220833):
+      My theory is that they&#x27;re trying to counter simulated phones. In the old days fraudsters would use their stolen credentials on a windows RDP rented from someone who sells fraud infra with clean IPs. I wouldn&#x27;t be surprised if fraudsters have tried to develop an android based VM meant to look like a legitimate customer endpoint.<p>Though the most effective way to cut out that kind of fraud is to stop using SMS for authentication, which banks don&#x27;t seem to be interested in doing.
+      Posted: 2026-10-24T12:57:55.000Z
+
+        Comment by Tuna-Fish (ID: 50221717):
+        What&#x27;s actually used is banks of old, used phones with broken screens, controlled via usb. They can be had for rather cheap.
+        Posted: 2026-10-24T14:41:43.000Z
+
+        Comment by Vaushite (ID: 50222580):
+        Which is silly because you can get an attested phone for like $50 and factory reset it between &quot;customers&quot;
+        Posted: 2026-10-24T16:02:00.000Z
+
+      Comment by Zak (ID: 50220935):
+      That&#x27;s my first instinct too. I&#x27;ve seen a claim that devices with root, which is distinct from degoogled, both of which are distinct from using a third-party Android distribution, have an increased probability of malware. I suspect that statistic includes things like secondary devices people use for cheating in pay-to-win games and the like.
+      Posted: 2026-10-24T13:11:43.000Z
+
+    Comment by jmaker (ID: 50221792):
+    Since that’s “likely” correlated (and a “likely” is often enough), a product manager will take the most optimal decision for themselves and the company - reject such use cases as unsupported. This is easier than to manage such an edge case for “a few” legitimate users.<p>Few orgs understand compliance. While there might be some compliance people at the org level, individual teams implementing features will need to have a good line to them. In the end, knowledge is siloed and everyone needs to deliver on time. So it’s easier to forbid with some controlled collateral damage than to permit with an uncontrolled downside variance. Just a derisking hedge.<p>Serving use cases that drift away a bit “too far away” from the average (+ some sigmas) use case is not economically justified for a product manager - their KPIs would deteriorate from such “altruism”. No one will care if a few low-margin customers can’t use the product.
+    Posted: 2026-10-24T14:48:18.000Z
+
+  Comment by GreyStache (ID: 50220326):
+  I have two to add: Works, but only every other app version. Second: works if the aosp keyboard or gboard are active but not with LeanType. Easy fix once you know, but that was not a fun time debugging.
+  Posted: 2026-10-24T11:40:08.000Z
+
+  Comment by logifail (ID: 50220354):
+  &gt; though I feel bad for saying it, I can&#x27;t blame them. If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them. I can see why they don&#x27;t want that headache.<p>Most of us understand the desire to protect customers from fraud, but I don&#x27;t think we should accept blanket restrictions on everyone&#x27;s freedom simply because some people might make poor security decisions.<p>There&#x27;s also the unspoken&#x2F;uncomfortable economic reality here: the optimal level of fraud isn&#x27;t zero.   At some point, the cost of preventing additional fraud, including the loss of individual choice and autonomy, exceeds the benefit.<p>Could we aim for proportionate, evidence-based security rather than treating the least capable user as the benchmark for everyone?
+  Posted: 2026-10-24T11:43:32.000Z
+
+    Comment by Zak (ID: 50220445):
+    Someone flagged this comment to death (I vouched and restored it), and mine attracted some downvotes.<p>I&#x27;m surprised to see that in this thread. That&#x27;s usually reserved for politics and arguments about AI.
+    Posted: 2026-10-24T11:58:08.000Z
+
+      Comment by oneplane (ID: 50220472):
+      Could be general polarisation, or just that it&#x27;s a &quot;but in my case it is different&quot; visceral response.<p>While people might not be moved by data, it would be interesting if some more public information on what people actually use was available. Imagine data points like unpatched&#x2F;unpatchable iOS or Android devices being multiple percentages, or outdated browsers. Similarly, the effort per app&#x2F;OS combination; if it costs X to support Y configuration, then it would be somewhat easier to see if it&#x27;s more about the will to do anything rather than real-world problems.
+      Posted: 2026-10-24T12:02:09.000Z
+
+    Comment by oneplane (ID: 50220450):
+    &gt; blanket restrictions on everyone&#x27;s freedom<p>The scope is much smaller than that: restriction on what banking conveniences are provided.<p>&gt; Most of us understand the desire to protect customers from fraud
+&gt; At some point, the cost of preventing additional fraud, including the loss of individual choice and autonomy, exceeds the benefit
+&gt; Could we aim for proportionate<p>I think you have answered your own question here; if a less than single percentage of retail customers use something that&#x27;s not a general iOS or Android device, anything beyond that is not really worth it until regulation says otherwise.
+    Posted: 2026-10-24T11:58:21.000Z
+
+      Comment by logifail (ID: 50220567):
+      &gt; &gt; blanket restrictions on everyone&#x27;s freedom<p>&gt; The scope is much smaller than that: restriction on what banking conveniences are provided.<p>The freedom to install whatever OS you like <i>on your own phone</i>?<p>&gt; if a less than single percentage of __________ anything beyond that is not really worth it<p>My goodness one could fill in that blank in so many different ways, and all of the ones I can immediately think of would drag this thread straight into any number of dire arguments, so I&#x27;d better not.
+      Posted: 2026-10-24T12:18:55.000Z
+
+        Comment by oneplane (ID: 50223817):
+        This is about the bank. You get a service from the bank. The bank has to make a trade-off which services they want to provide under which conditions.<p>Somewhere, 100 steps later, you might get to a &quot;which OS on which hardware&quot; aspect, but that&#x27;s so far removed from normal life for the meaningful customer base that unless you want to stretch the scope of the post two orders of magnitude bigger than it is, it&#x27;s not even close.<p>The bank makes a tradeoff, usually based on money: if they lose 5 customers because they can&#x27;t use a specific app on a specific OS on a specific piece of hardware, they aren&#x27;t going to care.<p>You can apply that to most businesses, especially the profitable ones. You shouldn&#x27;t be surprised by that.
+        Posted: 2026-10-24T18:28:45.000Z
+
+  Comment by nefariousoctopi (ID: 50220563):
+  &gt; Works, but only in main profile.<p>Would anyone know why? My understanding of profiles is arguably very limited, but I always saw those as equivalent to device owner profile from app runtime standpoint.
+  Posted: 2026-10-24T12:18:32.000Z
+
+    Comment by eddythompson80 (ID: 50221899):
+    I’m not very familiar with android because I don’t daily it, but I have an old Pixel 4 with GOS that I was using to evaluate GOS. I know for example that some MDMs don’t work on a secondary “Work” profile in GOS, despite it being one of the main use cases for secondary profiles. If I recall correctly, it was because of how some MDMs can be configured by the organization’s admin they require some handshake with the Owner profile that doesn’t work in GOS. you would have to install them on the owner profile defeating the point I think,
+    Posted: 2026-10-24T14:57:41.000Z
+
+  Comment by kilpikaarna (ID: 50220759):
+  &gt; ”If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them.”<p>This obviously depends on jurisdiction, but how commonly is this actually the case?<p>I’ve thankfully never personally been on the receiving end of fraud or identity theft, but my impression is that here, everything that happens up until the point you tell your bank ”hey, uh, I think my account’s been compromised” is pretty much on you. I don’t think rooting your phone, installing a banking app from some umauthorized source et.c would be hard to construe as negligence.
+  Posted: 2026-10-24T12:47:12.000Z
+
+    Comment by Retr0id (ID: 50221202):
+    I don&#x27;t know anything about the actual legal responsibilities, but even there aren&#x27;t any, a defrauded customer takes up support resources just having the conversation about it. Upset customers (regardless of how well placed that upset is) will complain about it in reviews etc.<p>A lot of people aren&#x27;t able to distinguish &quot;I got scammed&quot; from &quot;the bank took my money away&quot;.
+    Posted: 2026-10-24T13:50:20.000Z
+
+    Comment by avianlyric (ID: 50221862):
+    In the UK, the bank is liable for any transactions on your account that you didn&#x27;t approve. Doesn&#x27;t matter that they thought you approved it because someone knew your pin, or compromised your device.<p>Unless the bank has reason to believe that you&#x27;re either trying to defraud the bank, or where unduly careless with your banking credentials (and you have to be really careless to meet that bar in the eyes of the regulator and the courts), then they&#x27;re expected to refund you.<p>I&#x27;ve seen banks refund £100ks to customers that were defrauded over many months via romance scams. There are cases ruling by the Financial Ombudsman forcing banks to refund customers to handed over their cards and PINs to carers that then stole money.<p>The general attitude of the law in the UK, the regulators, and the courts, is basically it&#x27;s the banks responsibility to provide appropriate security, in a form that their customers can easily use and understand. If banks want to make it easy for customers to move and spend money, then the risks associated with that convenience accrue with the bank, not their customers.<p>Obviously banks work very hard to worm their way out of their responsibilities here. But if you use the consumer protection tools that exist in the UK, which are very easy to access, and which your bank is required to inform you of, then it&#x27;s surprisingly easy to force a bank to refund you for any fraud you suffer.
+    Posted: 2026-10-24T14:54:32.000Z
+
+      Comment by AnthonyMouse (ID: 50222986):
+      &gt; In the UK, the bank is liable for any transactions on your account that you didn&#x27;t approve.<p>The question isn&#x27;t whether they have to refund the money when the customer gets defrauded. The question is whether preventing the customer from using a less popular OS in any way prevents them from being defrauded.<p>To which the answer is somewhere between &quot;negligible difference&quot; and &quot;it&#x27;s actually anti-correlated with that because the custom ROM is more up to date&quot;.<p>Notice that requiring the attacker to use a phone doesn&#x27;t do any good, because the attacker can just use a phone.
+      Posted: 2026-10-24T16:48:57.000Z
+
+  Comment by fersarr (ID: 50220953):
+  Question: In the UK, thanks open banking, couldn&#x27;t you use a compatible bank like monzo and load all the other bank accounts via open banking into that single app?
+  Posted: 2026-10-24T13:14:05.000Z
+
+    Comment by louthy (ID: 50221026):
+    Yes. Banks like Monzo allow you to import your other bank accounts into their app. I did it for a while, but ultimately I found it easier to just have separate apps for each. Most apps are very good and improving all the time, so usually one isn’t much better than the other.<p>I haven’t looked for a <i>one-app-to-rule-them-all</i>, but in principle it’s possible.<p>I think the UK banking sector is in rude health. It’s very competitive and it’s easy to move. The quality of the apps is very much part of any competitive advantage.<p>I have accounts with four uk banks and it’s trivial to manage them. It’s an example of legislation working really well.
+    Posted: 2026-10-24T13:24:55.000Z
+
+  Comment by vlyan (ID: 50220993):
+  &gt;If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them.<p>I keep reading this justification, and it doesn&#x27;t make an ounce of sense to me.<p>first of all, the number of people who want to root their phones is a fraction of 1%. children, teenage girls, and senile boomers don&#x27;t do that. the number of people with rooted phones who could fall for &quot;hello sir, I am sir John Whiteman from Microsoft, you&#x27;re phone have virus, sir, please do the needful install this a pee kaa, sir&quot; is near zero.<p>second of all, phones get stolen all the time, and it would make sense to reduce liability by not providing apps at all.<p>it&#x27;s security theater.
+  Posted: 2026-10-24T13:20:33.000Z
+
+    Comment by rationalist (ID: 50221162):
+    &gt; people who want to root their phones is a fraction of 1%. children, teenage girls…<p>If someone lies to them and tells them there is an app that lets them get free Roblox bucks or whatever, but first they have to root their phone, they will.  If someone lies or makes an app that removes pimples or adds makeup in realtime, or something, but they make it only work on rooted phones, they will.
+    Posted: 2026-10-24T13:45:01.000Z
+
+    Comment by KMnO4 (ID: 50221663):
+    I did a rough estimate of all the people I know and the number of those people who would want to root their phone. It’s not a big number but it’s way bigger than “a fraction of 1%”.<p>And it’s a completely different demographic than those would would fall for the phone call scam, but it’s incredibly disingenuous of you to suggest that the only malware distribution vector is being tricked into installing an APK.<p>I know people who are interested in modding games, pirating software, and installing “cool” apps just for the novelty. I would argue the most likely reason those people installed malware is voluntarily, because they searched out a hacked version of Bloons Tower Defence. Not because they “needed to pay an outstanding Windows service bill”.
+    Posted: 2026-10-24T14:37:25.000Z
+
+  Comment by jon128 (ID: 50221691):
+  A Trezor Safe 5 costs roughly $130.<p>If the banks were really so concerned about malware on the user&#x27;s endpoint, and they had competent CTO, then they would write an app for Trezor or offer a Trezor with their own logo and app on it and users could sign transactions with it.<p>Trezors show on a screen to the user &quot;this is the amount and where to be sent that you are signing for&quot;.<p>Malware with high privileges on a compromised user endpoint can bamboozle the user but a hardware wallet would catch that.
+  Posted: 2026-10-24T14:39:39.000Z
+
+    Comment by MostlyStable (ID: 50221810):
+    You are suggesting an entirely second piece of hardware when there are people in this thread claiming (IMO correctly) that many customers prefer an app over the browser because it&#x27;s very mildly more convenient.<p>And there is a very large swath of banking customers who I wouldn&#x27;t be surprised to learn that banks will earn less than $130 from over the course of a decade.
+    Posted: 2026-10-24T14:49:57.000Z
+
+      Comment by jon128 (ID: 50222226):
+      Correct, an enTiReLy second piece of hardware. That&#x27;s the whole point of a hardware wallet.<p>The use can be optional, I don&#x27;t think anyone would suggest (or even presume?) otherwise.<p>Accounts with balance under $30,000 need not apply.<p>Many of the &quot;good customers&quot; (from a bank&#x27;s perspective) already have a Trezor.<p>Big banks already require customers pay the $50 for an RSA fob anyway. No bank is providing these devices as a courtesy.<p>Many GrapheneOS users would rather pay out of their own pocket for a Trezor Safe 5 than have &quot;you need to carry an additional phone too, a shit-phone&quot; forced on them when GrapheneOS is perfectly adequate to run any app and with more meaningful security assurances than any other Android distro.
+      Posted: 2026-10-24T15:29:10.000Z
+
+        Comment by MostlyStable (ID: 50222328):
+        Maybe I misunderstood the point you were trying to make with your original comment, but you seemed to be suggesting that this piece of hardware could negate the risks (from the banks perspective), of allowing their apps to support non-secure devices. If your suggestion only applies to a very small subset of customers, then that doesn&#x27;t allow them to put their app (which every customer can use), on the untrusted devices.
+        Posted: 2026-10-24T15:40:01.000Z
+
+          Comment by jon128 (ID: 50222509):
+          The existing customers of large banks who have hardware RSA devices are not &quot;a very small subset of customers&quot;. Most of the customers who actually matter to the bank already have hardware devices, but with inferior cryptography and hardware aspects inferior to Trezor.<p>Boomers don&#x27;t generally have Trezor wallets. Many millennials who aren&#x27;t in the &quot;failed to launch&quot; category have a Trezor wallet or something similar, as do gen Z.<p>A Pixel running GrapheneOS is hardly a &quot;non secure&quot; device. As a user, I&#x27;m not naive enough to consider iOS or lamestream Android to be &quot;trusted&quot;, which is why I run GrapheneOS.<p>If a bank&#x27;s app runs on iOS or lamestream Android, but not GrapheneOS, it&#x27;s not because those operating systems that aren&#x27;t GrapheneOS are more &quot;trusted&quot;, it&#x27;s because the CTO of the bank is a fucking moron.<p>Trezor runs open source firmware. Solving the problem with a Trezor is what I want and what most  loosely in the category of &quot;hacker&quot; want. Every legitimate IT pro will prefer, for securing their own bank account, this approach over another.<p>Whatever bank can set whatever threshold they want.<p>If they want to require a signature from a hardware wallet where their app runs on an unrecognized OS or for a Zelle transaction over $3,000 then they can specify whatever details they want in software at the speed of software. Banks already tune thresholds unique to customer&#x27;s individual risk profiles.<p>As has already been widely demonstrated with some of the hardware keys in the Yubikey 5C family, users don&#x27;t lose their hardware keys&#x2F;wallets when they are attached to their physical key ring for house key&#x2F;fob and car key&#x2F;fob etc. Users cycle through or lose smartphones all the time but &quot;muh keys&quot; not so much.
+          Posted: 2026-10-24T15:55:50.000Z
+
+          Comment by jon128 (ID: 50223784):
+          It does negate the risks, from both the user&#x27;s perspective and from the bank&#x27;s perspective. That&#x27;s why I suggested it.
+          Posted: 2026-10-24T18:22:54.000Z
+
+    Comment by xorcist (ID: 50223252):
+    I don&#x27;t know where you live or with whom you bank, but there were plenty of hardware tokens for banking for almost two decades until phone apps took over. They are not likely to return. Managing many hardware tokens is a big undertaking and people regularly forget them or destroy them. Phones are so much easier and people generally don&#x27;t want to carry extra devices. They don&#x27;t even want to carry comparably tiny credit cards given the choice.
+    Posted: 2026-10-24T17:22:00.000Z
+
+      Comment by jon128 (ID: 50223684):
+      No no, we don&#x27;t want tokens. We don&#x27;t want that at all.<p>In the United States, users of Chase are already using FIDO2  to access their Chase accounts with hardware keys often priced at $15 or $20 made by a diverse set of 3rd party vendors such as Yubico, which has the same cryptography-grounded effects I suggested above. One hardware key can store private keys for several remote sites, this is a basic part of FIDO2.<p>Before Chase did this, I directly kvetched at Chase on LinkedIn pointing out that many smaller banks had already been securing access to accounts with FIDO2.<p>Trezor and Yubikey 5C devices happen to also do FIDO2, but the ultimate answer that provides end-to-end cryptography, meaning the cryptographic pieces reach all the way to the record matching the actual contents of the transaction stored at the bank, uses a different format. The legacy tokens never provided end-to-end cryptography, and from a security perspective are as crummy and vulnerable to MITM as OTP&#x2F;TOTP.<p>As far as holding onto hardware keys, users don&#x27;t lose hardware keys&#x2F;wallets when those are attached to a keychain and the users are instructed to attach to add it to their general car&#x2F;house keys. Attached to general car&#x2F;house keys&#x2F;fobs, hardware keys survive user-chaos at a much better rate than smartphones do. Other security-focused IT pros&#x2F;execs have reported the same.<p>The key difference between those hardware tokens and hardware keys&#x2F;wallets that do OpenPGP, or PIV, or the underlying cryptograpy functionality of &quot;Bitcoin wallet&quot;, is they<p><pre><code>  1.] generate a cryptographic signature for the actual content ie &quot;this much $xx.xx to meloney@example2.com&quot; that the bank can keep and present later as reliable proof if appropriate
+</code></pre>
+and<p><pre><code>  2.] display on the screen the contents for #1, so a compromised user endpoint (smartphone or laptop) displaying false info is less likely to successfully bamboozle a user.</code></pre>
+      Posted: 2026-10-24T18:10:24.000Z
+
+  Comment by cowlevel (ID: 50221760):
+  FWIW, GrapheneOS can&#x27;t be rooted. It&#x27;s far more safe for the bank than any other version of Android.
+  Posted: 2026-10-24T14:45:20.000Z
+
+    Comment by drnick1 (ID: 50223634):
+    It absolutely can be rooted by building it from source. And having this ability is what makes the project open.
+    Posted: 2026-10-24T18:03:01.000Z
+
+  Comment by yjftsjthsd-h (ID: 50223064):
+  &gt; And, though I feel bad for saying it, I can&#x27;t blame them. If some idiot roots their phone and downloads malware, the bank may be responsible for refunding them. I can see why they don&#x27;t want that headache.<p>This argument has never held any water for a simple reason:<p>Consider 2 phones.<p>1. Runs self-built lineageos (latest version), with magisk installed.<p>2. Runs official stock ROM, no mods, all apps from Play Store. Also, hasn&#x27;t gotten any updates in 6-9 months and is running a 4.4.x kernel that isn&#x27;t even the latest version on its branch.<p>If your app blocks phone 1 and allows phone 2, then you&#x27;re doing security theater in a way that actively undermines actual security. The ability for a user to flash an OS or <i>allow</i> apps root access doesn&#x27;t make a device insecure, but the ability for any app to grant itself root because the vendor can&#x27;t be bothered to patch the OS certainly does.
+  Posted: 2026-10-24T16:57:51.000Z
+
+Comment by LoganDark (ID: 50220006):
+I truly hope that this is not a pure whitelist of only the official signing keys via attestation.
+Posted: 2026-10-24T10:46:51.000Z
+
+  Comment by cowlevel (ID: 50221820):
+  it is
+  Posted: 2026-10-24T14:50:34.000Z
+
+Comment by readthenotes1 (ID: 50220063):
+A better link to the actual list of hundreds of banking apps supported<p><a href="https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compatibility-with-grapheneos&#x2F;" rel="nofollow">https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compa...</a>
+Posted: 2026-10-24T10:55:26.000Z
+
+Comment by jruohonen (ID: 50220200):
+The list is here:<p><a href="https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compatibility-with-grapheneos&#x2F;" rel="nofollow">https:&#x2F;&#x2F;privsec.dev&#x2F;posts&#x2F;android&#x2F;banking-applications-compa...</a><p>Looks like good progress to me.
+Posted: 2026-10-24T11:18:18.000Z
+
+Comment by shevy-java (ID: 50220246):
+Good. I am tired of vendor-lock-in of a few corporations
+dominating the world here. Capitalism was never
+corporate-fascism - after all one element is free competition
+in a free market. This has been broken numerous times again
+and again, and the US justice department is deliberately
+unwilling to remedy this situation - thus also betraying
+the idea behind capitalism. No wonder since the orange
+mafia is running the show right now, with all signs of
+real dementia now being obvious.
+Posted: 2026-10-24T11:27:49.000Z
+
+  Comment by cowlevel (ID: 50221832):
+  Capitalism was never the same as free-market. In a free market there&#x27;s competition, but in capital-ism it&#x27;s all centralised at a few people, the ones who have all the capital.
+  Posted: 2026-10-24T14:51:26.000Z
+
+Comment by vaylian (ID: 50220267):
+I wonder how many of these supported apps are supported, because there are some geeks on the inside of the banks who want to have their favorite mobile OS supported.
+Posted: 2026-10-24T11:31:09.000Z
+
+  Comment by z3dd (ID: 50220508):
+  Very few, unless this geek is a CTO, which is very unlikely.
+  Posted: 2026-10-24T12:09:33.000Z
+
+Comment by Arch-TK (ID: 50220325):
+Thanks, but no thanks?<p>I use GrapheneOS, but if you as a bank want to gate access to my money via some kind of technology, you better be including it as part of the account.<p>For example, HSBC continues to let me manage my bank account via the web browser, and continues to offer a battery powered hardware token as the means of authentication.<p>I let you hold my money, for whatever reason. Why do you expect me to be your distributed infrastructure provider? I am not going to let you require that I run your proprietary malware in order to access my own money.<p>The idea where you are effectively _expected_ to constantly provide free compute for companies to run their complete garbage on hardware _you own_ just for the privilege of giving them money is one of the most absurd trend in recent times.<p>I&#x27;d say that JS webapps are the same but at least there you run things on your terms in a sandbox that you can inspect and look at the requests, and there&#x27;s no effective enclave carved out of your hardware (except for EME but that&#x27;s another topic for another day and I&#x27;d be complaining if banks started to use it too).
+Posted: 2026-10-24T11:40:05.000Z
+
+  Comment by oneplane (ID: 50220427):
+  You might be overthinking it. Most people want to use their phone for convenience, and if an app allows them to remove just one step in their banking activities, they&#x27;ll probably do that.<p>As for the second part (separate authentication methods), sure, would be rather problematic if they require you to have a phone, but that&#x27;s a completely separate and different issue.
+  Posted: 2026-10-24T11:54:31.000Z
+
+    Comment by aceazzameen (ID: 50220866):
+    Most people don&#x27;t know they&#x27;re also being taken advantage of. I&#x27;m mostly referring to data exfiltration.
+    Posted: 2026-10-24T13:02:06.000Z
+
+      Comment by louthy (ID: 50220980):
+      Which isn’t legal in Europe and the UK. Get better consumer protection laws.
+      Posted: 2026-10-24T13:18:35.000Z
+
+        Comment by dupdrop (ID: 50222146):
+        Good thing that companies never do anything illegal, and everyone lives in Europe.
+        Posted: 2026-10-24T15:21:55.000Z
+
+          Comment by louthy (ID: 50222329):
+          It’s good for us Europeans ;)<p>Companies tend not to do illegal things. Especially if they’re public or have shareholders that might lose significant value if found out. And it’s borderline impossible to stop people finding out.
+          Posted: 2026-10-24T15:40:03.000Z
+
+            Comment by AnthonyMouse (ID: 50223127):
+            Companies tend not to do illegal things when they&#x27;re likely to get caught.<p>The trouble with data laws is that once they <i>have</i> your data, they&#x27;re the only ones who actually know what they&#x27;re doing with it. Which means the thing you need to prevent is them having it, which is typically <i>not</i> the thing those laws do.
+            Posted: 2026-10-24T17:04:52.000Z
+
+              Comment by gf000 (ID: 50223177):
+              You can check what data is getting collected (e.g. decompile their distributed app at different versions), and you can - as a government - actually just go to their servers and check what they are doing (with necessary permits and lawful action), or even mandate them to show the source code.
+              Posted: 2026-10-24T17:09:45.000Z
+
+                Comment by AnthonyMouse (ID: 50223371):
+                &gt; You can check what data is getting collected (e.g. decompile their distributed app at different versions)<p>Which only helps if you&#x27;re trying to prevent them from collecting the data rather than use it for a given thing, which is the thing they&#x27;re not doing.<p>As an obvious example, if they keep all your files&#x2F;messages on their cloud storage by default, they have all your files&#x2F;messages by default.<p>&gt; and you can - as a government - actually just go to their servers and check what they are doing (with necessary permits and lawful action)<p>Which generally only happens when you have reason to suspect they&#x27;re doing something, which is the thing you wouldn&#x27;t have when they&#x27;re the only ones who know that they&#x27;re doing it.<p>And even if you do go to look at the servers they have in your jurisdiction, there is no way to tell that the data hasn&#x27;t been copied to servers outside of your jurisdiction, or what is happening to it over there.
+                Posted: 2026-10-24T17:35:47.000Z
+
+          Comment by LastTrain (ID: 50223222):
+          Oh this argument again? Yeah why have any laws at all &#x2F;s
+          Posted: 2026-10-24T17:17:54.000Z
+
+      Comment by TFNA (ID: 50221795):
+      On GrapheneOS you can install your bank app in a different user profile, and run Google Play sandboxed, so this scenario of a bank app doesn&#x27;t result in anyone having access to your other information.
+      Posted: 2026-10-24T14:48:46.000Z
+
+      Comment by greggsy (ID: 50223747):
+      What exactly are you referring to?
+      Posted: 2026-10-24T18:18:42.000Z
+
+  Comment by spidermonkey23 (ID: 50220733):
+  HSBC pressure you into using the app and I don&#x27;t think there is a way back to the battery powered OTP device. At least not that I know in the UK. I resisted until the battery failed and they basically make you go into the branch and then plead why you can&#x27;t use a smartphone. got sick of this dance after 3 years
+  Posted: 2026-10-24T12:44:21.000Z
+
+    Comment by tengwar2 (ID: 50221014):
+    Most of those devices are interchangeable, so if you have one from NatWest, Barclays etc it will probably work with your card. It&#x27;s also possible to replaec the battery on most of them.
+    Posted: 2026-10-24T13:23:05.000Z
+
+    Comment by RobotToaster (ID: 50221120):
+    The one I got from Lloyds has a replaceable battery
+    Posted: 2026-10-24T13:38:38.000Z
+
+    Comment by cowlevel (ID: 50221742):
+    The magic words that work at most banks are &quot;close my account&quot;, but you have to be prepared to actually close your account if they don&#x27;t back down.
+    Posted: 2026-10-24T14:43:34.000Z
+
+      Comment by TFNA (ID: 50221833):
+      Maybe that works in the some countries, but among the 3-4 mainstream banks in my country, making that threat when you are anything less than an unusually high earner by local standards (and perhaps a customer of ancillary investment services) is just going to be met with &quot;Fine, we&#x27;ll close it then.&quot; You might be overestimating just how much banks need any one average person&#x27;s custom. Also, by local cultural standards, making such threats to a business for the sake of obtaining better customer service is over-the-top Karen behavior, so you have already lost when you do that.
+      Posted: 2026-10-24T14:51:28.000Z
+
+        Comment by carlosjobim (ID: 50221936):
+        Why wouldn&#x27;t you close your account if they don&#x27;t provide what you want? It&#x27;s not an empty threat, just a fact.
+        Posted: 2026-10-24T15:02:05.000Z
+
+          Comment by TFNA (ID: 50221954):
+          Because you won&#x27;t get what you want at any other bank, either. Hardware tokens are viewed as superseded and phased out everywhere.
+          Posted: 2026-10-24T15:03:52.000Z
+
+            Comment by carlosjobim (ID: 50222317):
+            I&#x27;d close my account anyway. If other banks are no better nor worse, then no reason to stay with the one you have.<p>But there should always be at least <i>one</i> bank which can give you what you want, whatever that is. There are dozens to choose between if you&#x27;re banking in USD or EUR.
+            Posted: 2026-10-24T15:38:07.000Z
+
+              Comment by TFNA (ID: 50222537):
+              &quot;There are dozens to choose between if you&#x27;re banking in USD or EUR.&quot; No, in several EU countries there are just a literal handful after successive mergers.
+              Posted: 2026-10-24T15:58:10.000Z
+
+                Comment by hparadiz (ID: 50222700):
+                What&#x27;s always funny to me about these threads is that my bank&#x27;s app has always worked for me on every version of android I&#x27;ve tried. Rooted, not rooted, graphene, etc. It&#x27;s always been fine and secure. So I actually kinda don&#x27;t care what Europeans do. They are always a bit behind the times and a bit misunderstanding how technology works. That&#x27;s why Americans say stuff like &quot;just switch banks&quot; because we&#x27;re all a little astounded at what you guys over there will put up with.
+                Posted: 2026-10-24T16:14:50.000Z
+
+                  Comment by TFNA (ID: 50222912):
+                  I was responding to specifically the OP&#x27;s mention of banking in EUR. However, a dearth of banks is not limited to said parts of Europe but can be found elsewhere in the world, too. So, your disparagement is uninformed.<p>Americans in these threads recommending switching banks are often unaware of how the USA is a relative outlier when it comes to diversity of banking. A lot of that is due to the rather distinctly American concept of the credit union. But within corporate banking, even the USA has seen successive mergers and some decline in choices.
+                  Posted: 2026-10-24T16:39:54.000Z
+
+                Comment by carlosjobim (ID: 50223122):
+                You can get a EUR bank in a different EU country, unless you&#x27;re some kind of thrall.
+                Posted: 2026-10-24T17:03:57.000Z
+
+                  Comment by TFNA (ID: 50223147):
+                  As discussed elsewhere in this very thread, this is not always the case in practice. Neither one&#x27;s national tax authorities nor one&#x27;s employer may play ball regardless of what possibilities legislation supposedly offers. Also, login to government websites may require authentication via a bank app based on an account only in that country.
+                  Posted: 2026-10-24T17:06:24.000Z
+
+                  Comment by tredre3 (ID: 50223582):
+                  At this point I have to assume that you&#x27;re debating in bad faith or in hypothetical because I don&#x27;t believe for a moment that you&#x27;d move <i>all</i> your money into a foreign bank out of spite.<p>Nobody would move <i>all</i> their money out of the country they live in.
+                  Posted: 2026-10-24T17:57:38.000Z
+
+                    Comment by carlosjobim (ID: 50223873):
+                    The Euro has been around for 25 years by now. Having a EUR account in another EU country is about as strange as having a USD account in a different state, which I&#x27;m sure millions of Americans have.<p>Just because <i>you</i> haven&#x27;t considered it doesn&#x27;t make it anything strange or &quot;bad faith&quot; or &quot;out of spite&quot;. People ate sushi before you ever heard of it.
+                    Posted: 2026-10-24T18:36:43.000Z
+
+        Comment by dghlsakjg (ID: 50222875):
+        &quot;I won&#x27;t continue to be your customer if you cannot provide the service I need&quot; Is not &quot;Karen behaviour&quot;.<p>Continuing to patronize a business that will not sell you a product you want is being a pushover. The flip side is if a business is in the custom of only providing certain services to those who threaten to leave, then they shouldn&#x27;t be surprised when people threaten to leave in order to receive good service.<p>I suspect that you live in Canada, which has the banking oligopoly that leads to banks not giving a shit, and customers that are used to banks not trying. If more people were willing to take their money and walk, Canadian banking would probably suck less ass.
+        Posted: 2026-10-24T16:34:14.000Z
+
+          Comment by tredre3 (ID: 50223547):
+          Canada has a lot of banks, including digital&#x2F;virtual ones. All provinces also have at least one credit union to rival regular banks.<p>Just because there are juggernauts (&quot;the big five&#x2F;six&quot;) doesn&#x27;t mean it&#x27;s an oligopoly. This isn&#x27;t like telecom where there are only 3 choices (4 in some provinces) and nobody else can enter the game because it costs too much.
+          Posted: 2026-10-24T17:52:57.000Z
+
+            Comment by dghlsakjg (ID: 50223761):
+            An oligopoly is typically defined as when the majority of the market is captured by a few players leading to pricing control. It does not matter that there are dozens of other players, it is about who controls the market share and pricing power. In Canada 6 big banks have accounts for 85% of the population and control 93% of assets. Canadian Banking is frequently used as an example of a real world oligopoly.<p>The existence of Credit Unions and small banks that offer similar but limited service does not negate the pricing power of Canadian banks. E.g. in most other modern countries paying $17-$35&#x2F;mo for a checking account is not normal. In Canada that is just what every major bank charges for a checking account.<p>its also worth highlighting that many of the &quot;options&quot; in Canada are just online only brands of the big 6.
+            Posted: 2026-10-24T18:19:55.000Z
+
+    Comment by fhdkweig (ID: 50221798):
+    This probably won&#x27;t help you in the UK, but for those in the US, Wells Fargo uses an optional RSA SecurID Device.<p><a href="https:&#x2F;&#x2F;www.wellsfargo.com&#x2F;biz&#x2F;online-banking&#x2F;securid&#x2F;" rel="nofollow">https:&#x2F;&#x2F;www.wellsfargo.com&#x2F;biz&#x2F;online-banking&#x2F;securid&#x2F;</a>
+    Posted: 2026-10-24T14:48:55.000Z
+
+    Comment by iririririr (ID: 50221940):
+    hsbc app is also in the group that forces you to disable all keyboard apps (even Futo), and used only gboard or samsung.
+    Posted: 2026-10-24T15:02:48.000Z
+
+    Comment by speedstyle (ID: 50221957):
+    I got a replacement widget recently, the website pushes the app but when I asked in branch they gave me one without even asking my name. I had to wait on the phone to register the new serial number, maybe I could&#x27;ve done that in person too, but it lasted years (and multiple phones) so I don&#x27;t mind too much
+    Posted: 2026-10-24T15:04:01.000Z
+
+  Comment by louthy (ID: 50220971):
+  This is pretty extreme, it’s just an app for your convenience. I agree that web access should be provided too, but most people find apps more useful.<p>Do you not run apps at all?
+  Posted: 2026-10-24T13:17:10.000Z
+
+    Comment by fuzzzerd (ID: 50222179):
+    In my case, the app offers functionality that isn&#x27;t available on the web version. So I resentfully use the app, but I&#x27;d prefer all features were available via the web instead.
+    Posted: 2026-10-24T15:24:52.000Z
+
+      Comment by hamburglar (ID: 50222354):
+      I’m with you, except that in this situation I resentfully forego the feature because I refuse to install apps.
+      Posted: 2026-10-24T15:42:04.000Z
+
+      Comment by jcsager (ID: 50222369):
+      Web banking means you need the card reader gadget as well for the authentication. The app uses secure features of the OS to aid authentication so you don&#x27;t need to read the card. Web access on your phone still needs the card reader gadget.
+      Posted: 2026-10-24T15:43:29.000Z
+
+        Comment by AnthonyMouse (ID: 50223225):
+        Modern cards and phones support NFC, so you would only need a &quot;gadget&quot; (NFC reader) when using a PC that doesn&#x27;t already have one, and a USB one is ~$20.<p>What this really needs is better browser support for NFC:<p><a href="https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;Web_NFC_API" rel="nofollow">https:&#x2F;&#x2F;developer.mozilla.org&#x2F;en-US&#x2F;docs&#x2F;Web&#x2F;API&#x2F;Web_NFC_API</a><p>But so let&#x27;s do that then.
+        Posted: 2026-10-24T17:18:06.000Z
+
+          Comment by ChocolateGod (ID: 50223859):
+          [delayed]
+          Posted: 2026-10-24T18:33:56.000Z
+
+      Comment by asimovDev (ID: 50223379):
+      meanwhile in my case the app offers functionality that isn&#x27;t available on the web version while simultaneously requiring the web version for some of the things
+      Posted: 2026-10-24T17:36:34.000Z
+
+    Comment by ifyoubuildit (ID: 50222206):
+    &gt; it’s just an app for your convenience<p>How often do you think companies are in the habit of doing things for your convenience?<p>Not who you replied to, but requiring me to install your app or create an account is usually going to mean I skip your thing unless I&#x27;m really motivated (or forced basically) to use it.
+    Posted: 2026-10-24T15:26:42.000Z
+
+      Comment by louthy (ID: 50222324):
+      Well, their competitive advantage too, but they don’t have to be mutually exclusive
+      Posted: 2026-10-24T15:39:20.000Z
+
+    Comment by 0c3ca83 (ID: 50222650):
+    I will do what I can to avoid using apps.
+    Posted: 2026-10-24T16:09:47.000Z
+
+    Comment by switchbak (ID: 50223007):
+    I use a terrible investment platform that purposefully nerfs the web app so you are forced to use the mobile app.<p>For something like a bank, I think they ought to be mandated to offer a functional website, yes. A slick app is nice too, but not if it’s the only option, specifically designed to steal my data and spy on me.
+    Posted: 2026-10-24T16:51:23.000Z
+
+    Comment by port11 (ID: 50223265):
+    I empathise with GP’s anger. “You hold my money” should be enough of a reason to do all in their power to build great web apps and support alternative OS’es.<p>I find that banking apps deserve that extra bit of anger pointed towards them. (It’s also increasingly hard to find an ATM in many countries. What are banks up to?)
+    Posted: 2026-10-24T17:23:45.000Z
+
+      Comment by timcobb (ID: 50223650):
+      &gt; “You hold my money” should be enough<p>The thing is, people like GP don&#x27;t seem to realize that holding their money is not much of an asset to these banks. Like, at all. Maybe no that interest rates are higher. But in general, you&#x27;re not doing them any favor. My understanding is that holding retail money is a loss leader for most banks. Unless GP is ultra wealthy, they&#x27;re not doing the bank any favors by giving them their savings or whatever.
+      Posted: 2026-10-24T18:05:24.000Z
+
+    Comment by drnick1 (ID: 50223842):
+    &gt; Do you not run apps at all?<p>No, I don&#x27;t want to run any apps, particularly commercial ones. I only run a few FOSS apps like K9, IronFox, Signal, Home Assistant.<p>I have, on occasion, downloaded and tested apps from the Play Store in a separate profile, and my experience of such apps has been extremely negative. Clearly, these apps don&#x27;t exist for the user&#x27;s benefit, and their purpose is to extract information about the user, including phone number, location, other apps used, contacts, etc.
+    Posted: 2026-10-24T18:31:02.000Z
+
+  Comment by megous (ID: 50221077):
+  JS webapps have one key feature in this respect, there&#x27;s no possibility for banks to force particular OS&#x2F;HW on you via attestation.
+  Posted: 2026-10-24T13:31:37.000Z
+
+    Comment by cowlevel (ID: 50221755):
+    Passkeys come with device attestation.
+    Posted: 2026-10-24T14:44:47.000Z
+
+      Comment by AnthonyMouse (ID: 50222735):
+      So get them to remove support for device attestation from the spec, or don&#x27;t use passkeys.
+      Posted: 2026-10-24T16:20:18.000Z
+
+  Comment by frmersdog (ID: 50221169):
+  &gt;Why do you expect me to be your distributed infrastructure provider?<p>...You realize that we&#x27;re talking about banks, right? Institutions operating on a fractional reserve? Take your money, use it as collateral to print 10x their holdings in interest-bearing debt? Free to restrict your withdrawals and bail-in funds from your account to save their own hides? Those banks.<p>The Occupy Wall Street and Bitcoin dudes and dudettes had it right, which is why they were carefully marginalized and appropriated, respectively.
+  Posted: 2026-10-24T13:45:46.000Z
+
+    Comment by cowlevel (ID: 50221751):
+    The bitcoin dudes and dudettes didn&#x27;t understand how the same incentives that apply to fiat money also apply to bitcoin.
+    Posted: 2026-10-24T14:44:31.000Z
+
+      Comment by AnthonyMouse (ID: 50222716):
+      If you have Bitcoin in a self-custody wallet, is there a bank corporation to &quot;restrict your withdrawals and bail-in funds from your account to save their own hides&quot;?
+      Posted: 2026-10-24T16:17:05.000Z
+
+  Comment by bennettnate5 (ID: 50221207):
+  &gt; I am not going to let you require that I run your proprietary malware<p>This is likely meant as hyperbole, but South Korea&#x27;s online banking requirements <i>really</i> tries to live up to this reputation
+  Posted: 2026-10-24T13:50:49.000Z
+
+  Comment by jonathanstrange (ID: 50221661):
+  My bank pestered me so much to use their app that I eventually caved in. Ironically, they claim it&#x27;s more secure than normal internet banking from the PC with 2-factor authorization, even though they send the SMS token for in-app transfers to the same phone as the app...it makes no sense.
+  Posted: 2026-10-24T14:37:04.000Z
+
+    Comment by iririririr (ID: 50221971):
+    The EU two years ago rolled back all their proper OTP 2nd factor logins and now exclusively allow their EU  app otp or sms<p>it&#x27;s so obvious they need backdoor access it&#x27;s not even funny.
+    Posted: 2026-10-24T15:05:12.000Z
+
+      Comment by eternauta3k (ID: 50222938):
+      Who is &quot;they&quot;, and what do you mean by &quot;backdoor access&quot; to your bank account?
+      Posted: 2026-10-24T16:42:43.000Z
+
+    Comment by tredre3 (ID: 50223627):
+    Assuming your phone cannot be trivially unlocked by a thief, it likely <i>is</i> safer to bank on it than on a computer.<p>Because unless your desktop is dedicated to banking, there&#x27;s always the chance that one of your other activities will install malware. If you don&#x27;t use FDE (the majority of people) and you saved your banking password in the browser rather than a password manager (likely a scary amount of people), then theft is also an issue.<p>Neither of those things are really a problem on a mobile device.
+    Posted: 2026-10-24T18:02:13.000Z
+
+  Comment by cowlevel (ID: 50221731):
+  Most banks will have a second option to stop you from closing your account with them, but it&#x27;s hidden.
+  Posted: 2026-10-24T14:42:54.000Z
+
+  Comment by teekert (ID: 50221871):
+  <a href="https:&#x2F;&#x2F;walt.is&#x2F;" rel="nofollow">https:&#x2F;&#x2F;walt.is&#x2F;</a>
+  Posted: 2026-10-24T14:55:26.000Z
+
+    Comment by SmashDan (ID: 50222357):
+    I like the idea but it has some pretty suspect TrustPilot reviews, and its connection to crypto is a bit of a red flag to me.
+    Posted: 2026-10-24T15:42:17.000Z
+
+      Comment by tEem21 (ID: 50222600):
+      That is not the same Walt. I&#x27;m assuming you found the TrustPilot site for <a href="https:&#x2F;&#x2F;walt.io" rel="nofollow">https:&#x2F;&#x2F;walt.io</a>, which is some Telegram crypto thing from the US. What GP linked to is an independent wallet app that currently supports passes and is scheduled to support tap-to-pay in the near future.
+      Posted: 2026-10-24T16:04:05.000Z
+
+    Comment by Dove (ID: 50222838):
+    Wow - I really want that to succeed!
+    Posted: 2026-10-24T16:31:39.000Z
+
+    Comment by knocte (ID: 50223546):
+    I&#x27;ve heard that an NFC alternative to ApplePay &amp; Google{Pay|Wallet} is Curve Pay, but sadly it requires KYC (while the former ones don&#x27;t). Do you know if Walt will require KYC too? It&#x27;s not clear from their website.
+    Posted: 2026-10-24T17:52:54.000Z
+
+      Comment by agile-gift0262 (ID: 50223605):
+      If I remember correctly in their newsletter they mentioned that they will, as it was unavoidable. But I&#x27;m talking from memory, that email is long gone from my inbox.<p>the problem I had with Curve is that this privacy policy is a bit trash, and their DPO was unresponsive when I tried to exercise some of my GDPR rights
+      Posted: 2026-10-24T18:00:27.000Z
+
+  Comment by user09172976143 (ID: 50222372):
+  Right... and let&#x27;s just hope those banks pushing the app-everything culture with semi-working web interfaces still online don&#x27;t start requiring unauditable WASM binaries to run them.
+  Posted: 2026-10-24T15:43:39.000Z
+
+  Comment by judge2020 (ID: 50222531):
+  &gt;  I am not going to let you require that I run your proprietary malware in order to access my own money.<p>Why do they need to tailor to you how they do business? They could cut you off from accessing your money over the internet entirely if they wanted. They don&#x27;t even have to offer a debit card, it could be a bank where you can only deposit and withdraw cash in-person.<p>My point is that you choose the institution you want to bank with based on what they offer and if it works for you. Banking is the poster child for an industry where people switch institutions based on what the institution offers.<p>&gt; The idea where you are effectively _expected_ to constantly provide free compute for companies to run their complete garbage on hardware _you own_ just for the privilege of giving them money is one of the most absurd trend in recent times.<p>Corporations offer services for money only under very narrow requirements and conditions because relaxed requirements would cost them money overall. If people are expected to provide free compute, and 99.9999999% of your customer base is okay providing that free compute*, then they&#x27;ll go that route.<p>*: The actual cost to run any given javascript or web app is probably less than a penny, even if you add the actual energy cost to do so plus amortize the hardware cost over the lifetime of your hardware
+  Posted: 2026-10-24T15:57:38.000Z
+
+    Comment by 0c3ca83 (ID: 50222644):
+    &gt; Why do they need to tailor to you how they do business?<p>Exactly, VCRs should be banned -- why should cable companies tailor to you how they do business, and be forced to allow you to plug in anything into their distribution network? Only approved TVs should be an option.
+    Posted: 2026-10-24T16:09:13.000Z
+
+      Comment by judge2020 (ID: 50222734):
+      I mean, I wouldn&#x27;t be surprised if Walmart&#x27;s Onn brand had the audacity to release a port-less smart TV and discount it even more since that would be guaranteed data collection &#x2F; ad sales.<p>Hopefully people are educated about that fact before they purchase said TV, though.
+      Posted: 2026-10-24T16:20:02.000Z
+
+  Comment by PeterStuer (ID: 50222866):
+  Maybe naive on my part, but from a security pov I trust my bank&#x27;s app more than the browser on my pc.
+  Posted: 2026-10-24T16:33:36.000Z
+
+  Comment by Grazester (ID: 50223316):
+  I rather travel by horse down to my local bank to get my money than to use HSBC to do any sort of banking.
+  Posted: 2026-10-24T17:28:57.000Z
+
+  Comment by xorcist (ID: 50223347):
+  &quot;Let you hold my money&quot;? In what society is that true? Banks run our financial infrastructure, and you can&#x27;t just opt out of them. If you want to have a salary, do your taxes, or raise children you will need a bank. They have an immense amount of power and operate in a heavily regulated area so there&#x27;s guaranteed to be very little competition.<p>Voting with your wallet does not work here. There is only a handful of banks, and in many (most?) countries they all force proprietary software and&#x2F;or unreasonable contracts on their customers, switching between them does not help.
+  Posted: 2026-10-24T17:33:22.000Z
+
+    Comment by howunfortunate (ID: 50223408):
+    Google tells me there are about 4.3k FDIC insured banks that operate in the US.<p>At what number would you consider this to be more than &quot;very little competition&quot;?
+    Posted: 2026-10-24T17:40:22.000Z
+
+    Comment by lostlogin (ID: 50223446):
+    &gt; Banks run our financial infrastructure, and you can&#x27;t just opt out of them. If you want to have a salary, do your taxes, or raise children you will need a bank.<p>After getting screwed around by my bank (ASB) I am looking to get away from them. Wise is tempting. They are not a bank.<p>My salary can go to them. Why would I need a bank for taxes or my children?<p>The only thing holding me back is the fact that money isn’t government guaranteed as secure with them. With ASB NZ$100k is government guaranteed.
+    Posted: 2026-10-24T17:43:22.000Z
+
+  Comment by agile-gift0262 (ID: 50223624):
+  My way of thinking is that if I can only manage my money through your app, I&#x27;m not givig you my money
+  Posted: 2026-10-24T18:02:06.000Z
+
+Comment by ForHackernews (ID: 50220396):
+Very good news. It&#x27;s a good sign if banking companies are considering the actual security issues at play and not just blindly rejecting all unofficial ROMs.
+Posted: 2026-10-24T11:50:19.000Z
+
+Comment by iLoveOncall (ID: 50220619):
+Why is the title &quot;a dozen&quot;, when the link given in the post covers hundreds of banks that support it?
+Posted: 2026-10-24T12:27:01.000Z
+
+  Comment by paulnpace (ID: 50220701):
+  I didn&#x27;t have time to review it, but there is some way to explicitly trust GrapheneOS. Maybe that is what they mean?
+  Posted: 2026-10-24T12:39:55.000Z
+
+  Comment by left-struck (ID: 50220865):
+  This post is actually really bad for a Hn post, it appears to be a reply to someone else hence the lack of context here, and the link appears to be a list of banking apps that are have some level of compatibility at all, not the official 12.
+  Posted: 2026-10-24T13:01:58.000Z
+
+  Comment by fph (ID: 50220915):
+  A dozen is the number of banks that whitelist Grapheneos keys via hardware attestation.
+  Posted: 2026-10-24T13:09:34.000Z
+
+Comment by evolve2k (ID: 50220741):
+Any idea which banks support “tap to pay”. Usually on Android or iPhone users access Googld pay or Apple Pay.<p>Word is that banking apps that implement their own nfc interface within their app can be used for “tap to pay” on Graphene.<p>Curious as to how we can know which providers support this.
+Posted: 2026-10-24T12:45:02.000Z
+
+  Comment by fph (ID: 50220899):
+  Curve in Europe (which can be linked to any card) and Paypal.
+  Posted: 2026-10-24T13:07:57.000Z
+
+    Comment by hollow-moe (ID: 50220997):
+    Curve has been requiring Google Services for months now it seems. Tried to get the thing working on my GrapheneOS the app won&#x27;t start without them.
+    Posted: 2026-10-24T13:21:01.000Z
+
+      Comment by fph (ID: 50221959):
+      Ah ok fair, if your GrapheneOS isn&#x27;t running the sandboxed google play services, not even in a separate profile, then I don&#x27;t know if it works.
+      Posted: 2026-10-24T15:04:07.000Z
+
+      Comment by powderpig (ID: 50222731):
+      I have failed to get Curve running after installing GrapheneOS on a new device.
+      Posted: 2026-10-24T16:19:47.000Z
+
+  Comment by codethief (ID: 50221105):
+  In Germany Sparda-Banken and, I think, Volks- und Raiffeisenbanken support tap-to-pay through their apps. (And maybe other banks providing apps developed by the same contractor, Atruvia AG.)<p>PayPal also offers tap-to-pay, though I recently had to disable Graphene&#x27;s &quot;secure app spawning&quot; feature for the PayPal app to get it to open.
+  Posted: 2026-10-24T13:36:31.000Z
+
+Comment by no_time (ID: 50220787):
+Mine (KH bank) does perform a safetynet attestation that fails, as I don&#x27;t even pass basicintegrity, then proceeds to completely ignore the result and still let me in on GOS.<p>I wonder if it&#x27;s intentional.
+Posted: 2026-10-24T12:51:32.000Z
+
+  Comment by subscribed (ID: 50221781):
+  Weird, you should pass the basic and fail the remaining two:<p><a href="https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=gr.nikolasspyr.integritycheck">https:&#x2F;&#x2F;play.google.com&#x2F;store&#x2F;apps&#x2F;details?id=gr.nikolasspyr...</a><p>(FWIW, sometimes when you _block_ the app from the Play Integrity API (in this pop-up) the app that wants to perform the check works, while it fails when you do not block it)
+  Posted: 2026-10-24T14:46:47.000Z
+
+    Comment by no_time (ID: 50222529):
+    I&#x27;m not logged in to any google account and get apps through aurora. I read somewhere that could be the reason.
+    Posted: 2026-10-24T15:57:34.000Z
+
+      Comment by subscribed (ID: 50223875):
+      Ah, not being logged in can be a problem. Can pass the Play Services check if you&#x27;re not logged into Play Services.
+      Posted: 2026-10-24T18:37:32.000Z
+
+Comment by left-struck (ID: 50220879):
+This post is awful, the link posted here is to a social media reply and even that reply does not contain a list of the 12 banks, it does however contain a link to a much larger list of banks, which are supported but not necessarily officially supported.
+Posted: 2026-10-24T13:05:05.000Z
+
+  Comment by qbane (ID: 50221928):
+  I have avoided grapheneos.social links on HN just like quanta magazine ones.
+  Posted: 2026-10-24T15:01:15.000Z
+
+  Comment by 091723761301 (ID: 50222199):
+  Let&#x27;s hope your comment won&#x27;t summon Daniel Micay to this thread once it&#x27;s daytime in NA, dropping 10000-character comments on why all of us are wrong, flanked by his alt-accounts validating his every point and gaslighting whoever argues with him.
+  Posted: 2026-10-24T15:26:26.000Z
+
+    Comment by yjftsjthsd-h (ID: 50222999):
+    If you have evidence that someone is using fake accounts, you should email that to the mods. I will agree with the rest of your comment though.
+    Posted: 2026-10-24T16:50:33.000Z
+
+    Comment by Sent1n3l (ID: 50223088):
+    Go touch grass, what sort of positive beneficial value does this add to any conversation.<p>Your type make HackerNews more like Mumsnet full of feminine energy, gossip and character assassination avoiding a single logical thought or adding anything of technical value.<p>This asinine nonsense is like reading a 14 year old girls diary. Grow up.(And before you think going after my feels will help it won&#x27;t chick, I know the above after laughing with my wife when we went back to hers.)
+    Posted: 2026-10-24T17:00:29.000Z
+
+Comment by jon128 (ID: 50221585):
+I always have to roll my eyes when someone tells me they consult for banks like that&#x27;s supposed to be impressive.<p>That crowd thinks 12 Factor applications are some monumental thing, &quot;oh no, we can&#x27;t do that, we would have to hire only the most expert experts, nobody does 12 Factor applications&quot;. They&#x27;re all Windows tards.<p>Then as highlighted the other day, the big banks, including LLoyds, all run on Google&#x27;s Cloud because ding ding ding big surprise they couldn&#x27;t figure it out themselves, and they didn&#x27;t deploy multi-AZ. They didn&#x27;t do a rudimentary thing that virtually every startup knows to do and does.<p>The banks and the clowns that surround them are, by today&#x27;s standards, barely computer literate.
+Posted: 2026-10-24T14:29:37.000Z
+
+Comment by codedokode (ID: 50221823):
+Why not just use a web app from laptop at home? Why do you even need an app on your phone? So that you can urgently transfer money to some scammers you met in the street?<p>I do not have any banking apps, and I log into a bank account maybe once in month or less often.
+Posted: 2026-10-24T14:50:49.000Z
+
+  Comment by treyd (ID: 50221848):
+  Unfortunately the only way I can spend directly from my work-sponsored FSA account is if I download their app.  I haven&#x27;t, since I <i>can</i> still just submit receipts, but they won&#x27;t send you a physical card.
+  Posted: 2026-10-24T14:52:37.000Z
+
+  Comment by WhyNotHugo (ID: 50221859):
+  A lot of banks are dropping support for making transfers from their regular webapp. AFAIK, in some countries a total of zero banks support this.
+  Posted: 2026-10-24T14:53:55.000Z
+
+    Comment by codedokode (ID: 50221889):
+    In Russia, all banks I tried, are usable via web app (because smartphone apps live only 1-2 months before they are detected and removed from app stores). The disadvantage of a web app is that it is not always-on, doesn&#x27;t allow tracking users are well as a real app, and cannot display advertisement notifications.
+    Posted: 2026-10-24T14:56:35.000Z
+
+  Comment by exceptione (ID: 50221870):
+  Agreed that a website should be fine, but (Dutch) banks require the app as a second factor to log into the website. Fido2 hardware tokens could replace the bullshit requirement of &quot;choose Apple or Google to be your overlord in order to use our service&quot;.
+  Posted: 2026-10-24T14:55:23.000Z
+
+    Comment by codedokode (ID: 50221925):
+    We use SMS OTP as a second factor. Although banks of course want to save some cents and use push notifications for those who has a mobile app.
+    Posted: 2026-10-24T15:00:46.000Z
+
+      Comment by fcarraldo (ID: 50221977):
+      SMS OTP is not very secure relative to a push notification to an app
+      Posted: 2026-10-24T15:05:30.000Z
+
+    Comment by dutchbart (ID: 50222916):
+    Ehm, no. They don’t all do at least. For one, Rabobank does not require it. You can use the app to authorize in the browser. But for big transfers you still need their Rabo Scanner (which you get the first one of for free).
+    Posted: 2026-10-24T16:40:06.000Z
+
+  Comment by prmoustache (ID: 50223111):
+  I think EU regulation kind of force the banks into app usage as 2nd factor
+  Posted: 2026-10-24T17:02:50.000Z
+
+Comment by barnacs (ID: 50221876):
+&gt; banking apps began specifically permitting GrapheneOS<p>In my view, that&#x27;s not any better than specifically permitting Google only. This should not be a whitelist at all. I assume my self-signed GrapheneOS would fail this test?
+Posted: 2026-10-24T14:55:39.000Z
+
+  Comment by grapheneos (ID: 50223794):
+  Not necessarily, it depends on how they fixed it. It isn&#x27;t up to us.<p>Some of these apps began supporting it by fixing their own anti-tampering code to stop being incompatible with our exploit protections to avoid needing users to opt-out for the app.<p>Some were using the Play Integrity API and stopped doing it.<p>Others were using the Play Integrity API and implemented the Android key attestation API as an alternative which means only a list of operating systems and hardware they choose to permit will work in addition to Google certified devices with the stock OS via the Play Integrity API.
+  Posted: 2026-10-24T18:24:38.000Z
+
+Comment by NotPractical (ID: 50222203):
+By GrapheneOS, they mean &quot;official builds of GrapheneOS&quot;. If you build GrapheneOS yourself, you won&#x27;t be allowed to use these banking apps due to remote attestation.
+Posted: 2026-10-24T15:26:38.000Z
+
+  Comment by Vaushite (ID: 50222569):
+  So it&#x27;s not open source.
+  Posted: 2026-10-24T16:01:13.000Z
+
+    Comment by 0c3ca83 (ID: 50222682):
+    This is the problem with remote attestation. The free software foundation has been talking about this endpoint since the late 2000s.
+    Posted: 2026-10-24T16:12:19.000Z
+
+      Comment by redleader55 (ID: 50222788):
+      Richard Stallman has been talking about this since the 80s. One of the most famous and relevant examples of this is &quot;The Right to Read&quot;[0], from 1997.<p>0 - <a href="https:&#x2F;&#x2F;www.gnu.org&#x2F;philosophy&#x2F;right-to-read.en.html" rel="nofollow">https:&#x2F;&#x2F;www.gnu.org&#x2F;philosophy&#x2F;right-to-read.en.html</a>
+      Posted: 2026-10-24T16:26:56.000Z
+
+    Comment by josephcsible (ID: 50223174):
+    The fact that GrapheneOS digitally signs their releases doesn&#x27;t make them not open source. This is indeed a bad situation, but the badness is 100% the fault of Google for having a hardware attestation &quot;feature&quot;.
+    Posted: 2026-10-24T17:09:20.000Z
+
+    Comment by grapheneos (ID: 50223428):
+    GrapheneOS is open source. This has no connection to open or closed source. GrapheneOS has heavily pushed back against apps using remote attestation to restrict which operating systems and hardware can be used. When apps are unwilling or unable to remove it such as due to government regulations, we try to convince them to permit GrapheneOS and other alternatives via a standard Android API instead of only using the Play Integrity API.<p>Banks are increasingly adding checks for Google certified devices. In the EU, there are regulations requiring banks to start verifying device integrity. It&#x27;s headed that way worldwide with a growing number of regulations and industry standards requiring it. Apple&#x27;s App Attest API and Google&#x27;s Play Integrity API have repeatedly been the only options recommended by the EU which has contributed to the worsening situation in the EU in particular. We convinced the EU to remove those specific examples from several official standards. No one has been able to convince them to stop heading down this path despite a lot of people pushing back against it. We haven&#x27;t been able to convince them to define actual requirements let alone to require permitting anything which meets those requirements. They give a vague description of what they require doing shaped around the Apple and Google integrity APIs.<p>We convinced around a dozen banks mostly in the EU to use the standard Android key attestation API included in the Android Open Source Project as an alternative. It allows apps to verify the OS verified boot key hash, patch level, app signing key hash(es) and app version code based on a root of trust. This meets the requirements for the EU standards and enables permitting any alternative with verified boot and a mandatory app sandbox with support for verifying the app&#x27;s signing key and passing it to the hardware keystores. Other operating systems can publish their signing keys in the signed JSON format we published and ask the same companies to include their keys too.<p>Once apps implement an alternative to the Play Integrity API to permit a single OS, it&#x27;s easy for them to add more. The hardest part is getting them to even consider doing it. It&#x27;s nearly impossible to get in contact with the right people and to convince them to do it. Once we establish that contact and convince them to ship it, it&#x27;s a lot easier. There has been an ongoing issue of these apps not adding our new verified boot keys which are per-device-model for security reasons similarly to the Pixel OS. We tried to solve that by creating a standard signed JSON format which can be automatically retrieved and used to automatically include the new signing keys. Exactly the same approach can be used to delegate certification and inclusion of arbitrary operating systems to other organizations. It can also be used for handling which roots of trust for non-Google-certified hardware are also permitted.<p>We would prefer if none of this existed but we don&#x27;t live in that world and we&#x27;re doing what we can to convince apps to permit GrapheneOS and other alternatives. We&#x27;re heavily fighting against it being done in the first place and against more standards and regulations requiring it. We&#x27;re also fighting against more centralized attestation systems such as the Play Integrity API as opposed to systems with actual standards where anything meeting those standards can be included. It would not be a good thing for there to an EU alternative to the Play Integrity API permitting specific operating systems and devices based on geopolitics and business interests. That would only accelerate adoption of attestation by EU apps which is already happening at a faster pace than elsewhere thanks to both EU regulations and what many of the countries are doing themselves.
+    Posted: 2026-10-24T17:41:36.000Z
+
+  Comment by drnick1 (ID: 50223373):
+  I think this is the real problem here if it&#x27;s true. The community must absolutely retain the ability to fork the project and reintroduce things like root that the developers are obstinately against. If not, then Graphene will simply become another Google&#x2F;Apple.
+  Posted: 2026-10-24T17:35:58.000Z
+
+    Comment by agile-gift0262 (ID: 50223657):
+    I think root is precisely what most of these apps are trying to avoid. They think (at least the finance app I used to work for thought) that with root, user credentials the app stored would be accessible by whatever uses those root permissions and they didn&#x27;t want the risk
+    Posted: 2026-10-24T18:06:22.000Z
+
+    Comment by greggsy (ID: 50223820):
+    But you can do that. You can go and root it with a fork. You just won’t run banking apps on it, because it introduces undue risk that they don’t want to absorb.<p>This ‘all or nothing’ attitude in the comments is a bit silly to be honest.
+    Posted: 2026-10-24T18:29:05.000Z
+
+      Comment by grapheneos (ID: 50223846):
+      Most banking apps will still work on a fork of GrapheneOS which appears to keep the security model intact to apps. A half dozen apps which work on the official builds won&#x27;t work on an unofficial build since the bank has chosen to make a list of which operating systems not certified by Google are allowed.
+      Posted: 2026-10-24T18:32:19.000Z
+
+  Comment by grapheneos (ID: 50223833):
+  Not necessarily, it depends on how they fixed it. It isn&#x27;t up to us.
+Some of these apps began supporting it by fixing their own anti-tampering code to stop being incompatible with our exploit protections to avoid needing users to opt-out for the app.<p>Some were using the Play Integrity API and stopped doing it.<p>Others were using the Play Integrity API and implemented the Android key attestation API as an alternative which means only a list of operating systems and hardware they choose to permit will work in addition to Google certified devices with the stock OS via the Play Integrity API.
+  Posted: 2026-10-24T18:30:20.000Z
+
+Comment by iririririr (ID: 50222248):
+what&#x27;s the point of having grapheneOS and then installing all the google spyware back?<p>all these reports assume user installed google play store and google services.<p>this is like installing linux, then wine, then all the windows bloatware back.
+Posted: 2026-10-24T15:31:15.000Z
+
+  Comment by max-privatevoid (ID: 50222480):
+  It&#x27;s properly sandboxed, which is a lot better than Google Play Services on regular Android. Far from ideal of course, but I assume GrapheneOS is built with those people in mind for whom Google is unavoidable.
+  Posted: 2026-10-24T15:53:13.000Z
+
+Comment by 0c3ca83 (ID: 50222634):
+And if I decide to patch my OS to fix some annoyance, then what?<p>Thanks, but no thanks. Remote attestation is simply not acceptable. You use it, I won&#x27;t use your app.
+Posted: 2026-10-24T16:08:19.000Z
+
+Comment by privacyishuman (ID: 50223337):
+There&#x27;s five banking apps that support it specifically listed here [1]. I guess the dozen is not listed somewhere. Roblox, Hyundai, and Kia are also apps that officially support GrapheneOS. We should note that not all that are supporting it are using attestation.<p>I find all the people complaining about this to be rather insane. This is a completely open source linux distro getting official support from banks, some of the most legacy companies of all. This is good news. If companies are open-minded enough to support GrapheneOS, they&#x27;re gonna be much more likely to also officially support other secure operating systems that are open source.<p>These are banking apps that weren&#x27;t previously possible to be used on GrapheneOS. We&#x27;re going from zero to one, not a step back.<p>[1] <a href="https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report&#x2F;issues?q=is%3Aissue+state%3Aclosed+label%3A%22officially+supported%22" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report&#x2F;is...</a>
+Posted: 2026-10-24T17:32:45.000Z
+
+  Comment by GalaxyNova (ID: 50223450):
+  GrapheneOS isn&#x27;t a Linux distro it&#x27;s an AOSP distro
+  Posted: 2026-10-24T17:43:40.000Z
+
+    Comment by grapheneos (ID: 50223604):
+    GrapheneOS and AOSP are Linux distributions. Linux is not glibc, systemd, GNU coreutils, GCC and GNOME. Linux doesn&#x27;t have a specific libc, init system, command-line utilities, compiler toolchain, graphical environment or other userspace components. There are many Linux distributions beyond Android not using those components. There&#x27;s no standard Linux userspace and a distribution using OpenRC, musl, Clang&#x2F;LLVM, uutils coreutils and other software isn&#x27;t somehow not Linux. Linux distribution doesn&#x27;t mean systemd&#x2F;GNU&#x2F;Linux.<p>GrapheneOS and AOSP do use the userspace components developed with the Linux kernel such as iproute2. GNU components aren&#x27;t part of Linux or the broader Linux project. Those don&#x27;t even use a compatible license. It isn&#x27;t legal to use the Linux kernel source code as a reference for writing glibc code since GPLv2-only does not permit the additional restrictions of GPLv3.
+    Posted: 2026-10-24T18:00:19.000Z
+
+  Comment by grapheneos (ID: 50223567):
+  It&#x27;s very difficult to convince these apps to officially support a single alternative to Apple and Google Mobile Services devices. Once they&#x27;re convinced to it and have committed to it, it&#x27;s much easier to convince them to support more alternatives. Many of these apps are required to check device and app integrity by government regulations or industry standards. The EU has defined multiple standards requiring it. Multiple of the EU standards have at least initially explicitly referred to the Apple App Attest API and Google Play Integrity API as ways to verify device and app integrity. People were unable to convince them not to do it. We convinced them to remove references to specific Apple and Google APIs from several standards. We were unable to convince them to define any actual requirements or especially to require permitting any OS or hardware meeting those requirements. We tried very hard to convince them to do that and were unsuccessful.<p>GrapheneOS has heavily pushed back against using attestation to permit only specific software and hardware for running apps and using services. We&#x27;ve convinced dozens of apps to stop doing it altogether. We haven&#x27;t had much success convincing banking apps to stop using the Play Integrity API to enforce Google certification, but we have convinced at least around 6 companies published at least around 12 apps to use the Android key attestation API to permit GrapheneOS. Those apps can now also easily add other operating systems supporting verified boot too. They&#x27;re now aware of this being a choice and are considering how to handle it instead of simply going along with the typical approach of permitting only Google certified hardware running the stock OS.<p>We defined a signed JSON format for distributing verified boot key hashes for use with the Android key attestation API. This can be implemented by other operating systems implementing verified boot, a mandatory app sandbox and support for passing the signing key hashes and version of an app using it to the standard hardware keystores. It can be implemented beyond Android-based operating systems.<p>Unless people can convince the EU and other regulators to move in the opposite direction, this is where things are headed for access to many important government, banking and other services. We&#x27;ve tried our best to convince the EU and others to stop heading down this path and to start forbidding apps and services from doing this instead. They&#x27;ve continued heading down this path and we&#x27;re working hard to keep apps working and to roll back the gradual loss in compatibility with banking apps gradually adopting the Play Integrity API. We need our community to help heavily pressure apps using it to stop or provide an alternative. We&#x27;re gradually having success due to our growing userbase and influence. Perhaps one day we can convince the EU and many countries around the world to forbid using attestation to limit which OS or hardware can be used but right now they&#x27;re doing the opposite.
+  Posted: 2026-10-24T17:55:35.000Z
+
+Comment by smallerfish (ID: 50223404):
+Hm, what&#x27;s the definition of works? <a href="https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report&#x2F;issues&#x2F;61" rel="nofollow">https:&#x2F;&#x2F;github.com&#x2F;PrivSec-dev&#x2F;banking-apps-compat-report&#x2F;is...</a> - closed without a fix for Zelle. Another user later opened a ticket about Zelle not working, and it got closed as a dupe of the first, which had been closed 2-3 years earlier. Not promising.
+Posted: 2026-10-24T17:39:31.000Z
+
+  Comment by grapheneos (ID: 50223791):
+  It&#x27;s a community project maintaining a list of banking apps compatible with GrapheneOS. The issues are used to submit feedback and are closed once the page is updated. It isn&#x27;t a tracker with open issues for incompatible banking apps or functionality. The open issues are feedback which hasn&#x27;t been incorporated yet. It lists whether the overall app is working on the main page and links to the feedback issue for each app to provide additional information.<p>Zelle does work on GrapheneOS via many banking apps. It isn&#x27;t clear why it wouldn&#x27;t work for that app when it works in others and no one has investigated it.<p>Most banking apps around the world only support Google Pay and Apple Pay for tap-to-pay on a smartphone. Google Pay bans using GrapheneOS so that&#x27;s why tap-to-pay on GrapheneOS is only available in regions with alternatives to Google Pay. Europe has Curve Pay, PayPal tap-to-pay and many banks implementing their own tap-to-pay. That site currently doesn&#x27;t list whether an app has their own working tap-to-pay or similar additional details.
+  Posted: 2026-10-24T18:24:15.000Z
+
+Comment by seertaak (ID: 50223806):
+The days of GrapheneOS not working with banking apps are long gone. I&#x27;m using 5 banking apps (which will remain unnamed for security) -- they all work, with the important caveat that NFC payments don&#x27;t work. For me, this is no longer a huge issue: I just swipe a card rather than my phone. Once you get (back) used to it, it&#x27;s frankly only marginally less convenient. Ymmv.
+Posted: 2026-10-24T18:26:52.000Z
+
+FINAL_ANSWER:
+1. **Title:** Roku developer repositories moved from GitHub to GitLab
+   **ID:** 50222622
+   **URL:** [Link](https://blog.roku.com/developer/gitlab-move)
+   **Relevance:** This move reflects a significant trend in the software development community regarding repository management and the implications of platform reliability and security.
+
+2. **Title:** Node2Shell evolves to HTTP2Shell, blast radius affects many HTTP libs and apps
+   **ID:** 50219177
+   **URL:** [Link](https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497)
+   **Relevance:** This story highlights a critical vulnerability affecting numerous libraries, emphasizing the importance of security in software dependencies for engineers.
+
+3. **Title:** Around a dozen banking apps began specifically permitting GrapheneOS
+   **ID:** 50217495
+   **URL:** [Link](https://grapheneos.social/@GrapheneOS/117492375462459244)
+   **Relevance:** The adoption of GrapheneOS by banking apps indicates a shift towards enhanced security practices in mobile applications, which is crucial for software engineers to understand.
+
+**Connecting Theme:** All three stories revolve around security and reliability in software development practices, highlighting the importance of choosing the right tools and frameworks to mitigate risks.
+
+**Selection Justification:** These stories were chosen due to their direct implications for software engineering teams, focusing on repository management, security vulnerabilities, and the adoption of secure operating systems in critical applications. They provide actionable insights that engineers can apply to their work.
+
+**Missing Information:** No significant information was missing, and all tool calls were successful.
+
+STEPS USED: 6
