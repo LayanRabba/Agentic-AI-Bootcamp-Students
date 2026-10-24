@@ -1,23 +1,22 @@
+
 """
 Web search tool for the Module 2 bridge project.
 
-PRE-WRITTEN FOR YOU. You do not need to change anything in this file.
-Read it if you are curious, then import web_search() and get on with the
-interesting part - deciding what your agent does with the result.
+Search backends:
+- DuckDuckGo Instant Answer API
+- Wikipedia API
 
-No API key. No extra install. Uses `requests`, which you already have.
+Results contain source URLs or one of two markers:
 
-    from search_tools import web_search
-    evidence = web_search("who founded Anthropic")
+NO_RESULTS:
+    Search ran successfully but found nothing useful.
 
-It returns a plain-text block of numbered findings with source URLs, or one
-of two markers you must handle:
+SEARCH_UNAVAILABLE:
+    Neither search backend could be used.
 
-    NO_RESULTS          the search worked, but found nothing useful
-    SEARCH_UNAVAILABLE  the network or the service failed
-
-Those two are NOT the same thing, and your agent should not treat them the
-same way. "I found nothing" is a real finding. "I could not look" is not.
+Compatibility fix:
+    DuckDuckGo sometimes returns HTTP 202 with valid
+    Instant Answer JSON. Accept valid JSON in that case.
 """
 
 from __future__ import annotations
@@ -26,165 +25,329 @@ import time
 
 import requests
 
+
 NO_RESULTS = "NO_RESULTS"
 SEARCH_UNAVAILABLE = "SEARCH_UNAVAILABLE"
 
-_UA = {"User-Agent": "Mozilla/5.0 (compatible; AgenticBootcamp/1.0)"}
+_UA = {
+    "User-Agent": (
+        "Mozilla/5.0 (compatible; AgenticBootcamp/1.0)"
+    )
+}
+
 _TIMEOUT = 12
 
 
 class Unreachable(Exception):
-    """The service could not be reached at all - network, DNS, proxy, timeout.
-
-    This is deliberately NOT the same as 'the service answered and had
-    nothing'. Telling those two apart is the whole point of the two markers
-    below, so the failure has to survive the trip back up.
-    """
+    """Search service could not be reached successfully."""
 
 
 def _get(url: str, params: dict) -> dict | None:
-    """One GET with two retries.
-
-    Returns parsed JSON, or None when the service answered but the answer was
-    not usable. Raises Unreachable when we never got an answer at all.
     """
+    Make an HTTP GET request with retries.
+
+    HTTP 200:
+        Accept valid JSON.
+
+    HTTP 202 from DuckDuckGo:
+        Accept valid JSON if present.
+
+    HTTP 429 / 503:
+        Retry after a short delay.
+
+    Other HTTP errors:
+        Return None without treating them as
+        successful search results.
+    """
+
     last_error = "unknown"
+
     for attempt in range(3):
         try:
-            r = requests.get(url, params=params, headers=_UA, timeout=_TIMEOUT)
-            if r.status_code == 200:
-                return r.json()
-            if r.status_code in (429, 503):     # rate limited - back off
-                last_error = f"HTTP {r.status_code}"
+            response = requests.get(
+                url,
+                params=params,
+                headers=_UA,
+                timeout=_TIMEOUT,
+            )
+
+            status = response.status_code
+
+            is_duckduckgo = (
+                url.startswith("https://api.duckduckgo.com/")
+            )
+
+            acceptable_status = (
+                status == 200
+                or (is_duckduckgo and status == 202)
+            )
+
+            if acceptable_status:
+                try:
+                    data = response.json()
+                except ValueError:
+                    return None
+
+                if isinstance(data, dict):
+                    return data
+
+                return None
+
+            if status in (429, 503):
+                last_error = f"HTTP {status}"
+
                 time.sleep(1.5 * (attempt + 1))
                 continue
-            return None                          # answered, just not usefully
-        except Exception as exc:
-            last_error = f"{type(exc).__name__}: {exc}"
+
+            return None
+
+        except requests.RequestException as error:
+            last_error = (
+                f"{type(error).__name__}: {error}"
+            )
+
             time.sleep(1.0 * (attempt + 1))
+
     raise Unreachable(last_error)
 
 
-def _duckduckgo(query: str) -> list[tuple[str, str, str]]:
-    """DuckDuckGo Instant Answer. Good for well-known entities."""
-    data = _get("https://api.duckduckgo.com/",
-                {"q": query, "format": "json", "no_html": 1, "skip_disambig": 1})
+def _duckduckgo(
+    query: str,
+) -> list[tuple[str, str, str]]:
+    """Fetch relevant DuckDuckGo Instant Answer results."""
+
+    data = _get(
+        "https://api.duckduckgo.com/",
+        {
+            "q": query,
+            "format": "json",
+            "no_html": 1,
+            "skip_disambig": 1,
+        },
+    )
+
     if not data:
         return []
 
     found: list[tuple[str, str, str]] = []
+
     if data.get("AbstractText"):
-        found.append((
-            data.get("Heading") or query,
-            data["AbstractText"],
-            data.get("AbstractURL", ""),
-        ))
+        found.append(
+            (
+                data.get("Heading") or query,
+                data["AbstractText"],
+                data.get("AbstractURL", ""),
+            )
+        )
+
     for topic in data.get("RelatedTopics", [])[:4]:
-        if isinstance(topic, dict) and topic.get("Text"):
-            found.append((
-                topic.get("Text", "")[:60],
+        if not isinstance(topic, dict):
+            continue
+
+        if not topic.get("Text"):
+            continue
+
+        found.append(
+            (
+                topic["Text"][:60],
                 topic["Text"],
                 topic.get("FirstURL", ""),
-            ))
+            )
+        )
+
     return found
 
 
-def _wikipedia(query: str) -> list[tuple[str, str, str]]:
-    """Wikipedia search + intro extracts. Broader coverage than the above."""
-    hits = _get("https://en.wikipedia.org/w/api.php",
-                {"action": "query", "list": "search", "srsearch": query,
-                 "format": "json", "srlimit": 3})
+def _wikipedia(
+    query: str,
+) -> list[tuple[str, str, str]]:
+    """Search Wikipedia and retrieve introductory extracts."""
+
+    hits = _get(
+        "https://en.wikipedia.org/w/api.php",
+        {
+            "action": "query",
+            "list": "search",
+            "srsearch": query,
+            "format": "json",
+            "srlimit": 3,
+        },
+    )
+
     if not hits:
         return []
-    titles = [h["title"] for h in hits.get("query", {}).get("search", [])]
+
+    titles = [
+        hit["title"]
+        for hit in hits.get("query", {}).get("search", [])
+    ]
+
     if not titles:
         return []
 
-    ex = _get("https://en.wikipedia.org/w/api.php",
-              {"action": "query", "prop": "extracts", "exintro": 1,
-               "explaintext": 1, "titles": "|".join(titles), "format": "json"})
-    if not ex:
+    extracts = _get(
+        "https://en.wikipedia.org/w/api.php",
+        {
+            "action": "query",
+            "prop": "extracts",
+            "exintro": 1,
+            "explaintext": 1,
+            "titles": "|".join(titles),
+            "format": "json",
+        },
+    )
+
+    if not extracts:
         return []
 
     found: list[tuple[str, str, str]] = []
-    for page in ex.get("query", {}).get("pages", {}).values():
-        text = (page.get("extract") or "").strip()
-        if text:
-            title = page.get("title", "")
-            url = "https://en.wikipedia.org/wiki/" + title.replace(" ", "_")
-            found.append((title, text, url))
+
+    pages = (
+        extracts.get("query", {})
+        .get("pages", {})
+        .values()
+    )
+
+    for page in pages:
+        content = (
+            page.get("extract") or ""
+        ).strip()
+
+        if not content:
+            continue
+
+        title = page.get("title", "")
+
+        url = (
+            "https://en.wikipedia.org/wiki/"
+            + title.replace(" ", "_")
+        )
+
+        found.append(
+            (title, content, url)
+        )
+
     return found
 
 
-def web_search(query: str, max_chars: int = 1400) -> str:
-    """Search the web and return plain text with sources.
-
-    Returns NO_RESULTS if the search ran but found nothing useful, or
-    SEARCH_UNAVAILABLE if the search could not run at all.
+def web_search(
+    query: str,
+    max_chars: int = 1400,
+) -> str:
     """
+    Search available backends.
+
+    Return:
+        - Plain text findings with source URLs
+        - NO_RESULTS
+        - SEARCH_UNAVAILABLE
+    """
+
     query = (query or "").strip()
+
     if not query:
         return NO_RESULTS
 
     reachable = False
     results: list[tuple[str, str, str]] = []
 
-    for backend in (_duckduckgo, _wikipedia):
+    for backend in (
+        _duckduckgo,
+        _wikipedia,
+    ):
         try:
-            got = backend(query)
+            found = backend(query)
+
         except Unreachable:
-            continue              # never answered - do NOT count as reachable
-        reachable = True          # it answered, even if with nothing
-        results.extend(got)
+            continue
+
+        reachable = True
+        results.extend(found)
+
         if len(results) >= 3:
             break
 
     if not reachable:
         return SEARCH_UNAVAILABLE
+
     if not results:
         return NO_RESULTS
 
-    out, used = [], 0
-    for i, (title, text, url) in enumerate(results[:5], 1):
-        snippet = " ".join(text.split())
-        if used + len(snippet) > max_chars:
-            snippet = snippet[: max(0, max_chars - used)]
+    output = []
+    used = 0
+
+    for index, (title, content, url) in enumerate(
+        results[:5],
+        start=1,
+    ):
+        snippet = " ".join(content.split())
+
+        remaining = max_chars - used
+
+        if len(snippet) > remaining:
+            snippet = snippet[:max(0, remaining)]
+
         if not snippet:
             break
-        out.append(f"[{i}] {title}\n    {snippet}\n    source: {url or 'n/a'}")
+
+        output.append(
+            f"[{index}] {title}\n"
+            f"    {snippet}\n"
+            f"    source: {url or 'n/a'}"
+        )
+
         used += len(snippet)
+
         if used >= max_chars:
             break
 
-    return "\n\n".join(out) if out else NO_RESULTS
+    if not output:
+        return NO_RESULTS
+
+    return "\n\n".join(output)
 
 
 def selftest() -> int:
-    """Check the two backends can actually be reached from THIS machine.
+    """Check the two search backends."""
 
-    Run this first if you get NO_RESULTS on a question you know the answer to:
-
-        python search_tools.py --selftest
-    """
     print("checking search backends from this machine")
     print("=" * 60)
-    ok = 0
-    for name, backend in (("duckduckgo", _duckduckgo), ("wikipedia", _wikipedia)):
+
+    reachable_count = 0
+
+    backends = [
+        ("duckduckgo", _duckduckgo),
+        ("wikipedia", _wikipedia),
+    ]
+
+    for name, backend in backends:
         try:
-            hits = backend("Anthropic")
-        except Unreachable as exc:
-            print(f"  {name:<12} UNREACHABLE   {exc}")
+            results = backend("Anthropic")
+
+        except Unreachable as error:
+            print(
+                f"  {name:<12} UNREACHABLE   {error}"
+            )
             continue
-        ok += 1
-        print(f"  {name:<12} reachable     ({len(hits)} hits)")
+
+        reachable_count += 1
+
+        print(
+            f"  {name:<12} reachable     "
+            f"({len(results)} hits)"
+        )
 
     print("=" * 60)
-    if ok == 0:
-        print("Neither backend is reachable. Your network, proxy, VPN or DNS is")
-        print("blocking them - it is NOT your agent code. Try a different")
-        print("network or a VPN, then run this again.")
+
+    if reachable_count == 0:
+        print(
+            "Neither backend returned a usable response."
+        )
         return 1
-    print("Search works here. A NO_RESULTS is a real 'found nothing'.")
+
+    print(
+        "At least one backend returned a usable response."
+    )
     return 0
 
 
@@ -194,6 +357,14 @@ if __name__ == "__main__":
     if "--selftest" in sys.argv:
         raise SystemExit(selftest())
 
-    q = " ".join(sys.argv[1:]) or "who founded Anthropic"
-    print(f"QUERY: {q}\n" + "=" * 60)
-    print(web_search(q))
+    query = (
+        " ".join(sys.argv[1:])
+        or "who founded Anthropic"
+    )
+
+    print(
+        f"QUERY: {query}\n"
+        + "=" * 60
+    )
+
+    print(web_search(query))
